@@ -110,4 +110,26 @@ struct Student {
             break;
     }
 
+    char method;
+    while (true) {
+    cout << "Pasirinkite metoda skaciavimui (v - vidurkis, m - mediana): ";
+    cin >> method;
+    if (method == 'v' || method == 'V' || method == 'm' || method == 'M'){
+        break;
+        }
+    else{
+        cout << "Neteisinga reiksme. Prasome ivesti 'v' arba 'm'." << endl;
+        }
+    }
+    bool useMedian = (method == 'm' || method == 'M');
+
+    // Reaultatu isvedimas
+    cout << "\nPavarde    Vardas    Galutinis (" << (useMedian ? "Med." : "Vid.") << ")\n";
+    cout << "----------------------------------------\n";
+    for (int i = 0; i < studentCount; i++) {
+    cout << left << setw(12) << students[i].surname << setw(12) << students[i].name<< "  " << fixed << setprecision(2) << students[i].calculateFinalGrade(useMedian) << endl;
+    }
+    
+    delete[] students; //Atlaisvinam dinamine atminti
+    return 0;
 }
