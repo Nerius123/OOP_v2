@@ -21,14 +21,15 @@ struct Student {
 void inputStudentData() {
     cout << "Vardas: "; 
     cin >> name;
-    cout << "Pavardė: "; 
+    cout << "Pavarde: "; 
     cin >> surname;
-    cout << "Įveskite namų darbus (-1 baigti): ";
+    cout << "Iveskite namu darbus (-1 baigti): ";
     int grade;
     while (cin >> grade && grade != -1) grades.push_back(grade);
     cout << "Egzamino balas: "; 
     cin >> examGrade;
 }
+
 double calculateAverage() {
     if (grades.empty())
         return 0;
@@ -46,5 +47,4 @@ double calculateMedian() {
 double calculateFinalGrade(bool useMedian) {
     return 0.4 * (useMedian ? calculateMedian() + 0.6 * examGrade : calculateAverage()) + 0.6 * examGrade;
 }
-
 };
