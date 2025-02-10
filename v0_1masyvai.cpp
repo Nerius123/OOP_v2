@@ -63,12 +63,33 @@ struct Student {
                 cin.ignore(100, '\n');
             }
         }
+    }
 
+    double calculateAverage() {
+        if (hwCount == 0) 
+            return 0;
+        int sum = 0;
+        for (int i = 0; i < hwCount; i++) {
+            sum += grades[i];
+        }
+        return static_cast<double>(sum) / hwCount; // Pavercia sum i double, kad dalyba (double / int) gautume atsakyma double
     }
 
 };
 
     int main() {
         Student* students = new Student[100];
+        int studentCount = 0;  // Skaiciuojamas studentu skaicius
+        char choice;
 
+    // Studentu duomenu ivedimas
+    while (true) {
+        students[studentCount].inputStudentData();
+        studentCount++;
+        cout << "Ivesti kita studenta? (t/n): ";
+        cin >> choice;
+        if (choice != 't' && choice != 'T')
+            break;
     }
+
+}
