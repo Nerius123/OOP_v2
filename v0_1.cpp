@@ -28,4 +28,8 @@ int main() {
     }
 
     bool useMedian = (method == 'm' || method == 'M');
+
+    cout << "\nPavardė Vardas Galutinis (" << (useMedian ? "Med." : "Vid.") << ")\n";
+    cout << "----------------------------------------\n";
+
 }
