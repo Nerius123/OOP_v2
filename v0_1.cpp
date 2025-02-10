@@ -27,4 +27,5 @@ int main() {
         }
     }
 
+    bool useMedian = (method == 'm' || method == 'M');
 }
