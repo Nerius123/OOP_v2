@@ -62,6 +62,7 @@ void inputStudentData() {
 
     //Apskaiciuojamas galutinis vertinimas (Kuris skaiciuojamas nuo vartotojo pasirinkimo (ar medianu, ar vidurkiu))
     double calculateFinalGrade(bool useMedian) {
-        return 0.4 * (useMedian ? calculateMedian() + 0.6 * examGrade : calculateAverage()) + 0.6 * examGrade; // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
+        return 0.4 * (useMedian ? calculateMedian() : calculateAverage()) + 0.6 * examGrade;
     }
+         // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
 };
