@@ -92,7 +92,6 @@ struct Student {
         // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas
     }
     
-    
 };
 
     int main() {
@@ -121,6 +120,7 @@ struct Student {
         cout << "Neteisinga reiksme. Prasome ivesti 'v' arba 'm'." << endl;
         }
     }
+
     bool useMedian = (method == 'm' || method == 'M');
 
     // Reaultatu isvedimas
@@ -131,5 +131,6 @@ struct Student {
     }
     
     delete[] students; //Atlaisvinam dinamine atminti
+
     return 0;
 }
