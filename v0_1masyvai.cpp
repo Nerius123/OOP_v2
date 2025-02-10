@@ -65,6 +65,7 @@ struct Student {
         }
     }
 
+    // Skaiciuojam vidurki
     double calculateAverage() {
         if (hwCount == 0) 
             return 0;
@@ -75,6 +76,23 @@ struct Student {
         return static_cast<double>(sum) / hwCount; // Pavercia sum i double, kad dalyba (double / int) gautume atsakyma double
     }
 
+    // Skaiciuojam mediana
+    double calculateMedian() {
+        if (hwCount == 0)
+            return 0.0;
+        sort(grades, grades + hwCount);
+        if (hwCount % 2 == 0)
+            return (grades[hwCount / 2 - 1] + grades[hwCount / 2]) / 2.0; // Dalinam is 2.0 kad rezultatas butu double
+        return grades[hwCount / 2];
+    }
+
+    //Apskaiciuojamas galutinis vertinimas (Kuris skaiciuojamas nuo vartotojo pasirinkimo (ar medianu, ar vidurkiu))
+    double calculateFinalGrade(bool useMedian) {
+        return 0.4 * (useMedian ? calculateMedian() : calculateAverage()) + 0.6 * examGrade;
+        // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas
+    }
+    
+    
 };
 
     int main() {
