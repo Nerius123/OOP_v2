@@ -1,7 +1,9 @@
 #include "my_library.h"
 
 int main() {
+
     vector<Student> students;
+
     char choice;
     while (true){
         Student s;
@@ -13,4 +15,16 @@ int main() {
             break;
     }
     
+    char method;
+    while (true) {
+        cout << "Pasirinkite metoda skaciavimui (v - vidurkis, m - mediana): ";
+        cin >> method;
+        if (method == 'v' || method == 'V' || method == 'm' || method == 'M') {
+            break;
+        } 
+        else {
+            cout << "Neteisinga reiksme. Prasome ivesti 'v' arba 'm'." << endl;
+        }
+    }
+
 }
