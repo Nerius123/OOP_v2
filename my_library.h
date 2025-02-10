@@ -23,28 +23,43 @@ void inputStudentData() {
     cin >> name;
     cout << "Pavarde: "; 
     cin >> surname;
-    cout << "Iveskite namu darbus (-1 baigti): ";
+
+    // Namu darbu balu ivedimas
+    cout << "Iveskite namu darbu balus (1-10). Iveskite -1, jei norite baigti.\n";
     int grade;
     while (cin >> grade && grade != -1) grades.push_back(grade);
-    cout << "Egzamino balas: "; 
-    cin >> examGrade;
+    
+    //Egzamino balu ivedimas ir ju tikrinimas
+    cout << "Iveskite egzamino bala (1-10): ";
+    while(true) {
+        cin >> examGrade;
+        if (examGrade >= 1 && examGrade <= 10) {
+            break;
+        }
+        else {
+            cout << "Neteisingas skaicius! Kartokite (1-10): ";
+            cin.clear(); // Isvalo cin klaidos busena 
+            cin.ignore(100, '\n'); // Pasalina visus likusius simbolius iki naujos eilutes, kad cin veiktu normaliai
+        }
+    }
 }
 
-double calculateAverage() {
-    if (grades.empty())
-        return 0;
-    return accumulate(grades.begin(), grades.end(), 0.0) / grades.size();
-}
+    //Apskaiciuojamas vidurkis 
+    double calculateAverage() {
+        if (grades.empty())
+            return 0;
+    return accumulate(grades.begin(), grades.end(), 0.0) / grades.size(); // Susumuoja visus skaicius
+    }
 
-double calculateMedian() {
-    if (grades.empty()) 
-        return 0;
-    sort(grades.begin(), grades.end());
-    int n = grades.size();
-    return (n % 2 == 0) ? (grades[n / 2 - 1] + grades[n / 2]) / 2.0 : grades[n / 2];
-}
+    double calculateMedian() {
+        if (grades.empty()) 
+            return 0;
+        sort(grades.begin(), grades.end()); // Surusiuoja vektoriu didejancia tvarka
+        int n = grades.size();
+        return (n % 2 == 0) ? (grades[n / 2 - 1] + grades[n / 2]) / 2.0 : grades[n / 2];
+    }
 
-double calculateFinalGrade(bool useMedian) {
-    return 0.4 * (useMedian ? calculateMedian() + 0.6 * examGrade : calculateAverage()) + 0.6 * examGrade;
-}
+    double calculateFinalGrade(bool useMedian) {
+        return 0.4 * (useMedian ? calculateMedian() + 0.6 * examGrade : calculateAverage()) + 0.6 * examGrade;
+    }
 };
