@@ -51,6 +51,7 @@ void inputStudentData() {
     return accumulate(grades.begin(), grades.end(), 0.0) / grades.size(); // Susumuoja visus skaicius
     }
 
+    //Apskaiciuojamas medianas
     double calculateMedian() {
         if (grades.empty()) 
             return 0;
@@ -59,7 +60,8 @@ void inputStudentData() {
         return (n % 2 == 0) ? (grades[n / 2 - 1] + grades[n / 2]) / 2.0 : grades[n / 2];
     }
 
+    //Apskaiciuojamas galutinis vertinimas (Kuris skaiciuojamas nuo vartotojo pasirinkimo (ar medianu, ar vidurkiu))
     double calculateFinalGrade(bool useMedian) {
-        return 0.4 * (useMedian ? calculateMedian() + 0.6 * examGrade : calculateAverage()) + 0.6 * examGrade;
+        return 0.4 * (useMedian ? calculateMedian() + 0.6 * examGrade : calculateAverage()) + 0.6 * examGrade; // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
     }
 };
