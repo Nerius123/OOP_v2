@@ -4,12 +4,19 @@
 #include <iomanip>
 #include <numeric>  
 #include <algorithm> 
+#include <fstream>
 
 using std::cout;
 using std::endl;
 using std::vector;
 using std::string;
 using std::cin;
+using std::ifstream;
+using std::ofstream;
+using std::setw;
+using std::fixed;
+using std::setprecision;
+using std::left;
 
 struct Student {
     string name;
@@ -65,4 +72,23 @@ void inputStudentData() {
         return 0.4 * (useMedian ? calculateMedian() : calculateAverage()) + 0.6 * examGrade;
     }
          // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
+
+    void displayMenu() {
+        cout << "========================" << endl;
+        cout << "          MENIU         " << endl;
+        cout << "========================" << endl;
+        cout << "1. Prideti nauja studenta" << endl;
+        cout << "2. Nuskaityti studentus is failo" << endl;
+        cout << "3. Spausdinti studentu sarasa" << endl;
+        cout << "4. Issaugoti rezultatus i faila" << endl;
+        cout << "5. Baigti programa" << endl;
+        cout << "Pasirinkite: ";
+        }
+    
+    void addStudent(vector<Student>& students) {
+        Student s;
+        inputStudentData(s);
+        students.push_back(s);
+        }
+
 };
