@@ -19,16 +19,24 @@ int main() {
                 cin >> method;
                 if (method == 'v' || method == 'V' || method == 'm' || method == 'M') {
                     break;
-                } else {
+                }
+                else {
                     cout << "Neteisinga reiksme. Prasome ivesti 'v' arba 'm'." << endl;
                 }
-            }
+                         }
             printStudents(students, method == 'm' || method == 'M');
-        }
+            }
         else if (choice == '5') {
-            cout << "Programa baigiama." << endl;
-            return 1;
-        } 
+            cout << "Programa baigta!" << endl;
+            break;
+            }
+        else {
+            cout << endl;
+            cout << "-------------------------" << endl;
+            cout << "Neteisingas pasirinkimas. Bandykite dar karta." << endl;
+            cout << "-------------------------" << endl;
+            cout << endl;
+            }
+        }
+        return 0;
     }
-    return 0;
-}
