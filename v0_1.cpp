@@ -32,7 +32,19 @@ int main() {
                 }
                          }
             printStudents(students, method == 'm' || method == 'M');
+        }
+
+        else if (choice == '4') {
+            if (students.empty()) {
+                cout << "Nera ivestu studentu, failas nebus issaugotas." << endl;
+                continue;
             }
+            string filename;
+            cout << "Iveskite failo pavadinima issaugojimui: ";
+            cin >> filename;
+            saveResultsToFile(students, filename);
+        }
+
         else if (choice == '5') {
             cout << "Programa baigta!" << endl;
             break;

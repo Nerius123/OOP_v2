@@ -152,3 +152,29 @@ void readFromFile(vector<Student> &students, const string &filename) {
     file.close();
     cout << "Studentai sekmingai nuskaityti is failo." << endl;
 }
+
+void saveResultsToFile(const vector<Student>& students, const string& filename) {
+    ofstream file(filename);
+    if (!file) {
+        cout << "Klaida kuriant faila!" << endl;
+        return;
+    }
+    
+    // Antraste
+    file << left << setw(25) << "Vardas" << setw(25) << "Pavarde";
+    for (int i = 1; i <= students[0].grades.size(); i++) {
+        file << "ND" << setw(8) << i;
+    }
+    file << setw(10) << "Egzaminas" << endl;
+    
+    // Rasoma studentu info
+    for (const auto &s : students) {
+        file << left << setw(25) << s.name << setw(25) << s.surname;
+        for (const auto &grade : s.grades) {
+            file << setw(10) << grade;
+        }
+        file << setw(10) << s.examGrade << endl;
+    }
+    file.close();
+    cout << "Rezultatai sekmingai issaugoti i " << filename << endl;
+}
