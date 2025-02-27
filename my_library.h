@@ -17,30 +17,46 @@ using std::setw;
 using std::fixed;
 using std::setprecision;
 using std::left;
+using std::sort;
+using std::accumulate;
 
 struct Student {
     string name;
     string surname;
     vector<int> grades;
     int examGrade;
-
+};
 
 void inputStudentData(Student &s) {
     cout << "Vardas: "; 
-    cin >> name;
+    cin >> s.name;
     cout << "Pavarde: "; 
-    cin >> surname;
+    cin >> s.surname;
 
     // Namu darbu balu ivedimas
     cout << "Iveskite namu darbu balus (1-10). Iveskite -1, jei norite baigti.\n";
     int grade;
-    while (cin >> grade && grade != -1) grades.push_back(grade);
+    while (true) {
+        cin >> grade;
+        if (cin.fail()) { // Patikrina, ar ivestas ne skaicius
+            cin.clear();  // Isvalo klaidos busena
+            cin.ignore(100, '\n'); // Pasalina neteisingus simbolius
+            cout << "Netinkama ivestis! Prasome ivesti skaiciu (1-10) arba -1, jei norite baigti: ";
+            continue;
+        }
+        if (grade == -1) 
+        break; // Jei -1, iseiname is ciklo
+
+        if (grade >= 1 && grade <= 10) {
+            s.grades.push_back(grade); // Tik jei skaicius teisingas, pridedame i vektoriu
+        }
+    }
     
     //Egzamino balu ivedimas ir ju tikrinimas
     cout << "Iveskite egzamino bala (1-10): ";
     while(true) {
-        cin >> examGrade;
-        if (examGrade >= 1 && examGrade <= 10) {
+        cin >> s.examGrade;
+        if (s.examGrade >= 1 && s.examGrade <= 10) {
             break;
         }
         else {
@@ -53,23 +69,24 @@ void inputStudentData(Student &s) {
 
     //Apskaiciuojamas vidurkis 
     double calculateAverage(const Student &s) {
-        if (grades.empty())
+        if (s.grades.empty())
             return 0;
-    return accumulate(grades.begin(), grades.end(), 0.0) / grades.size(); // Susumuoja visus skaicius
+    return accumulate(s.grades.begin(), s.grades.end(), 0.0) / s.grades.size(); // Susumuoja visus skaicius
     }
 
     //Apskaiciuojamas medianas
     double calculateMedian(const Student &s) {
-        if (grades.empty()) 
-            return 0;
-        sort(grades.begin(), grades.end()); // Surusiuoja vektoriu didejancia tvarka
-        int n = grades.size();
-        return (n % 2 == 0) ? (grades[n / 2 - 1] + grades[n / 2]) / 2.0 : grades[n / 2];
+        if (s.grades.empty()){
+            return 0;}
+            vector<int> sortedGrades = s.grades;
+            sort(sortedGrades.begin(), sortedGrades.end()); // Surusiuoja vektoriu didejancia tvarka
+            int n = sortedGrades.size();
+            return (n % 2 == 0) ? (sortedGrades[n / 2 - 1] + sortedGrades[n / 2]) / 2.0 : sortedGrades[n / 2];
     }
 
     //Apskaiciuojamas galutinis vertinimas (Kuris skaiciuojamas nuo vartotojo pasirinkimo (ar medianu, ar vidurkiu))
     double calculateFinalGrade(const Student &s, bool useMedian) {
-        return 0.4 * (useMedian ? calculateMedian(s) : calculateAverage(s)) + 0.6 * examGrade;
+        return 0.4 * (useMedian ? calculateMedian(s) : calculateAverage(s)) + 0.6 * s.examGrade;
     }
          // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
 
@@ -108,4 +125,3 @@ void inputStudentData(Student &s) {
             cout << std::left << std::setw(15) << s.name << std::setw(15)  << s.surname << "  " << std::fixed << std::setprecision(2) << calculateFinalGrade(s, useMedian) << endl;
             }
         }
-};

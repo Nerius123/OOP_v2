@@ -25,5 +25,10 @@ int main() {
             }
             printStudents(students, method == 'm' || method == 'M');
         }
+        else if (choice == '5') {
+            cout << "Programa baigiama." << endl;
+            return 1;
+        } 
+    }
     return 0;
 }
