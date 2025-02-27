@@ -25,7 +25,7 @@ struct Student {
     int examGrade;
 
 
-void inputStudentData() {
+void inputStudentData(Student &s) {
     cout << "Vardas: "; 
     cin >> name;
     cout << "Pavarde: "; 
@@ -52,14 +52,14 @@ void inputStudentData() {
 }
 
     //Apskaiciuojamas vidurkis 
-    double calculateAverage() {
+    double calculateAverage(const Student &s) {
         if (grades.empty())
             return 0;
     return accumulate(grades.begin(), grades.end(), 0.0) / grades.size(); // Susumuoja visus skaicius
     }
 
     //Apskaiciuojamas medianas
-    double calculateMedian() {
+    double calculateMedian(const Student &s) {
         if (grades.empty()) 
             return 0;
         sort(grades.begin(), grades.end()); // Surusiuoja vektoriu didejancia tvarka
@@ -68,8 +68,8 @@ void inputStudentData() {
     }
 
     //Apskaiciuojamas galutinis vertinimas (Kuris skaiciuojamas nuo vartotojo pasirinkimo (ar medianu, ar vidurkiu))
-    double calculateFinalGrade(bool useMedian) {
-        return 0.4 * (useMedian ? calculateMedian() : calculateAverage()) + 0.6 * examGrade;
+    double calculateFinalGrade(const Student &s, bool useMedian) {
+        return 0.4 * (useMedian ? calculateMedian(s) : calculateAverage(s)) + 0.6 * examGrade;
     }
          // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
 
@@ -85,10 +85,27 @@ void inputStudentData() {
         cout << "Pasirinkite: ";
         }
     
-    void addStudent(vector<Student>& students) {
+    void addStudent(vector<Student> &students) {
         Student s;
         inputStudentData(s);
         students.push_back(s);
         }
-
+    
+    void printStudents(const vector<Student> &students, bool useMedian) {
+        if (students.empty()) {
+            cout << "Nera studentu." << endl;
+            return;
+        }
+        vector<Student> sortedStudents = students;
+        sort(sortedStudents.begin(), sortedStudents.end(), [](const Student &a, const Student &b) { // Lambda rykiavimas kuris lygina studento a ir b vardus (jei vardai vienodi pavardes) ir ziuri pagal abecele kuris pirmiau
+            if (a.name == b.name)
+                return a.surname < b.surname; // Jei vardai sutampa, rikiuojama pagal pavarde
+            return a.name < b.name; // Pirmiausia rikiuojama pagal varda
+        });
+        cout << "\nVardas         Pavarde          Galutinis (" << (useMedian ? "Med." : "Vid.") << ")\n";
+        cout << "------------------------------------------------\n";
+        for (auto &s : sortedStudents) {
+            cout << std::left << std::setw(15) << s.name << std::setw(15)  << s.surname << "  " << std::fixed << std::setprecision(2) << calculateFinalGrade(s, useMedian) << endl;
+            }
+        }
 };

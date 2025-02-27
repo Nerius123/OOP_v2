@@ -25,13 +25,5 @@ int main() {
             }
             printStudents(students, method == 'm' || method == 'M');
         }
-
-
-    cout << "\nPavarde    Vardas    Galutinis (" << (useMedian ? "Med." : "Vid.") << ")\n";
-    cout << "----------------------------------------\n";
-    for (auto &s : students) {
-        cout << std::left << std::setw(12) << s.name << std::setw(12)  << s.surname << "  " << std::fixed << std::setprecision(2) << s.calculateFinalGrade(useMedian) << endl;
-        }
-    }
     return 0;
 }
