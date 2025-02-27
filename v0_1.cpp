@@ -10,12 +10,19 @@ int main() {
 
         if (choice == '1') {
             addStudent(students);
-        } 
+        }
 
+        else if (choice == '2') {
+            string filename;
+            cout << "Iveskite failo pavadinima: ";
+            cin >> filename;
+            readFromFile(students, filename);
+        }
+        
         else if (choice == '3') {
             char method;
             while (true) {
-                cout << "Pasirinkite metoda skaičiavimui (v - vidurkis, m - mediana): ";
+                cout << "Pasirinkite metoda skaiciavimui (v - vidurkis, m - mediana): ";
                 cin >> method;
                 if (method == 'v' || method == 'V' || method == 'm' || method == 'M') {
                     break;

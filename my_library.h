@@ -67,30 +67,30 @@ void inputStudentData(Student &s) {
     }
 }
 
-    //Apskaiciuojamas vidurkis 
-    double calculateAverage(const Student &s) {
+//Apskaiciuojamas vidurkis 
+double calculateAverage(const Student &s) {
         if (s.grades.empty())
             return 0;
     return accumulate(s.grades.begin(), s.grades.end(), 0.0) / s.grades.size(); // Susumuoja visus skaicius
-    }
+}
 
-    //Apskaiciuojamas medianas
-    double calculateMedian(const Student &s) {
+//Apskaiciuojamas medianas
+double calculateMedian(const Student &s) {
         if (s.grades.empty()){
             return 0;}
             vector<int> sortedGrades = s.grades;
             sort(sortedGrades.begin(), sortedGrades.end()); // Surusiuoja vektoriu didejancia tvarka
             int n = sortedGrades.size();
             return (n % 2 == 0) ? (sortedGrades[n / 2 - 1] + sortedGrades[n / 2]) / 2.0 : sortedGrades[n / 2];
-    }
+}
 
-    //Apskaiciuojamas galutinis vertinimas (Kuris skaiciuojamas nuo vartotojo pasirinkimo (ar medianu, ar vidurkiu))
-    double calculateFinalGrade(const Student &s, bool useMedian) {
+//Apskaiciuojamas galutinis vertinimas (Kuris skaiciuojamas nuo vartotojo pasirinkimo (ar medianu, ar vidurkiu))
+double calculateFinalGrade(const Student &s, bool useMedian) {
         return 0.4 * (useMedian ? calculateMedian(s) : calculateAverage(s)) + 0.6 * s.examGrade;
-    }
-         // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
+}
+    // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
 
-    void displayMenu() {
+void displayMenu() {
         cout << "========================" << endl;
         cout << "          MENIU         " << endl;
         cout << "========================" << endl;
@@ -100,17 +100,17 @@ void inputStudentData(Student &s) {
         cout << "4. Issaugoti rezultatus i faila" << endl;
         cout << "5. Baigti programa" << endl;
         cout << "Pasirinkite: ";
-        }
+}
     
-    void addStudent(vector<Student> &students) {
+void addStudent(vector<Student> &students) {
         Student s;
         inputStudentData(s);
         students.push_back(s);
-        }
+}
     
-    void printStudents(const vector<Student> &students, bool useMedian) {
+void printStudents(const vector<Student> &students, bool useMedian) {
         if (students.empty()) {
-            cout << "Nera studentu." << endl;
+            cout << "Nera ivesta jokiu studentu." << endl;
             return;
         }
         vector<Student> sortedStudents = students;
@@ -124,4 +124,31 @@ void inputStudentData(Student &s) {
         for (auto &s : sortedStudents) {
             cout << std::left << std::setw(15) << s.name << std::setw(15)  << s.surname << "  " << std::fixed << std::setprecision(2) << calculateFinalGrade(s, useMedian) << endl;
             }
+}
+
+// Naudoju '&', kad isvengciau vektoriaus kopijavimo ir tiesiogiai modifikuociau originalu sarasa
+// Naudoju 'const &' filename, kad išvengciau nereikalingos kopijos ir neleisciau keisti failo pavadinimo
+void readFromFile(vector<Student> &students, const string &filename) {
+    ifstream file(filename);
+    if (!file) {
+        cout << "Klaida atidarant faila!" << endl;
+        return;
+    }
+    string line;
+    Student s;
+    getline(file, line); // Praleidziame antrastes eilute
+    while (file >> s.name >> s.surname) {
+        s.grades.clear();
+        int grade;
+        while (file.peek() != '\n' && file >> grade) {
+            s.grades.push_back(grade);
         }
+        if (!s.grades.empty()) {
+            s.examGrade = s.grades.back();
+            s.grades.pop_back();
+        }
+        students.push_back(s);
+    }
+    file.close();
+    cout << "Studentai sekmingai nuskaityti is failo." << endl;
+}
