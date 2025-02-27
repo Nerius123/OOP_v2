@@ -138,14 +138,14 @@ void readFromFile(vector<Student> &students, const string &filename) {
     Student s;
     getline(file, line); // Praleidziame antrastes eilute
     while (file >> s.name >> s.surname) {
-        s.grades.clear();
+        s.grades.clear(); //uztikrina, kad jei s naudojamas pakartotinai, ankstesni ivedimai bus pasalinti
         int grade;
         while (file.peek() != '\n' && file >> grade) {
             s.grades.push_back(grade);
         }
         if (!s.grades.empty()) {
-            s.examGrade = s.grades.back();
-            s.grades.pop_back();
+            s.examGrade = s.grades.back(); // Paskutinis skaicius yra egzamino ivertinimas
+            s.grades.pop_back(); // Pasalinti egzamino ivertinima is namu darbu saraso
         }
         students.push_back(s);
     }
