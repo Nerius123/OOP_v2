@@ -163,7 +163,7 @@ void readFromFile(vector<Student> &students, const string &filename) {
 
         s.examGrade = tempGrades.back(); // Paskutinis skaicius yra egzamino balas
         tempGrades.pop_back(); // Pasaliname egzamino bala is namu darbu saraso
-        s.grades = tempGrades; // Išsaugome likusius balus
+        s.grades = tempGrades; // Issaugome likusius balus
 
         students.push_back(s); // Pridedame studenta i vektoriu
     }
