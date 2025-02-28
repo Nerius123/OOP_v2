@@ -5,6 +5,7 @@
 #include <numeric>  
 #include <algorithm> 
 #include <fstream>
+#include <sstream>
 
 using std::cout;
 using std::endl;
@@ -19,6 +20,7 @@ using std::setprecision;
 using std::left;
 using std::sort;
 using std::accumulate;
+using std::istringstream;
 
 struct Student {
     string name;
@@ -131,26 +133,43 @@ void printStudents(const vector<Student> &students, bool useMedian) {
 void readFromFile(vector<Student> &students, const string &filename) {
     ifstream file(filename);
     if (!file) {
-        cout << "Klaida atidarant faila!" << endl;
+        cout << "Klaida atidarant faila: " << filename << endl;
         return;
     }
+
     string line;
-    Student s;
-    getline(file, line); // Praleidziame antrastes eilute
-    while (file >> s.name >> s.surname) {
-        s.grades.clear(); //uztikrina, kad jei s naudojamas pakartotinai, ankstesni ivedimai bus pasalinti
+    getline(file, line); // Praleidziame antrastes eilute (jei ji egzistuoja)
+
+    while (getline(file, line)) {  
+        istringstream iss(line);  // Sukuriame nauja eilutes skaitymo srautą
+        Student s;
+
+        if (!(iss >> s.name >> s.surname)) {
+            cout << "Klaida skaitant studento varda ir pavarde!" << endl;
+            continue; // Pereiname prie kitos eilutes
+        }
+
         int grade;
-        while (file.peek() != '\n' && file >> grade) {
-            s.grades.push_back(grade);
+        vector<int> tempGrades;
+
+        while (iss >> grade) { // Skaitome visus balus is eilutes
+            tempGrades.push_back(grade);
         }
-        if (!s.grades.empty()) {
-            s.examGrade = s.grades.back(); // Paskutinis skaicius yra egzamino ivertinimas
-            s.grades.pop_back(); // Pasalinti egzamino ivertinima is namu darbu saraso
+
+        if (tempGrades.empty()) {
+            cout << "Klaida: Studentas " << s.name << " " << s.surname << " neturi pazymių!" << endl;
+            continue; // Pereiname prie kito studento
         }
-        students.push_back(s);
+
+        s.examGrade = tempGrades.back(); // Paskutinis skaicius yra egzamino balas
+        tempGrades.pop_back(); // Pasaliname egzamino bala is namu darbu saraso
+        s.grades = tempGrades; // Išsaugome likusius balus
+
+        students.push_back(s); // Pridedame studenta i vektoriu
     }
+
     file.close();
-    cout << "Studentai sekmingai nuskaityti is failo." << endl;
+    cout << "Studentai sekmingai nuskaityti is failo: " << filename << endl;
 }
 
 void saveResultsToFile(const vector<Student>& students, const string& filename) {
