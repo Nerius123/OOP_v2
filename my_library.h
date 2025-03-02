@@ -22,12 +22,6 @@ using std::sort;
 using std::accumulate;
 using std::istringstream;
 
-struct Student {
-    string name;
-    string surname;
-    vector<int> grades;
-    int examGrade;
-};
 
 void inputStudentData(Student &s) {
     cout << "Vardas: "; 
