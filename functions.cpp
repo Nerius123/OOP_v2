@@ -151,8 +151,9 @@ void saveResultsToFile(const vector<Student>& students, const string& filename) 
     }
     
     // Antraste
+    // Naudojame size_t vietoje int, nes vector.size() grąžina size_t (unsigned).
     file << left << setw(25) << "Vardas" << setw(25) << "Pavarde";
-    for (int i = 1; i <= students[0].grades.size(); i++) {
+    for (size_t i = 1; i <= students[0].grades.size(); i++) {
         file << "ND" << setw(8) << i;
     }
     file << setw(10) << "Egzaminas" << endl;
