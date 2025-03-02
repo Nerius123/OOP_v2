@@ -1,5 +1,5 @@
-#ifndef FUNCTIONS_H // Patikrina, ar MY_LIBRARY_H dar nėra apibrėžtas
-#define FUNCTIONS_H // Jei nėra apibrėžtas, apibrėžia MY_LIBRARY_H (kad kitą kartą būtų atpažintas)
+#ifndef FUNCTIONS_H // Patikrina, ar FUNCTIONS_H dar nėra apibrėžtas (kad failas nebūtų įtrauktas kelis kartus)
+#define FUNCTIONS_H // Jei nėra apibrėžtas, apibrėžia FUNCTIONS_H (kad kompiliatorius kitą kartą žinotų, jog jis jau įtrauktas)
 
 #include "my_library.h"
 

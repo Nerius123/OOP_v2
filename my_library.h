@@ -1,5 +1,5 @@
 #ifndef MY_LIBRARY_H // Patikrina, ar MY_LIBRARY_H dar nėra apibrėžtas
-#define FUNCTIONS_H // Jei nėra apibrėžtas, apibrėžia MY_LIBRARY_H (kad kitą kartą būtų atpažintas)
+#define MY_LIBRARY_H // Jei nėra apibrėžtas, apibrėžia MY_LIBRARY_H (kad kitą kartą būtų atpažintas)
 
 #include <iostream>
 #include <vector>

@@ -1,4 +1,5 @@
 #include "functions.h"
+#include "my_library.h"
 
 void inputStudentData(Student &s) {
     cout << "Vardas: "; 
