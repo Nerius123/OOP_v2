@@ -1,5 +1,10 @@
 #include "functions.h"
 #include "my_library.h"
+#include <chrono>  // <== PRIDĖTA ČIA
+
+using std::chrono::high_resolution_clock;
+using std::chrono::duration;
+using std::chrono::duration_cast;
 
 void inputStudentData(Student &s) {
     cout << "Vardas: "; 
@@ -12,97 +17,103 @@ void inputStudentData(Student &s) {
     int grade;
     while (true) {
         cin >> grade;
-        if (cin.fail()) { // Patikrina, ar ivestas ne skaicius
-            cin.clear();  // Isvalo klaidos busena
-            cin.ignore(100, '\n'); // Pasalina neteisingus simbolius
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(100, '\n');
             cout << "Netinkama ivestis! Prasome ivesti skaiciu (1-10) arba -1, jei norite baigti: ";
             continue;
         }
-        if (grade == -1) 
-        break; // Jei -1, iseiname is ciklo
+        if (grade == -1) break;
 
         if (grade >= 1 && grade <= 10) {
-            s.grades.push_back(grade); // Tik jei skaicius teisingas, pridedame i vektoriu
+            s.grades.push_back(grade);
         }
     }
-    
-    //Egzamino balu ivedimas ir ju tikrinimas
+
+    // Egzamino balu ivedimas
     cout << "Iveskite egzamino bala (1-10): ";
-    while(true) {
+    while (true) {
         cin >> s.examGrade;
         if (s.examGrade >= 1 && s.examGrade <= 10) {
             break;
-        }
-        else {
+        } else {
             cout << "Neteisingas skaicius! Kartokite (1-10): ";
-            cin.clear(); // Isvalo cin klaidos busena 
-            cin.ignore(100, '\n'); // Pasalina visus likusius simbolius iki naujos eilutes, kad cin veiktu normaliai
+            cin.clear();
+            cin.ignore(100, '\n');
         }
     }
 }
 
-//Apskaiciuojamas vidurkis 
+// Apskaiciuojamas vidurkis 
 double calculateAverage(const Student &s) {
-        if (s.grades.empty())
-            return 0;
-    return accumulate(s.grades.begin(), s.grades.end(), 0.0) / s.grades.size(); // Susumuoja visus skaicius
+    if (s.grades.empty()) return 0;
+    return accumulate(s.grades.begin(), s.grades.end(), 0.0) / s.grades.size();
 }
 
-//Apskaiciuojamas medianas
+// Apskaiciuojamas medianas
 double calculateMedian(const Student &s) {
-        if (s.grades.empty()){
-            return 0;}
-            vector<int> sortedGrades = s.grades;
-            sort(sortedGrades.begin(), sortedGrades.end()); // Surusiuoja vektoriu didejancia tvarka
-            int n = sortedGrades.size();
-            return (n % 2 == 0) ? (sortedGrades[n / 2 - 1] + sortedGrades[n / 2]) / 2.0 : sortedGrades[n / 2];
+    if (s.grades.empty()) return 0;
+    
+    vector<int> sortedGrades = s.grades;
+    sort(sortedGrades.begin(), sortedGrades.end());
+    int n = sortedGrades.size();
+    
+    return (n % 2 == 0) ? (sortedGrades[n / 2 - 1] + sortedGrades[n / 2]) / 2.0 : sortedGrades[n / 2];
 }
 
-//Apskaiciuojamas galutinis vertinimas (Kuris skaiciuojamas nuo vartotojo pasirinkimo (ar medianu, ar vidurkiu))
+// Apskaiciuojamas galutinis vertinimas
 double calculateFinalGrade(const Student &s, bool useMedian) {
-        return 0.4 * (useMedian ? calculateMedian(s) : calculateAverage(s)) + 0.6 * s.examGrade;
+    return 0.4 * (useMedian ? calculateMedian(s) : calculateAverage(s)) + 0.6 * s.examGrade;
 }
-    // Jei vartotojas pasirinko mediana tuomet True yra skaiciuojamas, jei vidurki tada False skaiciuojamas 
 
+// Meniu atvaizdavimas
 void displayMenu() {
-        cout << "========================" << endl;
-        cout << "          MENIU         " << endl;
-        cout << "========================" << endl;
-        cout << "1. Prideti nauja studenta" << endl;
-        cout << "2. Nuskaityti studentus is failo" << endl;
-        cout << "3. Spausdinti studentu sarasa" << endl;
-        cout << "4. Issaugoti rezultatus i faila" << endl;
-        cout << "5. Baigti programa" << endl;
-        cout << "Pasirinkite: ";
-}
-    
-void addStudent(vector<Student> &students) {
-        Student s;
-        inputStudentData(s);
-        students.push_back(s);
-}
-    
-void printStudents(const vector<Student> &students, bool useMedian) {
-        if (students.empty()) {
-            cout << "Nera ivesta jokiu studentu." << endl;
-            return;
-        }
-        vector<Student> sortedStudents = students;
-        sort(sortedStudents.begin(), sortedStudents.end(), [](const Student &a, const Student &b) { // Lambda rykiavimas kuris lygina studento a ir b vardus (jei vardai vienodi pavardes) ir ziuri pagal abecele kuris pirmiau
-            if (a.name == b.name)
-                return a.surname < b.surname; // Jei vardai sutampa, rikiuojama pagal pavarde
-            return a.name < b.name; // Pirmiausia rikiuojama pagal varda
-        });
-        cout << "\nVardas         Pavarde          Galutinis (" << (useMedian ? "Med." : "Vid.") << ")\n";
-        cout << "------------------------------------------------\n";
-        for (auto &s : sortedStudents) {
-            cout << std::left << std::setw(15) << s.name << std::setw(15)  << s.surname << "  " << std::fixed << std::setprecision(2) << calculateFinalGrade(s, useMedian) << endl;
-            }
+    cout << "========================" << endl;
+    cout << "          MENIU         " << endl;
+    cout << "========================" << endl;
+    cout << "1. Prideti nauja studenta" << endl;
+    cout << "2. Nuskaityti studentus is failo" << endl;
+    cout << "3. Spausdinti studentu sarasa" << endl;
+    cout << "4. Issaugoti rezultatus i faila" << endl;
+    cout << "5. Baigti programa" << endl;
+    cout << "Pasirinkite: ";
 }
 
-// Naudoju '&', kad isvengciau vektoriaus kopijavimo ir tiesiogiai modifikuociau originalu sarasa
-// Naudoju 'const &' filename, kad išvengciau nereikalingos kopijos ir neleisciau keisti failo pavadinimo
+void addStudent(vector<Student> &students) {
+    Student s;
+    inputStudentData(s);
+    students.push_back(s);
+}
+
+// Spausdinimas į ekraną su laiko matavimu
+void printStudents(const vector<Student> &students, bool useMedian) {
+    if (students.empty()) {
+        cout << "Nera ivesta jokiu studentu." << endl;
+        return;
+    }
+
+    auto start_time = high_resolution_clock::now();
+
+    vector<Student> sortedStudents = students;
+    sort(sortedStudents.begin(), sortedStudents.end(), [](const Student &a, const Student &b) {
+        return (a.name == b.name) ? a.surname < b.surname : a.name < b.name;
+    });
+
+    cout << "\nVardas         Pavarde          Galutinis (" << (useMedian ? "Med." : "Vid.") << ")\n";
+    cout << "------------------------------------------------\n";
+    for (auto &s : sortedStudents) {
+        cout << left << setw(15) << s.name << setw(15)  << s.surname << "  " << fixed << setprecision(2) << calculateFinalGrade(s, useMedian) << endl;
+    }
+
+    auto end_time = high_resolution_clock::now();
+    duration<double> elapsed = end_time - start_time;
+    cout << "Studentu spausdinimas i ekrana uztruko: " << elapsed.count() << " s" << endl;
+}
+
+// Nuskaitymas iš failo su laiko matavimu
 void readFromFile(vector<Student> &students, const string &filename) {
+    auto start_time = high_resolution_clock::now();
+
     ifstream file(filename);
     if (!file) {
         cout << "Klaida atidarant faila: " << filename << endl;
@@ -110,49 +121,52 @@ void readFromFile(vector<Student> &students, const string &filename) {
     }
 
     string line;
-    getline(file, line); // Praleidziame antrastes eilute (jei ji egzistuoja)
+    getline(file, line);
 
     while (getline(file, line)) {  
-        istringstream iss(line);  // Sukuriame nauja eilutes skaitymo srautą
+        istringstream iss(line);
         Student s;
 
         if (!(iss >> s.name >> s.surname)) {
             cout << "Klaida skaitant studento varda ir pavarde!" << endl;
-            continue; // Pereiname prie kitos eilutes
+            continue;
         }
 
         int grade;
         vector<int> tempGrades;
-
-        while (iss >> grade) { // Skaitome visus balus is eilutes
+        while (iss >> grade) {
             tempGrades.push_back(grade);
         }
 
         if (tempGrades.empty()) {
-            cout << "Klaida: Studentas " << s.name << " " << s.surname << " neturi pazymių!" << endl;
-            continue; // Pereiname prie kito studento
+            cout << "Klaida: Studentas " << s.name << " " << s.surname << " neturi pazymiu!" << endl;
+            continue;
         }
 
-        s.examGrade = tempGrades.back(); // Paskutinis skaicius yra egzamino balas
-        tempGrades.pop_back(); // Pasaliname egzamino bala is namu darbu saraso
-        s.grades = tempGrades; // Issaugome likusius balus
+        s.examGrade = tempGrades.back();
+        tempGrades.pop_back();
+        s.grades = tempGrades;
 
-        students.push_back(s); // Pridedame studenta i vektoriu
+        students.push_back(s);
     }
 
     file.close();
-    cout << "Studentai sekmingai nuskaityti is failo: " << filename << endl;
+    auto end_time = high_resolution_clock::now();
+    duration<double> elapsed = end_time - start_time;
+    cout << "Failo nuskaitymas uztruko: " << elapsed.count() << " s" << endl;
 }
 
+// Išsaugojimas į failą su laiko matavimu
 void saveResultsToFile(const vector<Student>& students, const string& filename, bool showAverage, bool showMedian) {
+    auto start_time = high_resolution_clock::now();
+
     ofstream file(filename);
     if (!file) {
         cout << "Klaida kuriant faila!" << endl;
         return;
     }
 
-    // Spausdinamos antraštės pagal pasirinkimą
-    file << left << setw(15) << "Vardas" << setw(15) << "Pavardė";
+    file << left << setw(15) << "Vardas" << setw(15) << "Pavarde";
     
     if (showAverage) file << setw(20) << "Galutinis (Vid.)";
     if (showMedian) file << setw(20) << "Galutinis (Med.)";
@@ -160,19 +174,15 @@ void saveResultsToFile(const vector<Student>& students, const string& filename, 
     file << endl;
     file << string(66, '-') << endl;
 
-    // Rašoma studentų informacija
     for (const auto& s : students) {
         file << left << setw(15) << s.name << setw(15) << s.surname;
-
-        if (showAverage) 
-            file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, false);
-        
-        if (showMedian) 
-            file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, true);
-        
+        if (showAverage) file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, false);
+        if (showMedian) file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, true);
         file << endl;
     }
 
     file.close();
-    cout << "Rezultatai sekmingai issaugoti i " << filename << endl;
+    auto end_time = high_resolution_clock::now();
+    duration<double> elapsed = end_time - start_time;
+    cout << "Failo issaugojimas uztruko: " << elapsed.count() << " s" << endl;
 }
