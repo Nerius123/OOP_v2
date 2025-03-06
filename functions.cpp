@@ -109,8 +109,7 @@ void printStudents(const vector<Student> &students, bool useMedian) {
 
     auto end_time = high_resolution_clock::now();
     duration<double> elapsed = end_time - start_time;
-    cout << fixed << setprecision(5);
-    cout << "Studentu spausdinimas i ekrana uztruko: " << elapsed.count() << " s" << endl;
+    cout << "Studentu spausdinimas i ekrana uztruko: " << fixed << setprecision(5) << elapsed.count() << " s\n";
 }
 
 // Nuskaitymas iš failo su laiko matavimu
@@ -151,8 +150,7 @@ void readFromFile(vector<Student> &students, const string &filename) {
         file.close();
         auto end_time = high_resolution_clock::now();
         duration<double> elapsed = end_time - start_time;
-        cout << fixed << setprecision(5);
-        cout << "Failo nuskaitymas uztruko: " << elapsed.count() << " s" << endl;
+        cout << "Failo nuskaitymas uztruko: " << fixed << setprecision(5) << elapsed.count() << " s\n";
     } catch (const std::exception &e) {
         cout << "Klaida: " << e.what() << endl;
     }
@@ -181,8 +179,7 @@ void saveResultsToFile(const vector<Student>& students, const string& filename, 
         file.close();
         auto end_time = high_resolution_clock::now();
         duration<double> elapsed = end_time - start_time;
-        cout << fixed << setprecision(5);
-        cout << "Failo issaugojimas uztruko: " << elapsed.count() << " s" << endl;
+        cout << "Failo issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " s\n";
     } catch (const std::exception &e) {
         cout << "Klaida: " << e.what() << endl;
     }
@@ -224,5 +221,40 @@ void generateStudentFile(const string& filename, int studentCount) {
     auto end_time = high_resolution_clock::now();
     duration<double> elapsed = end_time - start_time;
     cout << "Failas \"" << filename << "\" sugeneruotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
+}
+
+void splitStudentsIntoFiles(const vector<Student>& students) {
+    auto start_time = high_resolution_clock::now();
+
+    ofstream vargsiukaiFile("vargsiukai.txt");
+    ofstream kietiakiaiFile("kietiakiai.txt");
+
+    if (!vargsiukaiFile || !kietiakiaiFile) {
+        throw std::runtime_error("Nepavyko sukurti vieno iš rezultatų failų.");
+    }
+
+    // Header (antraštė)
+    vargsiukaiFile << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(10) << "Galutinis\n";
+    vargsiukaiFile << string(40, '-') << "\n";
+    
+    kietiakiaiFile << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(10) << "Galutinis\n";
+    kietiakiaiFile << string(40, '-') << "\n";
+
+    for (const auto& student : students) {
+        double finalGrade = calculateFinalGrade(student, false); // Galutinį skaičiuojam pagal vidurkį
+
+        if (finalGrade < 5.0) {
+            vargsiukaiFile << left << setw(15) << student.name << setw(15) << student.surname << fixed << setprecision(2) << finalGrade << "\n";
+        } else {
+            kietiakiaiFile << left << setw(15) << student.name << setw(15) << student.surname << fixed << setprecision(2) << finalGrade << "\n";
+        }
+    }
+
+    vargsiukaiFile.close();
+    kietiakiaiFile.close();
+
+    auto end_time = high_resolution_clock::now();
+    duration<double> elapsed = end_time - start_time;
+    cout << "Studentai padalinti ir issaugoti per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
 }
 
