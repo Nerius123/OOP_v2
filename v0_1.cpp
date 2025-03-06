@@ -108,8 +108,16 @@ int main() {
                 generateStudentFile("students_1000000.txt", 1000000);
                 generateStudentFile("students_10000000.txt", 10000000);
             }
-            
+
             else if (choice == '6') {
+                if (students.empty()) {
+                    cout << "Nėra studentų, nėra ką rūšiuoti!" << endl;
+                } else {
+                    splitStudentsIntoFiles(students);
+                }
+            }
+
+            else if (choice == '7') {
                 cout << "Programa baigta!" << endl;
                 break;
             }

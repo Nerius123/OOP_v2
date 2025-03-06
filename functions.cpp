@@ -83,7 +83,8 @@ void displayMenu() {
     cout << "3. Spausdinti studentu sarasa" << endl;
     cout << "4. Issaugoti rezultatus i faila" << endl;
     cout << "5. Generuoti studentu failus" << endl;
-    cout << "6. Baigti programa" << endl;
+    cout << "6. Padalinti studentus i dvi kategorijas" << endl;
+    cout << "7. Baigti programa" << endl;
     cout << "Pasirinkite: ";
 }
 
