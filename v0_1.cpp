@@ -66,36 +66,25 @@ int main() {
                 int saveChoice;
                 bool showAverage = false, showMedian = false;
 
-                cout << "Pasirinkite, koki galutini bala norite matyti isvedime:" << endl;
-                cout << "1 - Tik vidurkio galutini" << endl;
-                cout << "2 - Tik medianos galutini" << endl;
-                cout << "3 - Abu" << endl;
-                cout << "Jusu pasirinkimas: ";
-                cin >> saveChoice;
-
-                if (cin.fail()) {
-                    cin.clear();
-                    cin.ignore(100, '\n');
-                    throw std::runtime_error("Netinkama įvestis! Prasome ivesti skaiciu nuo 1 iki 3.");
+                while (true) {
+                    cout << "Pasirinkite, koki galutini bala norite matyti isvedime:" << endl;
+                    cout << "1 - Tik vidurkio galutini" << endl;
+                    cout << "2 - Tik medianos galutini" << endl;
+                    cout << "3 - Abu" << endl;
+                    cout << "Jusu pasirinkimas: ";
+                    cin >> saveChoice;
+            
+                    if (cin.fail() || (saveChoice < 1 || saveChoice > 3)) {
+                        cout << "Netinkama įvestis! Prasome ivesti skaiciu nuo 1 iki 3." << endl;
+                        cin.clear();
+                        cin.ignore(100, '\n');
+                    } else {
+                        break; // Jei ivestas skaicius tinkamas, iseiname is ciklo
+                    }
                 }
 
-                switch (saveChoice) {
-                    case 1:
-                        showAverage = true;
-                        break;
-                    case 2:
-                        showMedian = true;
-                        break;
-                    case 3:
-                        showAverage = true;
-                        showMedian = true;
-                        break;
-                    default:
-                        cout << "Netinkamas pasirinkimas. Naudojamas numatytasis variantas (abu)." << endl;
-                        showAverage = true;
-                        showMedian = true;
-                        break;
-                }
+                showAverage = (saveChoice == 1 || saveChoice == 3);
+                showMedian = (saveChoice == 2 || saveChoice == 3);
 
                 saveResultsToFile(students, filename, showAverage, showMedian);
             }

@@ -112,7 +112,7 @@ void printStudents(const vector<Student> &students, bool useMedian) {
     cout << "Studentu spausdinimas i ekrana uztruko: " << fixed << setprecision(5) << elapsed.count() << " s\n";
 }
 
-// Nuskaitymas iš failo su laiko matavimu
+// Nuskaitymas is failo su laiko matavimu
 void readFromFile(vector<Student> &students, const string &filename) {
     try {
         auto start_time = high_resolution_clock::now();
@@ -156,19 +156,50 @@ void readFromFile(vector<Student> &students, const string &filename) {
     }
 }
 
-// Išsaugojimas į failą su laiko matavimu
-void saveResultsToFile(const vector<Student>& students, const string& filename, bool showAverage, bool showMedian) {
+// Issaugojimas i faila su laiko matavimu
+void saveResultsToFile(vector<Student> students, const string& filename, bool showAverage, bool showMedian){
     try {
         auto start_time = high_resolution_clock::now();
 
         ofstream file(filename);
         if (!file) throw std::runtime_error("Nepavyko sukurti failo: " + filename);
 
+        // Vartotojo pasirinkimas rikiavimo budui
+        char sortOption;
+        while (true) {
+            cout << "Pasirinkite rikiavima:\n"
+                 << "1 - Pagal varda\n"
+                 << "2 - Pagal pavarde\n"
+                 << "Pasirinkimas: ";
+            cin >> sortOption;
+        
+            if (sortOption == '1' || sortOption == '2') {
+                break; // Teisinga ivestis
+            } else {
+                cout << "Neteisingas pasirinkimas! Bandykite dar karta.\n";
+                cin.clear();            // Isvalome cin busena
+                cin.ignore(100, '\n');  // Isvalome neteisinga ivedima
+            }
+        }
+
+        // Rikiavimas pagal pasirinkimą
+        if (sortOption == '1') {
+            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.name < b.name;
+            });
+        } else {
+            sort(students.begin(), students.end(), [](const Student& a, const Student& b) {
+                return a.surname < b.surname;
+            });
+        }
+
+        // Antraste
         file << left << setw(15) << "Vardas" << setw(15) << "Pavarde";
         if (showAverage) file << setw(20) << "Galutinis (Vid.)";
         if (showMedian) file << setw(20) << "Galutinis (Med.)";
-        file << endl << string(66, '-') << endl;
+        file << endl << string(50 + (showAverage ? 20 : 0) + (showMedian ? 20 : 0), '-') << endl;
 
+        // Duomenų irasymas
         for (const auto& s : students) {
             file << left << setw(15) << s.name << setw(15) << s.surname;
             if (showAverage) file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, false);
@@ -179,11 +210,12 @@ void saveResultsToFile(const vector<Student>& students, const string& filename, 
         file.close();
         auto end_time = high_resolution_clock::now();
         duration<double> elapsed = end_time - start_time;
-        cout << "Failo issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " s\n";
+        cout << "Failo \"" << filename << "\" issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " s\n";
     } catch (const std::exception &e) {
         cout << "Klaida: " << e.what() << endl;
     }
 }
+
 
 void generateStudentFile(const string& filename, int studentCount) {
     auto start_time = high_resolution_clock::now();
