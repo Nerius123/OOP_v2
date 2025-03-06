@@ -82,7 +82,8 @@ void displayMenu() {
     cout << "2. Nuskaityti studentus is failo" << endl;
     cout << "3. Spausdinti studentu sarasa" << endl;
     cout << "4. Issaugoti rezultatus i faila" << endl;
-    cout << "5. Baigti programa" << endl;
+    cout << "5. Generuoti studentu failus" << endl;
+    cout << "6. Baigti programa" << endl;
     cout << "Pasirinkite: ";
 }
 
@@ -107,6 +108,7 @@ void printStudents(const vector<Student> &students, bool useMedian) {
 
     auto end_time = high_resolution_clock::now();
     duration<double> elapsed = end_time - start_time;
+    cout << fixed << setprecision(5);
     cout << "Studentu spausdinimas i ekrana uztruko: " << elapsed.count() << " s" << endl;
 }
 
@@ -148,6 +150,7 @@ void readFromFile(vector<Student> &students, const string &filename) {
         file.close();
         auto end_time = high_resolution_clock::now();
         duration<double> elapsed = end_time - start_time;
+        cout << fixed << setprecision(5);
         cout << "Failo nuskaitymas uztruko: " << elapsed.count() << " s" << endl;
     } catch (const std::exception &e) {
         cout << "Klaida: " << e.what() << endl;
@@ -177,8 +180,46 @@ void saveResultsToFile(const vector<Student>& students, const string& filename, 
         file.close();
         auto end_time = high_resolution_clock::now();
         duration<double> elapsed = end_time - start_time;
+        cout << fixed << setprecision(5);
         cout << "Failo issaugojimas uztruko: " << elapsed.count() << " s" << endl;
     } catch (const std::exception &e) {
         cout << "Klaida: " << e.what() << endl;
     }
 }
+
+void generateStudentFile(const string& filename, int studentCount) {
+    auto start_time = high_resolution_clock::now();
+
+    ofstream file(filename);
+    if (!file) {
+        throw std::runtime_error("Nepavyko sukurti failo: " + filename);
+    }
+
+    random_device rd;
+    mt19937 gen(rd()); // Atsitiktinis generatorius
+    uniform_int_distribution<int> gradeDist(1, 10); // Balų diapazonas
+
+    file << "Vardas Pavarde";
+    for (int i = 1; i <= 14; i++) {  // 14 namų darbų balai
+        file << " ND" << i;
+    }
+    file << " Egzaminas\n";
+
+    for (int i = 1; i <= studentCount; i++) {
+        file << "Vardas" << i << " Pavarde" << i;
+
+        // Generuojame 5 namų darbų balus
+        for (int j = 0; j < 14; j++) {
+            file << " " << gradeDist(gen);
+        }
+
+        // Generuojame egzamino balą
+        file << " " << gradeDist(gen) << "\n";
+    }
+
+    file.close();
+    auto end_time = high_resolution_clock::now();
+    duration<double> elapsed = end_time - start_time;
+    cout << "Failas \"" << filename << "\" sugeneruotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
+}
+

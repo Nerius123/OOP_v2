@@ -101,6 +101,15 @@ int main() {
             }
 
             else if (choice == '5') {
+                cout << "Generuojami failai...\n";
+                generateStudentFile("students_1000.txt", 1000);
+                generateStudentFile("students_10000.txt", 10000);
+                generateStudentFile("students_100000.txt", 100000);
+                generateStudentFile("students_1000000.txt", 1000000);
+                generateStudentFile("students_10000000.txt", 10000000);
+            }
+            
+            else if (choice == '6') {
                 cout << "Programa baigta!" << endl;
                 break;
             }

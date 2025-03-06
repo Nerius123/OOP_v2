@@ -11,6 +11,7 @@
 #include <sstream>
 #include <chrono>
 #include <stdexcept>
+#include <random>
 
 using std::cout;
 using std::endl;
@@ -26,6 +27,9 @@ using std::left;
 using std::sort;
 using std::accumulate;
 using std::istringstream;
+using std::random_device;
+using std::mt19937;
+using std::uniform_int_distribution;
 
 
 #endif  // Baigiame header guard (apsauga nuo pakartotinio įtraukimo)
