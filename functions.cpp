@@ -144,23 +144,33 @@ void readFromFile(vector<Student> &students, const string &filename) {
     cout << "Studentai sekmingai nuskaityti is failo: " << filename << endl;
 }
 
-void saveResultsToFile(const vector<Student>& students, const string& filename) {
+void saveResultsToFile(const vector<Student>& students, const string& filename, bool showAverage, bool showMedian) {
     ofstream file(filename);
     if (!file) {
-        cout << "Klaida kuriant failą!" << endl;
+        cout << "Klaida kuriant faila!" << endl;
         return;
     }
 
-    // Antraštė
-    file << left << setw(15) << "Vardas" << setw(15) << "Pavardė" << setw(17) << "Galutinis (Vid.)" << setw(17) << "Galutinis (Med.)" << endl;
-    file << string(64, '-') << endl;
+    // Spausdinamos antraštės pagal pasirinkimą
+    file << left << setw(15) << "Vardas" << setw(15) << "Pavardė";
+    
+    if (showAverage) file << setw(20) << "Galutinis (Vid.)";
+    if (showMedian) file << setw(20) << "Galutinis (Med.)";
+    
+    file << endl;
+    file << string(66, '-') << endl;
 
     // Rašoma studentų informacija
     for (const auto& s : students) {
-        double finalAvg = calculateFinalGrade(s, false); // Skaičiuojamas galutinis pagal vidurkį
-        double finalMed = calculateFinalGrade(s, true);  // Skaičiuojamas galutinis pagal medianą
+        file << left << setw(15) << s.name << setw(15) << s.surname;
 
-        file << left << setw(15) << s.name<< setw(15) << s.surname<< setw(17) << fixed << setprecision(2) << finalAvg<< setw(17) << fixed << setprecision(2) << finalMed<< endl;
+        if (showAverage) 
+            file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, false);
+        
+        if (showMedian) 
+            file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, true);
+        
+        file << endl;
     }
 
     file.close();

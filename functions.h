@@ -20,6 +20,6 @@ void displayMenu();
 void addStudent(vector<Student> &students);
 void printStudents(const vector<Student> &students, bool useMedian);
 void readFromFile(vector<Student> &students, const string &filename);
-void saveResultsToFile(const vector<Student>& students, const string& filename);
+void saveResultsToFile(const std::vector<Student>& students, const std::string& filename, bool showAverage, bool showMedian);
 
 #endif  // Baigiame header guard (apsauga nuo pakartotinio įtraukimo)
