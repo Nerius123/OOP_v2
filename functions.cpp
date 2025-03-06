@@ -197,24 +197,26 @@ void generateStudentFile(const string& filename, int studentCount) {
 
     random_device rd;
     mt19937 gen(rd()); // Atsitiktinis generatorius
-    uniform_int_distribution<int> gradeDist(1, 10); // Balų diapazonas
+    uniform_int_distribution<int> gradeDist(1, 10); // Balu diapazonas
 
-    file << "Vardas Pavarde";
-    for (int i = 1; i <= 14; i++) {  // 14 namų darbų balai
-        file << " ND" << i;
+    const int numGrades = 14; // Kiek namų darbų balų bus sugeneruota
+
+    file << left << setw(15) << "Vardas" << setw(15) << "Pavarde";
+    for (int i = 1; i <= numGrades; i++) {
+        file << setw(8) << ("ND" + to_string(i));
     }
-    file << " Egzaminas\n";
+    file << setw(12) << "Egzaminas" << "\n";
 
     for (int i = 1; i <= studentCount; i++) {
-        file << "Vardas" << i << " Pavarde" << i;
+        file << left << setw(15) << ("Vardas" + to_string(i)) << setw(15) << ("Pavarde" + to_string(i));
 
-        // Generuojame 5 namų darbų balus
-        for (int j = 0; j < 14; j++) {
-            file << " " << gradeDist(gen);
+        // Generuojame 14 namų darbų balų
+        for (int j = 0; j < numGrades; j++) {
+            file << setw(8) << gradeDist(gen);
         }
 
         // Generuojame egzamino balą
-        file << " " << gradeDist(gen) << "\n";
+        file << setw(12) << gradeDist(gen) << "\n";
     }
 
     file.close();
