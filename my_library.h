@@ -10,6 +10,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include <stdexcept>
 
 using std::cout;
 using std::endl;

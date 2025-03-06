@@ -1,58 +1,65 @@
 #include "functions.h"
 #include "my_library.h"
-#include <chrono>  // <== PRIDĖTA ČIA
+#include <chrono>
 
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::chrono::duration_cast;
 
 void inputStudentData(Student &s) {
-    cout << "Vardas: "; 
-    cin >> s.name;
-    cout << "Pavarde: "; 
-    cin >> s.surname;
+    try {
+        cout << "Vardas: "; 
+        cin >> s.name;
+        cout << "Pavarde: "; 
+        cin >> s.surname;
 
-    // Namu darbu balu ivedimas
-    cout << "Iveskite namu darbu balus (1-10). Iveskite -1, jei norite baigti.\n";
-    int grade;
-    while (true) {
-        cin >> grade;
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(100, '\n');
-            cout << "Netinkama ivestis! Prasome ivesti skaiciu (1-10) arba -1, jei norite baigti: ";
-            continue;
+        if (s.name.empty() || s.surname.empty()) {
+            throw std::invalid_argument("Vardas ir pavarde negali buti tuscias!");
         }
-        if (grade == -1) break;
 
-        if (grade >= 1 && grade <= 10) {
-            s.grades.push_back(grade);
-        }
-    }
+        // Namu darbu balu ivedimas
+        cout << "Iveskite namu darbu balus (1-10). Iveskite -1, jei norite baigti.\n";
+        int grade;
+        while (true) {
+            cin >> grade;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(100, '\n');
+                throw std::runtime_error("Netinkama ivestis! Prasome ivesti skaiciu (1-10) arba -1.");
+            }
+            if (grade == -1) break;
 
-    // Egzamino balu ivedimas
-    cout << "Iveskite egzamino bala (1-10): ";
-    while (true) {
-        cin >> s.examGrade;
-        if (s.examGrade >= 1 && s.examGrade <= 10) {
-            break;
-        } else {
-            cout << "Neteisingas skaicius! Kartokite (1-10): ";
-            cin.clear();
-            cin.ignore(100, '\n');
+            if (grade >= 1 && grade <= 10) {
+                s.grades.push_back(grade);
+            } else {
+                cout << "Ivestas netinkamas balas. Prasome ivesti skaiciu tarp 1-10 arba -1." << endl;
+            }
         }
+
+        // Egzamino balo ivedimas
+        cout << "Iveskite egzamino bala (1-10): ";
+        while (true) {
+            cin >> s.examGrade;
+            if (s.examGrade >= 1 && s.examGrade <= 10) {
+                break;
+            } else {
+                throw std::out_of_range("Egzamino balas turi buti nuo 1 iki 10.");
+            }
+        }
+    } catch (const std::exception &e) {
+        cout << "Klaida: " << e.what() << endl;
     }
 }
 
 // Apskaiciuojamas vidurkis 
 double calculateAverage(const Student &s) {
-    if (s.grades.empty()) return 0;
+    if (s.grades.empty()) throw std::runtime_error("Negalima skaiciuoti vidurkio be pazymiu.");
     return accumulate(s.grades.begin(), s.grades.end(), 0.0) / s.grades.size();
 }
 
 // Apskaiciuojamas medianas
 double calculateMedian(const Student &s) {
-    if (s.grades.empty()) return 0;
+    if (s.grades.empty()) throw std::runtime_error("Negalima skaiciuoti medianos be pazymiu.");
     
     vector<int> sortedGrades = s.grades;
     sort(sortedGrades.begin(), sortedGrades.end());
@@ -79,13 +86,6 @@ void displayMenu() {
     cout << "Pasirinkite: ";
 }
 
-void addStudent(vector<Student> &students) {
-    Student s;
-    inputStudentData(s);
-    students.push_back(s);
-}
-
-// Spausdinimas į ekraną su laiko matavimu
 void printStudents(const vector<Student> &students, bool useMedian) {
     if (students.empty()) {
         cout << "Nera ivesta jokiu studentu." << endl;
@@ -112,77 +112,73 @@ void printStudents(const vector<Student> &students, bool useMedian) {
 
 // Nuskaitymas iš failo su laiko matavimu
 void readFromFile(vector<Student> &students, const string &filename) {
-    auto start_time = high_resolution_clock::now();
+    try {
+        auto start_time = high_resolution_clock::now();
 
-    ifstream file(filename);
-    if (!file) {
-        cout << "Klaida atidarant faila: " << filename << endl;
-        return;
+        ifstream file(filename);
+        if (!file) throw std::runtime_error("Nepavyko atidaryti failo: " + filename);
+
+        string line;
+        getline(file, line);  // Praleidžiame antraštę
+
+        while (getline(file, line)) {  
+            istringstream iss(line);
+            Student s;
+
+            if (!(iss >> s.name >> s.surname)) {
+                throw std::runtime_error("Klaida skaitant studento varda ir pavarde!");
+            }
+
+            int grade;
+            vector<int> tempGrades;
+            while (iss >> grade) {
+                tempGrades.push_back(grade);
+            }
+
+            if (tempGrades.empty()) {
+                throw std::runtime_error("Studentas " + s.name + " neturi pazymiu!");
+            }
+
+            s.examGrade = tempGrades.back();
+            tempGrades.pop_back();
+            s.grades = tempGrades;
+            students.push_back(s);
+        }
+
+        file.close();
+        auto end_time = high_resolution_clock::now();
+        duration<double> elapsed = end_time - start_time;
+        cout << "Failo nuskaitymas uztruko: " << elapsed.count() << " s" << endl;
+    } catch (const std::exception &e) {
+        cout << "Klaida: " << e.what() << endl;
     }
-
-    string line;
-    getline(file, line);
-
-    while (getline(file, line)) {  
-        istringstream iss(line);
-        Student s;
-
-        if (!(iss >> s.name >> s.surname)) {
-            cout << "Klaida skaitant studento varda ir pavarde!" << endl;
-            continue;
-        }
-
-        int grade;
-        vector<int> tempGrades;
-        while (iss >> grade) {
-            tempGrades.push_back(grade);
-        }
-
-        if (tempGrades.empty()) {
-            cout << "Klaida: Studentas " << s.name << " " << s.surname << " neturi pazymiu!" << endl;
-            continue;
-        }
-
-        s.examGrade = tempGrades.back();
-        tempGrades.pop_back();
-        s.grades = tempGrades;
-
-        students.push_back(s);
-    }
-
-    file.close();
-    auto end_time = high_resolution_clock::now();
-    duration<double> elapsed = end_time - start_time;
-    cout << "Failo nuskaitymas uztruko: " << elapsed.count() << " s" << endl;
 }
 
 // Išsaugojimas į failą su laiko matavimu
 void saveResultsToFile(const vector<Student>& students, const string& filename, bool showAverage, bool showMedian) {
-    auto start_time = high_resolution_clock::now();
+    try {
+        auto start_time = high_resolution_clock::now();
 
-    ofstream file(filename);
-    if (!file) {
-        cout << "Klaida kuriant faila!" << endl;
-        return;
+        ofstream file(filename);
+        if (!file) throw std::runtime_error("Nepavyko sukurti failo: " + filename);
+
+        file << left << setw(15) << "Vardas" << setw(15) << "Pavarde";
+        if (showAverage) file << setw(20) << "Galutinis (Vid.)";
+        if (showMedian) file << setw(20) << "Galutinis (Med.)";
+        file << endl << string(66, '-') << endl;
+
+        for (const auto& s : students) {
+            file << left << setw(15) << s.name << setw(15) << s.surname;
+            if (showAverage) file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, false);
+            if (showMedian) file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, true);
+            file << endl;
+        }
+
+        file.close();
+        auto end_time = high_resolution_clock::now();
+        duration<double> elapsed = end_time - start_time;
+        cout << "Failo issaugojimas uztruko: " << elapsed.count() << " s" << endl;
+    } catch (const std::exception &e) {
+        cout << "Klaida: " << e.what() << endl;
     }
-
-    file << left << setw(15) << "Vardas" << setw(15) << "Pavarde";
-    
-    if (showAverage) file << setw(20) << "Galutinis (Vid.)";
-    if (showMedian) file << setw(20) << "Galutinis (Med.)";
-    
-    file << endl;
-    file << string(66, '-') << endl;
-
-    for (const auto& s : students) {
-        file << left << setw(15) << s.name << setw(15) << s.surname;
-        if (showAverage) file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, false);
-        if (showMedian) file << setw(20) << fixed << setprecision(2) << calculateFinalGrade(s, true);
-        file << endl;
-    }
-
-    file.close();
-    auto end_time = high_resolution_clock::now();
-    duration<double> elapsed = end_time - start_time;
-    cout << "Failo issaugojimas uztruko: " << elapsed.count() << " s" << endl;
 }

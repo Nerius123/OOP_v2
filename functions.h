@@ -17,7 +17,6 @@ double calculateAverage(const Student &s);
 double calculateMedian(const Student &s);
 double calculateFinalGrade(const Student &s, bool useMedian);
 void displayMenu();
-void addStudent(vector<Student> &students);
 void printStudents(const vector<Student> &students, bool useMedian);
 void readFromFile(vector<Student> &students, const string &filename);
 void saveResultsToFile(const std::vector<Student>& students, const std::string& filename, bool showAverage, bool showMedian);
