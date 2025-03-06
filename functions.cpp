@@ -83,7 +83,7 @@ void displayMenu() {
     cout << "3. Spausdinti studentu sarasa" << endl;
     cout << "4. Issaugoti rezultatus i faila" << endl;
     cout << "5. Generuoti studentu failus" << endl;
-    cout << "6. Padalinti studentus i dvi kategorijas" << endl;
+    cout << "6. Padalinti studentus i dvi kategorijas (kietiakai/vargsiukai)" << endl;
     cout << "7. Baigti programa" << endl;
     cout << "Pasirinkite: ";
 }
@@ -222,39 +222,40 @@ void generateStudentFile(const string& filename, int studentCount) {
     duration<double> elapsed = end_time - start_time;
     cout << "Failas \"" << filename << "\" sugeneruotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
 }
-
-void splitStudentsIntoFiles(const vector<Student>& students) {
-    auto start_time = high_resolution_clock::now();
-
-    ofstream vargsiukaiFile("vargsiukai.txt");
-    ofstream kietiakiaiFile("kietiakiai.txt");
-
-    if (!vargsiukaiFile || !kietiakiaiFile) {
-        throw std::runtime_error("Nepavyko sukurti vieno iš rezultatų failų.");
-    }
-
-    // Header (antraštė)
-    vargsiukaiFile << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(10) << "Galutinis\n";
-    vargsiukaiFile << string(40, '-') << "\n";
-    
-    kietiakiaiFile << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(10) << "Galutinis\n";
-    kietiakiaiFile << string(40, '-') << "\n";
-
+// Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
+void splitStudents(const vector<Student>& students, vector<Student>& vargsiukai, vector<Student>& kietiakiai, bool useMedian) {
     for (const auto& student : students) {
-        double finalGrade = calculateFinalGrade(student, false); // Galutinį skaičiuojam pagal vidurkį
+        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
 
         if (finalGrade < 5.0) {
-            vargsiukaiFile << left << setw(15) << student.name << setw(15) << student.surname << fixed << setprecision(2) << finalGrade << "\n";
+            vargsiukai.push_back(student);
         } else {
-            kietiakiaiFile << left << setw(15) << student.name << setw(15) << student.surname << fixed << setprecision(2) << finalGrade << "\n";
+            kietiakiai.push_back(student);
         }
     }
+}
 
-    vargsiukaiFile.close();
-    kietiakiaiFile.close();
+// Funkcija, kuri issaugo studentu sarasa i faila
+void saveStudentsToFile(const vector<Student>& students, const string& filename) {
+    auto start_time = high_resolution_clock::now();
+
+    ofstream file(filename);
+    if (!file) {
+        throw std::runtime_error("Nepavyko sukurti failo: " + filename);
+    }
+
+    // Antraste
+    file << left << setw(15) << "Vardas" << setw(15) << "Pavarde" << setw(10) << "Galutinis\n";
+    file << string(40, '-') << "\n";
+
+    for (const auto& student : students) {
+        double finalGrade = calculateFinalGrade(student, false);
+        file << left << setw(15) << student.name << setw(15) << student.surname << fixed << setprecision(2) << finalGrade << "\n";
+    }
+
+    file.close();
 
     auto end_time = high_resolution_clock::now();
     duration<double> elapsed = end_time - start_time;
-    cout << "Studentai padalinti ir issaugoti per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
+    cout << "Failas \"" << filename << "\" issaugotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
 }
-

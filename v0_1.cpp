@@ -109,12 +109,34 @@ int main() {
                 generateStudentFile("students_10000000.txt", 10000000);
             }
 
-            else if (choice == '6') {
+            else if (choice == '6') { 
                 if (students.empty()) {
-                    cout << "Nėra studentų, nėra ką rūšiuoti!" << endl;
-                } else {
-                    splitStudentsIntoFiles(students);
+                    cout << "Nera studentu sarase, nera ka skirstyti!" << endl;
+                    continue;
                 }
+            
+                // Leidžiame vartotojui pasirinkti skaičiavimo metodą
+                char method;
+                while (true) {
+                    cout << "Pasirinkite metoda skirstymui (v - vidurkis, m - mediana): ";
+                    cin >> method;
+            
+                    if (method == 'v' || method == 'V' || method == 'm' || method == 'M') {
+                        break;
+                    } else {
+                        cout << "Neteisinga reiksme. Prasome ivesti 'v' arba 'm'." << endl;
+                    }
+                }
+            
+                bool useMedian = (method == 'm' || method == 'M');
+            
+                vector<Student> vargsiukai, kietiakiai;
+                
+                // Suskirstymas i dvi grupes
+                splitStudents(students, vargsiukai, kietiakiai, useMedian);
+            
+                saveStudentsToFile(vargsiukai, "vargsiukai.txt");
+                saveStudentsToFile(kietiakiai, "kietiakiai.txt");
             }
 
             else if (choice == '7') {
