@@ -147,26 +147,22 @@ void readFromFile(vector<Student> &students, const string &filename) {
 void saveResultsToFile(const vector<Student>& students, const string& filename) {
     ofstream file(filename);
     if (!file) {
-        cout << "Klaida kuriant faila!" << endl;
+        cout << "Klaida kuriant failą!" << endl;
         return;
     }
-    
-    // Antraste
-    // Naudojame size_t vietoje int, nes vector.size() grąžina size_t (unsigned).
-    file << left << setw(25) << "Vardas" << setw(25) << "Pavarde";
-    for (size_t i = 1; i <= students[0].grades.size(); i++) {
-        file << "ND" << setw(8) << i;
+
+    // Antraštė
+    file << left << setw(15) << "Vardas" << setw(15) << "Pavardė" << setw(17) << "Galutinis (Vid.)" << setw(17) << "Galutinis (Med.)" << endl;
+    file << string(64, '-') << endl;
+
+    // Rašoma studentų informacija
+    for (const auto& s : students) {
+        double finalAvg = calculateFinalGrade(s, false); // Skaičiuojamas galutinis pagal vidurkį
+        double finalMed = calculateFinalGrade(s, true);  // Skaičiuojamas galutinis pagal medianą
+
+        file << left << setw(15) << s.name<< setw(15) << s.surname<< setw(17) << fixed << setprecision(2) << finalAvg<< setw(17) << fixed << setprecision(2) << finalMed<< endl;
     }
-    file << setw(10) << "Egzaminas" << endl;
-    
-    // Rasoma studentu info
-    for (const auto &s : students) {
-        file << left << setw(25) << s.name << setw(25) << s.surname;
-        for (const auto &grade : s.grades) {
-            file << setw(10) << grade;
-        }
-        file << setw(10) << s.examGrade << endl;
-    }
+
     file.close();
     cout << "Rezultatai sekmingai issaugoti i " << filename << endl;
 }
