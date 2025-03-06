@@ -84,7 +84,8 @@ void displayMenu() {
     cout << "4. Issaugoti rezultatus i faila" << endl;
     cout << "5. Generuoti studentu failus" << endl;
     cout << "6. Padalinti studentus i dvi kategorijas (kietiakai/vargsiukai)" << endl;
-    cout << "7. Baigti programa" << endl;
+    cout << "7. Testuoti duomenu apdorojimo greiti (nuskaitymas, rusiavimas, irasymas)" << endl;
+    cout << "8. Baigti programa" << endl;
     cout << "Pasirinkite: ";
 }
 
@@ -217,43 +218,66 @@ void saveResultsToFile(vector<Student> students, const string& filename, bool sh
 }
 
 
-void generateStudentFile(const string& filename, int studentCount) {
-    auto start_time = high_resolution_clock::now();
+void generateStudentFiles() {
+    vector<pair<string, int>> files = {
+        {"students_1000.txt", 1000},
+        {"students_10000.txt", 10000},
+        {"students_100000.txt", 100000},
+        {"students_1000000.txt", 1000000},
+        {"students_10000000.txt", 10000000}
+    };
 
-    ofstream file(filename);
-    if (!file) {
-        throw std::runtime_error("Nepavyko sukurti failo: " + filename);
-    }
+    double totalTime = 0.0;
+    int fileCount = files.size();
 
-    random_device rd;
-    mt19937 gen(rd()); // Atsitiktinis generatorius
-    uniform_int_distribution<int> gradeDist(1, 10); // Balu diapazonas
+    cout << "Generuojami studentu failai...\n";
 
-    const int numGrades = 14; // Kiek namų darbų balų bus sugeneruota
+    for (const auto& file : files) {
+        auto start_time = high_resolution_clock::now();
 
-    file << left << setw(15) << "Vardas" << setw(15) << "Pavarde";
-    for (int i = 1; i <= numGrades; i++) {
-        file << setw(8) << ("ND" + to_string(i));
-    }
-    file << setw(12) << "Egzaminas" << "\n";
-
-    for (int i = 1; i <= studentCount; i++) {
-        file << left << setw(15) << ("Vardas" + to_string(i)) << setw(15) << ("Pavarde" + to_string(i));
-
-        // Generuojame 14 namų darbų balų
-        for (int j = 0; j < numGrades; j++) {
-            file << setw(8) << gradeDist(gen);
+        ofstream outputFile(file.first);
+        if (!outputFile) {
+            throw std::runtime_error("Nepavyko sukurti failo: " + file.first);
         }
 
-        // Generuojame egzamino balą
-        file << setw(12) << gradeDist(gen) << "\n";
+        random_device rd;
+        mt19937 gen(rd()); 
+        uniform_int_distribution<int> gradeDist(1, 10);
+
+        const int numGrades = 14;
+
+        // Antraste
+        outputFile << left << setw(15) << "Vardas" << setw(15) << "Pavarde";
+        for (int i = 1; i <= numGrades; i++) {
+            outputFile << setw(8) << ("ND" + to_string(i));
+        }
+        outputFile << setw(12) << "Egzaminas" << "\n";
+
+        // Duomenų generavimas
+        for (int i = 1; i <= file.second; i++) {
+            outputFile << left << setw(15) << ("Vardas" + to_string(i)) << setw(15) << ("Pavarde" + to_string(i));
+            for (int j = 0; j < numGrades; j++) {
+                outputFile << setw(8) << gradeDist(gen);
+            }
+            outputFile << setw(12) << gradeDist(gen) << "\n";
+        }
+
+        outputFile.close();
+
+        auto end_time = high_resolution_clock::now();
+        duration<double> elapsed = end_time - start_time;
+        totalTime += elapsed.count();
+
+        cout << "Failas \"" << file.first << "\" sugeneruotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
     }
 
-    file.close();
-    auto end_time = high_resolution_clock::now();
-    duration<double> elapsed = end_time - start_time;
-    cout << "Failas \"" << filename << "\" sugeneruotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
+    // Vidutinis failo generavimo laikas
+    double averageTime = totalTime / fileCount;
+    cout << "Bendras failu kurimo laikas: " << fixed << setprecision(5) << totalTime << " s\n";
+    cout << "Vidutinis vieno failo generavimo laikas: " << fixed << setprecision(5) << averageTime << " s\n";
 }
+
+
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
 void splitStudents(const vector<Student>& students, vector<Student>& vargsiukai, vector<Student>& kietiakiai, bool useMedian) {
     for (const auto& student : students) {
@@ -290,4 +314,43 @@ void saveStudentsToFile(const vector<Student>& students, const string& filename)
     auto end_time = high_resolution_clock::now();
     duration<double> elapsed = end_time - start_time;
     cout << "Failas \"" << filename << "\" issaugotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
+}
+
+void testDataProcessing(const string& filename) {
+    auto total_start_time = high_resolution_clock::now(); // Visos operacijos pradzios laikas
+
+    vector<Student> students;
+    
+    // 1. Nuskaitymas is failo
+    auto start_time = high_resolution_clock::now();
+    readFromFile(students, filename);
+    auto end_time = high_resolution_clock::now();
+    duration<double> elapsed = end_time - start_time;
+    cout << "Failo su " << students.size() << " studentu duomenimis nuskaitymas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+
+    // 2. Skirstymas i dvi grupes
+    vector<Student> vargsiukai, kietiakiai;
+    start_time = high_resolution_clock::now();
+    splitStudents(students, vargsiukai, kietiakiai, false); // Pagal vidurki (jei i mediana noriu reik true padaryt)
+    end_time = high_resolution_clock::now();
+    elapsed = end_time - start_time;
+    cout << students.size() << " studentu failo rusiavimas i kietiakus ir vargsiukus laikas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+
+    // 3. Issaugojimas i failus
+    start_time = high_resolution_clock::now();
+    saveStudentsToFile(kietiakiai, "kietiakiai_test.txt");
+    end_time = high_resolution_clock::now();
+    elapsed = end_time - start_time;
+    cout << students.size() << " studentu su vidurkiu >=5 isvedimas i faila uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+
+    start_time = high_resolution_clock::now();
+    saveStudentsToFile(vargsiukai, "vargsiukai_test.txt");
+    end_time = high_resolution_clock::now();
+    elapsed = end_time - start_time;
+    cout << students.size() << " studentu su vidurkiu <5 isvedimas i faila uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+
+    // 4. Bendra testavimo trukme
+    auto total_end_time = high_resolution_clock::now();
+    elapsed = total_end_time - total_start_time;
+    cout << students.size() << " studentu failo bendras testavimo laikas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 }
