@@ -114,12 +114,41 @@ int main() {
                 }
             
                 bool useMedian = (method == 'm' || method == 'M');
+
+                char sortOrder;
+                while (true) {
+                    cout << "Pasirinkite rikiavimo tvarka (a - didejanciai, d - mazejanciai): ";
+                    cin >> sortOrder;
+
+                if (sortOrder == 'a' || sortOrder == 'A' || sortOrder == 'd' || sortOrder == 'D') {
+                    break;
+                }
+                else {
+                    cout << "Neteisinga reiksme. Prasome ivesti 'a' arba 'd'." << endl;
+                }
+                }
+
+                bool ascending = (sortOrder == 'a' || sortOrder == 'A');
             
                 vector<Student> vargsiukai, kietiakiai;
                 
                 // Suskirstymas i dvi grupes
                 splitStudents(students, vargsiukai, kietiakiai, useMedian);
-            
+                
+                // Rikiavimas pasirinkta tvarka
+                auto comparator = [useMedian](const Student& a, const Student& b) {
+                    return calculateFinalGrade(a, useMedian) < calculateFinalGrade(b, useMedian);
+                };
+
+                if (ascending) {
+                    sort(vargsiukai.begin(), vargsiukai.end(), comparator);
+                    sort(kietiakiai.begin(), kietiakiai.end(), comparator);
+                }
+                else {
+                    sort(vargsiukai.begin(), vargsiukai.end(), [comparator](const Student& a, const Student& b) { return !comparator(a, b); });
+                    sort(kietiakiai.begin(), kietiakiai.end(), [comparator](const Student& a, const Student& b) { return !comparator(a, b); });
+                }
+                
                 saveStudentsToFile(vargsiukai, "vargsiukai.txt");
                 saveStudentsToFile(kietiakiai, "kietiakiai.txt");
             }
