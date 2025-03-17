@@ -1,5 +1,5 @@
 #include "functions.h"
-#include "my_library.h"
+#include "../my_library.h"
 
 int main() {
     vector<Student> students;

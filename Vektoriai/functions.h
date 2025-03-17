@@ -1,7 +1,7 @@
 #ifndef FUNCTIONS_H // Patikrina, ar FUNCTIONS_H dar nėra apibrėžtas (kad failas nebūtų įtrauktas kelis kartus)
 #define FUNCTIONS_H // Jei nėra apibrėžtas, apibrėžia FUNCTIONS_H (kad kompiliatorius kitą kartą žinotų, jog jis jau įtrauktas)
 
-#include "my_library.h"
+#include "../my_library.h"
 
 // Studentų duomenys
 struct Student {
