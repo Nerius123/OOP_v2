@@ -136,21 +136,20 @@ int main() {
                 splitStudents(students, vargsiukai, kietiakiai, useMedian);
                 
                 // Rikiavimas pasirinkta tvarka
-                auto comparator = [useMedian](const Student& a, const Student& b) {
-                    return calculateFinalGrade(a, useMedian) < calculateFinalGrade(b, useMedian);
+                auto comparator = [useMedian, ascending](const Student& a, const Student& b) {
+                    double gradeA = calculateFinalGrade(a, useMedian);
+                    double gradeB = calculateFinalGrade(b, useMedian);
+                    return ascending ? (gradeA < gradeB) : (gradeA > gradeB);
                 };
-
-                if (ascending) {
-                    sort(vargsiukai.begin(), vargsiukai.end(), comparator);
-                    sort(kietiakiai.begin(), kietiakiai.end(), comparator);
-                }
-                else {
-                    sort(vargsiukai.begin(), vargsiukai.end(), [comparator](const Student& a, const Student& b) { return !comparator(a, b); });
-                    sort(kietiakiai.begin(), kietiakiai.end(), [comparator](const Student& a, const Student& b) { return !comparator(a, b); });
-                }
                 
+                // Naudojame ta pati comparator ir mazejimo tvarkai
+                sort(vargsiukai.begin(), vargsiukai.end(), comparator);
+                sort(kietiakiai.begin(), kietiakiai.end(), comparator);
+                
+                // Issaugome i failus
                 saveStudentsToFile(vargsiukai, "vargsiukai.txt");
                 saveStudentsToFile(kietiakiai, "kietiakiai.txt");
+                
             }
 
             else if (choice == '7') {

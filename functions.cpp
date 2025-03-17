@@ -61,16 +61,16 @@ double calculateAverage(const Student &s) {
 double calculateMedian(const Student &s) {
     if (s.grades.empty()) throw std::runtime_error("Negalima skaiciuoti medianos be pazymiu.");
     
-    vector<int> sortedGrades = s.grades;
-    sort(sortedGrades.begin(), sortedGrades.end());
-    int n = sortedGrades.size();
+    vector<double> sortedGrades(s.grades.begin(), s.grades.end()); // Konvertuojame i double
+    sort(sortedGrades.begin(), sortedGrades.end()); // Rikiuojame pries mediana
+    size_t n = sortedGrades.size();
     
     return (n % 2 == 0) ? (sortedGrades[n / 2 - 1] + sortedGrades[n / 2]) / 2.0 : sortedGrades[n / 2];
 }
 
 // Apskaiciuojamas galutinis vertinimas
 double calculateFinalGrade(const Student &s, bool useMedian) {
-    return 0.4 * (useMedian ? calculateMedian(s) : calculateAverage(s)) + 0.6 * s.examGrade;
+    return 0.400 * (useMedian ? calculateMedian(s) : calculateAverage(s)) + 0.600 * s.examGrade;
 }
 
 // Meniu atvaizdavimas
@@ -283,10 +283,10 @@ void splitStudents(const vector<Student>& students, vector<Student>& vargsiukai,
     for (const auto& student : students) {
         double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
 
-        if (finalGrade < 5.0) {
-            vargsiukai.push_back(student);
-        } else {
+        if (finalGrade >= 5.00000) {
             kietiakiai.push_back(student);
+        } else {
+            vargsiukai.push_back(student);
         }
     }
 }
