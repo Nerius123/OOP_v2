@@ -1,10 +1,10 @@
-start: v0_1.o functions.o
-	g++ v0_1.o functions.o -o v0_1.exe
-	@if exist v0_1.o del v0_1.o
-	@if exist functions.o del functions.o
+start: deque_main.o deque_functions.o
+	g++ deque_main.o deque_functions.o -o deque_program.exe
+	@if exist deque_main.o del deque_main.o
+	@if exist deque_functions.o del deque_functions.o
 
-v0_1.o: v0_1.cpp functions.h my_library.h
-	g++ -c v0_1.cpp -o v0_1.o
+deque_main.o: deque_main.cpp deque_functions.h my_library.h
+	g++ -c deque_main.cpp -o deque_main.o
 
-functions.o: functions.cpp functions.h my_library.h
-	g++ -c functions.cpp -o functions.o
+deque_functions.o: deque_functions.cpp deque_functions.h my_library.h
+	g++ -c deque_functions.cpp -o deque_functions.o
