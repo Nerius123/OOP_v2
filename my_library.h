@@ -37,5 +37,17 @@ using std::to_string;
 using std::pair;
 using std::list;
 using std::deque;
+using std::find;
+using std::find_if;
+using std::search;
+using std::copy;
+using std::remove;
+using std::remove_if;
+using std::remove_copy;
+using std::remove_copy_if;
+using std::transform;
+using std::partition;
+using std::stable_partition;
+
 
 #endif  // Baigiame header guard (apsauga nuo pakartotinio įtraukimo)
