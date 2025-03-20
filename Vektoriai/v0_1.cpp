@@ -134,22 +134,26 @@ int main() {
                 
                 // Suskirstymas i dvi grupes
                 splitStudents(students, vargsiukai, kietiakiai, useMedian);
-                
-                // Rikiavimas pasirinkta tvarka
-                auto comparator = [useMedian, ascending](const Student& a, const Student& b) {
-                    double gradeA = calculateFinalGrade(a, useMedian);
-                    double gradeB = calculateFinalGrade(b, useMedian);
-                    return ascending ? (gradeA < gradeB) : (gradeA > gradeB);
-                };
-                
-                // Naudojame ta pati comparator ir mazejimo tvarkai
-                sort(vargsiukai.begin(), vargsiukai.end(), comparator);
-                sort(kietiakiai.begin(), kietiakiai.end(), comparator);
-                
+
+                // Rikiavimas naudojant sort
+                sort(vargsiukai.begin(), vargsiukai.end(), [useMedian](const Student& a, const Student& b) {
+                    return calculateFinalGrade(a, useMedian) < calculateFinalGrade(b, useMedian);
+                });
+
+                sort(kietiakiai.begin(), kietiakiai.end(), [useMedian](const Student& a, const Student& b) {
+                    return calculateFinalGrade(a, useMedian) < calculateFinalGrade(b, useMedian);
+                    });
+
+                // Jei reikia mazejancia tvarka
+                if (!ascending) {
+                    std::reverse(vargsiukai.begin(), vargsiukai.end());
+                    std::reverse(kietiakiai.begin(), kietiakiai.end());
+                }
+
                 // Issaugome i failus
                 saveStudentsToFile(vargsiukai, "vargsiukai.txt");
                 saveStudentsToFile(kietiakiai, "kietiakiai.txt");
-                
+
             }
 
             else if (choice == '7') {
