@@ -335,7 +335,7 @@ void testDataProcessing(const string& filename) {
     });
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << students.size() << " studentu rusiavimas didejancia tvarka konteineryje uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << students.size() << " studentu rusiavimas konteineryje uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 3. Studentu skirstymas i dvi grupes
     vector<Student> vargsiukai, kietiakiai;
@@ -356,7 +356,7 @@ void testDataProcessing(const string& filename) {
     saveStudentsToFile(kietiakiai, "kietiakiai_test.txt");
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << kietiakiai.size() << " \"kietiakiai\" studentu issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << kietiakiai.size() << " \"kietiakai\" studentu issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     start_time = high_resolution_clock::now();
     saveStudentsToFile(vargsiukai, "vargsiukai_test.txt");
