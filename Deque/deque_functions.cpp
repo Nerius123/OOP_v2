@@ -290,6 +290,19 @@ void generateStudentFiles() {
     cout << "Vidutinis vieno failo generavimo laikas: " << fixed << setprecision(5) << averageTime << " s\n";
 }
 
+// Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai) naudojant deque
+void splitStudents(const deque<Student>& students, deque<Student>& vargsiukai, deque<Student>& kietiakiai, bool useMedian) {
+    for (const auto& student : students) {
+        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
+
+        if (finalGrade >= 5.00000) {
+            kietiakiai.push_back(student);
+        } else {
+            vargsiukai.push_back(student);
+        }
+    }
+}
+
 
 // Funkcija, kuri issaugo studentu sarasa i faila
 void saveStudentsToFile(const deque<Student>& students, const string& filename) {
