@@ -1,4 +1,4 @@
-# Kompiuterio charakteristikos
+# Kompiuterio specifikacijos
 
 | Komponentas |             Specifikacija                 |
 | :---------- |         :---------------------:           |
