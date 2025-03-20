@@ -133,7 +133,7 @@ int main() {
                 vector<Student> vargsiukai, kietiakiai;
                 
                 // Suskirstymas i dvi grupes
-                splitStudents(students, vargsiukai, kietiakiai, useMedian);
+                splitStudents(students, vargsiukai, useMedian);
 
                 // Rikiavimas naudojant sort
                 sort(vargsiukai.begin(), vargsiukai.end(), [useMedian](const Student& a, const Student& b) {

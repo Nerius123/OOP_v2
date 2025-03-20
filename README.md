@@ -8,11 +8,11 @@
 
 # Kompiliavimo instrukcijos
 
-1. [Atsisiusti g++](https://sourceforge.net/projects/mingw-w64/)
-2. [Atsisiusti Make](https://gnuwin32.sourceforge.net/packages/make.htm)
-3. Kopijuoti projekto direktorija `git clone https://github.com/Nerius123/OOP.git` (arba Download zip)
-4. Atsidaryti komandine eilute projekto direktorijoje ir irasyti: `make -C Vectoriai ; make -C List ; make -C Deque`
-5. Paleisti norima programos versija: `./Vectoriai/v0_1.exe`, `./List/list_main.exe`, `./Deque/deque_main.exe`
+- [Atsisiusti g++](https://sourceforge.net/projects/mingw-w64/)
+- [Atsisiusti Make](https://gnuwin32.sourceforge.net/packages/make.htm)
+- Kopijuoti projekto direktorija `git clone https://github.com/Nerius123/OOP.git` (arba Download zip)
+- Atsidaryti komandine eilute projekto direktorijoje ir irasyti: `make -C Vectoriai ; make -C List ; make -C Deque`
+- Paleisti norima programos versija: `./Vectoriai/v0_1.exe`, `./List/list_main.exe`, `./Deque/deque_main.exe`
 
 # Programos naudojimosi instrukcijos
 
@@ -290,8 +290,8 @@ Viso faile yra 14 namų darbų pažymių
 | Vidutinis failo nuskaitymo laikas                         |  37.6779 |  46.3416  |  41.6927  |
 | Bendras failo rusiavimo laikas                            | 293.0309 | 435.9934  | 390.5497  |
 | Vidutinis failo rusiavimo laikas                          |  97.6769 | 145.3311  | 130.1832  |
-| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   |  15.8076 |  78.5433  |  41.1487  |
-| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas |   5.2692 |  26.1811  |  13.7162  |
+| Bendras failo rusiavimo i kietiakus ir vargsiukus laikas  |  15.8076 |  78.5433  |  41.1487  |
+| Vidutinis failo rusiavimo i kietiakus ir vargsiukus laikas|   5.2692 |  26.1811  |  13.7162  |
 | Bendras programos veikimo laikas                          | 421.8721 | 653.5614  | 556.7766  |
 | Vidutinis programos veikimo laikas                        | 140.6240 | 217.8538  | 185.5922  |
 
@@ -303,28 +303,20 @@ Viso faile yra 14 namų darbų pažymių
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
 
 #### Vector
 
 ![image]()
-![image]()
-![image]()
+
+
 
 #### List
 
 ![image]()
 ![image]()
-![image]()
 
 #### Deque
 
-![image]()
 ![image]()
 ![image]()
 

@@ -279,17 +279,22 @@ void generateStudentFiles() {
 
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
-void splitStudents(const vector<Student>& students, vector<Student>& vargsiukai, vector<Student>& kietiakiai, bool useMedian) {
-    for (const auto& student : students) {
-        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
+void splitStudents(vector<Student>& students, vector<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear(); // Išvalom prieš pildymą
 
-        if (finalGrade >= 5.00000) {
-            kietiakiai.push_back(student);
-        } else {
-            vargsiukai.push_back(student);
+    // Perkeliame vargšiukus į naują konteinerį
+    auto it = remove_if(students.begin(), students.end(), [&](const Student& s) {
+        if (calculateFinalGrade(s, useMedian) < 5.0) {
+            vargsiukai.push_back(s);
+            return true; // Pažymime pašalinimui
         }
-    }
+        return false;
+    });
+
+    // Pašaliname vargšiukus iš pagrindinio sąrašo
+    students.erase(it, students.end());
 }
+
 
 // Funkcija, kuri issaugo studentu sarasa i faila
 void saveStudentsToFile(const vector<Student>& students, const string& filename) {

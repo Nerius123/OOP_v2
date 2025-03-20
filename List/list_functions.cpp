@@ -291,17 +291,18 @@ void generateStudentFiles() {
 
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
-void splitStudents(const list<Student>& students, list<Student>& vargsiukai, list<Student>& kietiakiai, bool useMedian) {
-    for (const auto& student : students) {
-        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
+void splitStudents(list<Student>& students, list<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear();
 
-        if (finalGrade >= 5.00000) {
-            kietiakiai.push_back(student); 
+    for (auto it = students.begin(); it != students.end(); ) {
+        if (calculateFinalGrade(*it, useMedian) < 5.0) {
+            vargsiukai.splice(vargsiukai.end(), students, it++); // Perkeliam ir iskart salinam
         } else {
-            vargsiukai.push_back(student);
+            ++it;
         }
     }
 }
+
 
 
 // Funkcija, kuri issaugo studentu sarasa i faila
