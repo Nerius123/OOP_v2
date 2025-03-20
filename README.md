@@ -10,13 +10,13 @@
 
 - [Atsisiusti g++](https://sourceforge.net/projects/mingw-w64/)
 - [Atsisiusti Make](https://gnuwin32.sourceforge.net/packages/make.htm)
-- Kopijuoti projekto direktorija `git clone https://github.com/Nerius123/OOP.git` (arba Download zip)
+- Kopijuoti projekto direktorija `git clone https://github.com/Nerius123/OOP.git`
 - Atsidaryti komandine eilute projekto direktorijoje ir irasyti: `make -C Vectoriai ; make -C List ; make -C Deque`
-- Paleisti norima programos versija: `./Vectoriai/v0_1.exe`, `./List/list_main.exe`, `./Deque/deque_main.exe`
+- Paleisti norima programos versija: `./Vektoriai/v0_1.exe`, `./List/list_main.exe`, `./Deque/deque_main.exe`
 
 # Programos naudojimosi instrukcijos
 
-Ši programa skirta studentų duomenų valdymui ir analizei, suteikiant galimybę įvesti, nuskaityti, rūšiuoti, generuoti ir analizuoti studentų informaciją. Meniu pateikiami šie pasirinkimai:
+Ši programa skirta studentų duomenų valdymui ir analizei, programoje galima įvesti, nuskaityti, rūšiuoti, generuoti ir analizuoti studentų informaciją. Meniu pateikiami šie pasirinkimai:
 
 ### Meniu pasirinkimai:
 
@@ -55,11 +55,11 @@
 
 # Pradinė versija
 
-Pradinėje programos versijoje buvo sukurta bazinė studentų valdymo sistema, leidžianti rankiniu būdu įvesti studentų vardus, pavardes, namų darbų pažymius ir egzamino rezultatą. Taip pat buvo įgyvendintos funkcijos, skirtos galutinio pažymio skaičiavimui pagal vidurkį arba medianą.
+Pradinėje programos versijoje buvo sukurta studentų valdymo sistema, leidžianti rankiniu būdu įvesti studentų vardus, pavardes, namų darbų pažymius ir egzamino rezultatą. Taip pat buvo įgyvendintos funkcijos, skirtos galutinio pažymio skaičiavimui pagal vidurkį arba medianą.
 
 # v0.1 versija
 
-Optimizuota v.pradine versija, programai nebereikia iš anksto žinoti, kiek viso bus studentų ir namų darbų.
+Optimizuota v.pradine versija.
 
 Ši versija realizuota dviem būdais:
 
@@ -68,7 +68,7 @@ Optimizuota v.pradine versija, programai nebereikia iš anksto žinoti, kiek vis
 
 # v0.2 versija
 
-Į meniu pridėti pasirinkimai 5: 
+Į meniu pridėti 5 pasirinkimai: 
 
 1. Įvesti studentų vardą, pavardė, pažymius raniniu būdu.
 2. Nuskaityti iš failo
@@ -81,7 +81,7 @@ Optimizuota v.pradine versija, programai nebereikia iš anksto žinoti, kiek vis
 Pridėta klaidų gaudymo sistema.
 
 # v0.4 versija
-Pridėta galimybė generuoti failus, iš kurių vėliau bus nuskaitoma informacija. Visi sugeneruoti failai saugomi atskirame aplanke "SukurtiTxtFailai". Pridėtas pasirinkimas - išvesti studentus į du atskirus failus: "kietiakai.txt" ir "vargsikai.txt" pagal galutinį pažymį (≥ 5.0 – "kietekai", < 5.0 – "vargsiukai"). Ir galiausiai pridėta programos veikimo greičio testavimas.
+Pridėta galimybė generuoti failus, iš kurių vėliau bus nuskaitoma informacija. Visi sugeneruoti failai saugomi aplanke "SukurtiTxtFailai". Pridėtas pasirinkimas - išvesti studentus į du atskirus failus: "kietiakai.txt" ir "vargsikai.txt" pagal galutinį pažymį. Ir galiausiai pridėta programos veikimo greičio testavimas.
 
 # v1.0 pradinė versija
 
@@ -109,7 +109,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.00396   | 0.00305   | 0.00487   |
 | 3 testas | 0.00393   | 0.00307   | 0.00503   |
 
-### Rusiavimas i kietekus ir vargsiukus (sek.):
+### Rusiavimas i kietiakus ir vargsiukus (sek.):
 
 |          |    Vector |      List |     Deque |
 | :------- | --------: | --------: | --------: |
@@ -150,7 +150,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.04968   | 0.05016   |  0.06121  |
 | 3 testas | 0.05773   | 0.04820   | 0.06142   |
 
-### Rusiavimas i kietekus ir vargsiukus (sek.):
+### Rusiavimas i kietiakus ir vargsiukus (sek.):
 
 |          |    Vector |      List |     Deque |
 | :------- | --------: | --------: | --------: |
@@ -191,7 +191,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.61680  | 0.76743 | 0.79736 |
 | 3 testas | 0.60944  | 0.73856 | 0.80112 |
 
-### Rusiavimas i kietekus ir vargsiukus (sek.):
+### Rusiavimas i kietiakus ir vargsiukus (sek.):
 
 |          |    Vector |      List |     Deque |
 | :------- | --------: | --------: | --------: |
@@ -232,7 +232,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 7.98596 | 10.96013| 10.68764|
 | 3 testas | 7.98624 | 12.77413| 10.66421|
 
-### Rusiavimas i kietekus ir vargsiukus (sek.):
+### Rusiavimas i kietiakus ir vargsiukus (sek.):
 
 |          |   Vector |     List |    Deque |
 | :------- | -------: | -------: | -------: |
@@ -274,7 +274,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 97.63307| 143.85629 | 130.30423|
 | 3 testas | 98.59099| 144.78423 | 129.46221|
 
-### Rusiavimas i kietekus ir vargsiukus (sek.):
+### Rusiavimas i kietiakus ir vargsiukus (sek.):
 
 |          |  Vector |    List |   Deque  |
 | :------- | ------: | ------: | ------:  |
@@ -295,7 +295,7 @@ Viso faile yra 14 namų darbų pažymių
 | Bendras programos veikimo laikas                          | 421.8721 | 653.5614  | 556.7766  |
 | Vidutinis programos veikimo laikas                        | 140.6240 | 217.8538  | 185.5922  |
 
-# Programos rusiavimo i kietekus ir vargsiukus greitis priklausomai nuo strategiju rezultatai
+# Programos rusiavimo i failus greitis priklausomai nuo strategijos
 
 ## 1 strategija
 
@@ -303,138 +303,81 @@ Viso faile yra 14 namų darbų pažymių
 
 Viso faile yra 14 namų darbų pažymių
 
-
 #### Vector
 
-![image]()
-
-
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Vektor/1000/Screenshot%202025-03-20%20221235.png)
 
 #### List
 
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/List/1000/Screenshot%202025-03-20%20224841.png)
 
 #### Deque
 
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/1000/Screenshot%202025-03-20%20230031.png)
 
 ### 10000 Studentu analize
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Vektor/10000/Screenshot%202025-03-20%20221945.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/List/10000/Screenshot%202025-03-20%20224905.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/10000/Screenshot%202025-03-20%20230059.png)
 
 ### 100000 Studentu analize
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Vektor/100000/Screenshot%202025-03-20%20222224.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/List/100000/Screenshot%202025-03-20%20224932.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/100000/Screenshot%202025-03-20%20230141.png)
 
 ### 1000000 Studentu analize
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Vektor/1000000/Screenshot%202025-03-20%20222407.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/List/1000000/Screenshot%202025-03-20%20225310.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/1000000/Screenshot%202025-03-20%20230230.png)
 
 ### 10000000 Studentu analize
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Vektor/10000000/Screenshot%202025-03-20%20223116.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/List/10000000/Screenshot%202025-03-20%20225903.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/10000000/Screenshot%202025-03-20%20230635.png)
 
 ## 2 strategija
 
@@ -442,146 +385,163 @@ Viso faile yra 14 namų darbų pažymių
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Vektor/1000/Screenshot%202025-03-20%20232329.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/List/1000/Screenshot%202025-03-20%20233507.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/1000/Screenshot%202025-03-20%20234354.png)
 
 ### 10000 Studentu analize
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Vektor/10000/Screenshot%202025-03-20%20232352.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/List/10000/Screenshot%202025-03-20%20233526.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/10000/Screenshot%202025-03-20%20234413.png)
 
 ### 100000 Studentu analize
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Vektor/100000/Screenshot%202025-03-20%20232416.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/List/100000/Screenshot%202025-03-20%20233546.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/100000/Screenshot%202025-03-20%20234434.png)
 
 ### 1000000 Studentu analize
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Vektor/1000000/Screenshot%202025-03-20%20232518.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/List/1000000/Screenshot%202025-03-20%20233623.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/1000000/Screenshot%202025-03-20%20234511.png)
 
 ### 10000000 Studentu analize
 
 Viso faile yra 14 namų darbų pažymių
 
-|                  |    Vector |      List |     Deque |
-| :--------------- | --------: | --------: | --------: |
-| Bendras laikas   |   |   |   |
-| Vidutinis laikas |   |   |   |
-
-### Nuotraukos
-
 #### Vector
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Vektor/10000000/Screenshot%202025-03-20%20232840.png)
 
 #### List
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/List/10000000/Screenshot%202025-03-20%20234125.png)
 
 #### Deque
 
-![image]()
-![image]()
-![image]()
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/10000000/Screenshot%202025-03-20%20234953.png)
+
+## 3 strategija
+
+### 1000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+#### Vector
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/1000/Screenshot%202025-03-20%20235330.png)
+
+#### List
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/List/1000/Screenshot%202025-03-20%20235930.png)
+
+#### Deque
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/1000/Screenshot%202025-03-21%20000842.png)
+
+### 10000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+#### Vector
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/10000/Screenshot%202025-03-20%20235354.png)
+
+#### List
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/List/10000/Screenshot%202025-03-20%20235953.png)
+
+#### Deque
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/10000/Screenshot%202025-03-21%20000900.png)
+
+### 100000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+#### Vector
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/100000/Screenshot%202025-03-20%20235419.png)
+
+#### List
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/List/100000/Screenshot%202025-03-21%20000017.png)
+
+#### Deque
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/100000/Screenshot%202025-03-21%20000926.png)
+
+### 1000000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+#### Vector
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/1000000/Screenshot%202025-03-20%20235501.png)
+
+#### List
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/List/1000000/Screenshot%202025-03-21%20000051.png)
+
+#### Deque
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/1000000/Screenshot%202025-03-21%20000949.png)
+
+### 10000000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+#### Vector
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/10000000/Screenshot%202025-03-20%20235738.png)
+
+#### List
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/List/10000000/Screenshot%202025-03-21%20000603.png)
+
+#### Deque
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/10000000/Screenshot%202025-03-21%20001334.png)
 
 
 ## 5 failų generavimo laikas
