@@ -256,7 +256,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ## 10000000 Studentu analize
 
-Viso faile yra 19 namų darbų pažymių
+Viso faile yra 14 namų darbų pažymių
 
 ### Nuskaitymas (sek.):
 
