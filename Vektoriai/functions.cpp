@@ -151,7 +151,7 @@ void readFromFile(vector<Student> &students, const string &filename) {
         file.close();
         auto end_time = high_resolution_clock::now();
         duration<double> elapsed = end_time - start_time;
-        cout << "Failo nuskaitymas uztruko: " << fixed << setprecision(5) << elapsed.count() << " s\n";
+        //cout << "Failo nuskaitymas uztruko: " << fixed << setprecision(5) << elapsed.count() << " s\n";
     } catch (const std::exception &e) {
         cout << "Klaida: " << e.what() << endl;
     }
@@ -313,7 +313,7 @@ void saveStudentsToFile(const vector<Student>& students, const string& filename)
 
     auto end_time = high_resolution_clock::now();
     duration<double> elapsed = end_time - start_time;
-    cout << "Failas \"" << filename << "\" issaugotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
+    //cout << "Failas \"" << filename << "\" issaugotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
 }
 
 void testDataProcessing(const string& filename) {
