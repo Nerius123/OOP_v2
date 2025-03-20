@@ -11,8 +11,8 @@
 1. [Atsisiusti g++](https://sourceforge.net/projects/mingw-w64/)
 2. [Atsisiusti Make](https://gnuwin32.sourceforge.net/packages/make.htm)
 3. Kopijuoti projekto direktorija `git clone https://github.com/Nerius123/OOP.git` (arba Download zip)
-4. Atsidaryti komandine eilute projekto direktorijoje ir irasyti: `make -C Vector ; make -C List ; make -C Deque`
-5. Paleisti norima programos versija: `./Vector/v0_1.exe`, `./List/list_main.exe`, `./Deque/deque_main.exe`
+4. Atsidaryti komandine eilute projekto direktorijoje ir irasyti: `make -C Vectoriai ; make -C List ; make -C Deque`
+5. Paleisti norima programos versija: `./Vectoriai/v0_1.exe`, `./List/list_main.exe`, `./Deque/deque_main.exe`
 
 # Programos naudojimosi instrukcijos
 
@@ -121,14 +121,14 @@ Viso faile yra 14 namų darbų pažymių
 
 |                                                           |   Vector |         List |      Deque |
 | :-------------------------------------------------------- | -------: | -----------: | ---------: |
-| Bendras failo nuskaitymo laikas                           | 0.016316 |     0.017256 |   0.029139 |
-| Vidutinis failo nuskaitymo laikas                         | 0.005439 |     0.005752 |   0.009713 |
-| Bendras failo rusiavimo laikas                            | 0.013759 |     0.009965 |   0.025110 |
-| Vidutinis failo rusiavimo laikas                          | 0.002293 |     0.001661 |   0.004185 |
-| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   | 0.002034 |     0.001650 |   0.002423 |
-| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas | 0.000678 |     0.000550 |   0.000808 |
-| Bendras programos veikimo laikas                          | 0.032109 |     0.028871 |   0,282662 |
-| Vidutinis programos veikimo laikas                        | 0.010703 | 0.0096236667 | 0.09422066 |
+| Bendras failo nuskaitymo laikas                           | 0.01252  |     0.03555  |   0.03274  |
+| Vidutinis failo nuskaitymo laikas                         | 0.004173 |     0.01185  |   0.010913 |
+| Bendras failo rusiavimo laikas                            | 0.01192  |     0.00920  |   0.01486  |
+| Vidutinis failo rusiavimo laikas                          | 0.003973 |     0.003067 |   0.004953 |
+| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   | 0.00141  |     0.00316  |   0.00223  |
+| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas | 0.00047  |     0.001053 |   0.000743 |
+| Bendras programos veikimo laikas                          | 0.02585  |     0.04791  |   0.04983  |
+| Vidutinis programos veikimo laikas                        | 0.00862  |     0.01597  |   0.01661  |
 
 ## 10000 Studentu analize
 
@@ -162,14 +162,14 @@ Viso faile yra 14 namų darbų pažymių
 
 |                                                           |   Vector |         List |      Deque |
 | :-------------------------------------------------------- | -------: | -----------: | ---------: |
-| Bendras failo nuskaitymo laikas                           | 0.133990 |     0.221309 |   0.205950 |
-| Vidutinis failo nuskaitymo laikas                         | 0.044663 |     0.073770 |   0.068650 |
-| Bendras failo rusiavimo laikas                            | 0.167915 |     0.257783 |   0.308670 |
-| Vidutinis failo rusiavimo laikas                          | 0.027986 |     0.042964 |   0.051445 |
-| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   | 0.018534 |     0.031990 |   0.027332 |
-| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas | 0.006178 |     0.010663 |   0.009111 |
-| Bendras programos veikimo laikas                          | 0.320439 |     0.511082 |   0.541952 |
-| Vidutinis programos veikimo laikas                        | 0.106813 | 0.1703606667 | 0.18065066 |
+| Bendras failo nuskaitymo laikas                           | 0.12423  |     0.23838  |   0.13448  |
+| Vidutinis failo nuskaitymo laikas                         | 0.04141  |     0.07946  |   0.044826 |
+| Bendras failo rusiavimo laikas                            | 0.15617  |     0.14656  |   0.18331  |
+| Vidutinis failo rusiavimo laikas                          | 0.052056 |     0.048853 |   0.061103 |
+| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   | 0.01387  |     0.06744  |   0.02312  |
+| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas | 0.004623 |     0.02248  |   0.007707 |
+| Bendras programos veikimo laikas                          | 0.29445  |     0.44738  |   0.34072  |
+| Vidutinis programos veikimo laikas                        | 0.05889  |     0.089476 |   0.068144 |
 
 ## 100000 Studentu analize
 
@@ -203,14 +203,14 @@ Viso faile yra 14 namų darbų pažymių
 
 |                                                           |   Vector |      List |     Deque |
 | :-------------------------------------------------------- | -------: | --------: | --------: |
-| Bendras failo nuskaitymo laikas                           | 0.980052 |  1.777449 |  1.601122 |
-| Vidutinis failo nuskaitymo laikas                         | 0.326684 |  0.592483 |  0.533707 |
-| Bendras failo rusiavimo laikas                            | 2.031878 |  3.235127 |  3.861866 |
-| Vidutinis failo rusiavimo laikas                          | 0.338646 |  0.539188 |  0.643644 |
-| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   | 0.170317 |  0.285555 |  0.226442 |
-| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas | 0.056772 |  0.095185 |  0.075481 |
-| Bendras programos veikimo laikas                          | 3.182247 |  5.298131 |   5.68943 |
-| Vidutinis programos veikimo laikas                        | 1.060749 | 1.7660436 | 1.8967466 |
+| Bendras failo nuskaitymo laikas                           | 1.122490 | 2.176030 | 1.254010 |
+| Vidutinis failo nuskaitymo laikas                         | 0.374163 | 0.725343 | 0.418003 |
+| Bendras failo rusiavimo laikas                            | 1.841160 | 2.285860 | 2.409670 |
+| Vidutinis failo rusiavimo laikas                          | 0.613720 | 0.761953 | 0.803223 |
+| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   | 0.147680 | 0.571530 | 0.248490 |
+| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas | 0.049227 | 0.190510 | 0.082830 |
+| Bendras programos veikimo laikas                          | 3.111330 | 5.033420 | 3.912170 |
+| Vidutinis programos veikimo laikas                        | 1.037110 | 1.677807 | 1.304057 |
 
 ## 1000000 Studentu analize
 
@@ -242,16 +242,17 @@ Viso faile yra 14 namų darbų pažymių
 
 ### Vidurkiai (sek.):
 
-|                                                           |        Vector |        List |       Deque |
-| :-------------------------------------------------------- | ------------: | ----------: | ----------: |
-| Bendras failo nuskaitymo laikas                           |     11.669734 |   20.726261 |   19.331293 |
-| Vidutinis failo nuskaitymo laikas                         |      3.889911 |    6.908754 |    6.443764 |
-| Bendras failo rusiavimo laikas                            |     29.524652 |   39.448779 |   43.600653 |
-| Vidutinis failo rusiavimo laikas                          |      4.920775 |    6.574797 |    7.266776 |
-| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   |      1.723741 |    2.898165 |    2.764446 |
-| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas |      0.574580 |    0.966055 |    0.921482 |
-| Bendras programos veikimo laikas                          |     42.918127 |   63.073205 |   65.696392 |
-| Vidutinis programos veikimo laikas                        | 14.3060423333 | 21.02440166 | 21.89879733 |
+|                                                           |   Vector |      List |     Deque |
+| :-------------------------------------------------------- | -------: | --------: | --------: |
+| Bendras failo nuskaitymo laikas                           | 11.29164 | 21.64089 | 11.91904 |
+| Vidutinis failo nuskaitymo laikas                         |  3.76388 |  7.21363 |  3.97301 |
+| Bendras failo rusiavimo laikas                            | 24.17646 | 32.73608 | 31.99269 |
+| Vidutinis failo rusiavimo laikas                          |  8.05882 | 10.91203 | 10.66423 |
+| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   |  1.57824 |  7.52964 |  2.64608 |
+| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas |  0.52608 |  2.50988 |  0.88203 |
+| Bendras programos veikimo laikas                          | 36.94634 | 61.90661 | 46.55781 |
+| Vidutinis programos veikimo laikas                        | 12.31545 | 20.63554 | 15.51927 |
+
 
 ## 10000000 Studentu analize
 
@@ -275,24 +276,25 @@ Viso faile yra 19 namų darbų pažymių
 
 ### Rusiavimas i kietekus ir vargsiukus (sek.):
 
-|          |  Vector |    List |   Deque |
-| :------- | ------: | ------: | ------: |
+|          |  Vector |    List |   Deque  |
+| :------- | ------: | ------: | ------:  |
 | 1 testas | 5.22476 | 26.28797| 14.71335 |
 | 2 testas | 5.32009 | 25.98346| 14.99932 |
 | 3 testas | 5.28132 | 25.24299| 13.72135 |
 
 ### Vidurkiai (sek.):
 
-|                                                           |     Vector |       List |        Deque |
-| :-------------------------------------------------------- | ---------: | ---------: | -----------: |
-| Bendras failo nuskaitymo laikas                           | 130.347577 | 148.193507 |   141.096647 |
-| Vidutinis failo nuskaitymo laikas                         |  43.449192 |  49.397836 |    47.032216 |
-| Bendras failo rusiavimo laikas                            | 357.935381 | 345.401288 |   388.718866 |
-| Vidutinis failo rusiavimo laikas                          |  59.655897 |  57.566881 |    64.786478 |
-| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   |  19.468074 |  31.311419 |    25.794769 |
-| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas |   6.489358 |  10.437140 |     8.598256 |
-| Bendras programos veikimo laikas                          | 507.751032 | 524.906214 |   555.610282 |
-| Vidutinis programos veikimo laikas                        | 169.250344 | 174.968738 | 185.20342733 |
+|                                                           |   Vector |      List |     Deque |
+| :-------------------------------------------------------- | -------: | --------: | --------: |
+| Bendras failo nuskaitymo laikas                           | 113.0336 | 139.0247  | 125.0782  |
+| Vidutinis failo nuskaitymo laikas                         |  37.6779 |  46.3416  |  41.6927  |
+| Bendras failo rusiavimo laikas                            | 293.0309 | 435.9934  | 390.5497  |
+| Vidutinis failo rusiavimo laikas                          |  97.6769 | 145.3311  | 130.1832  |
+| Bendras failo rusiavimo i kietekus ir vargsiukus laikas   |  15.8076 |  78.5433  |  41.1487  |
+| Vidutinis failo rusiavimo i kietekus ir vargsiukus laikas |   5.2692 |  26.1811  |  13.7162  |
+| Bendras programos veikimo laikas                          | 421.8721 | 653.5614  | 556.7766  |
+| Vidutinis programos veikimo laikas                        | 140.6240 | 217.8538  | 185.5922  |
+
 
 ## 5 failų generavimo laikas
 
