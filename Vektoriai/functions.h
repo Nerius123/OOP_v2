@@ -22,7 +22,7 @@ void readFromFile(vector<Student> &students, const string &filename);
 void saveResultsToFile(vector<Student> students, const string& filename, bool showAverage, bool showMedian);
 void generateStudentFiles();
 void splitStudentsIntoFiles(const vector<Student>& students);
-void splitStudents(vector<Student>& students, vector<Student>& vargsiukai, bool useMedian);
+void splitStudents(vector<Student>& students, bool useMedian);
 void saveStudentsToFile(const vector<Student>& students, const string& filename);
 void testDataProcessing(const string& filename);
 

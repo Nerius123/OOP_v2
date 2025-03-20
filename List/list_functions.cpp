@@ -291,17 +291,18 @@ void generateStudentFiles() {
 
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
-void splitStudents(list<Student>& students, list<Student>& vargsiukai, bool useMedian) {
-    vargsiukai.clear();
+void splitStudents(list<Student>& students, bool useMedian) {
+    auto it = partition(students.begin(), students.end(), [useMedian](const Student& s) {
+        return calculateFinalGrade(s, useMedian) < 5.0;
+    });
 
-    for (auto it = students.begin(); it != students.end(); ) {
-        if (calculateFinalGrade(*it, useMedian) < 5.0) {
-            vargsiukai.splice(vargsiukai.end(), students, it++); // Perkeliam ir iskart salinam
-        } else {
-            ++it;
-        }
-    }
+    list<Student> vargsiukai;
+    vargsiukai.splice(vargsiukai.begin(), students, students.begin(), it); // Perkelia i vargsiukus
+
+    saveStudentsToFile(vargsiukai, "vargsiukai.txt");
+    saveStudentsToFile(students, "kietiakiai.txt");
 }
+
 
 
 

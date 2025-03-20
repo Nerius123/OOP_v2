@@ -279,21 +279,18 @@ void generateStudentFiles() {
 
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
-void splitStudents(vector<Student>& students, vector<Student>& vargsiukai, bool useMedian) {
-    vargsiukai.clear(); // Išvalom prieš pildymą
-
-    // Perkeliame vargšiukus į naują konteinerį
-    auto it = remove_if(students.begin(), students.end(), [&](const Student& s) {
-        if (calculateFinalGrade(s, useMedian) < 5.0) {
-            vargsiukai.push_back(s);
-            return true; // Pažymime pašalinimui
-        }
-        return false;
+void splitStudents(vector<Student>& students, bool useMedian) {
+    auto it = partition(students.begin(), students.end(), [useMedian](const Student& s) {
+        return calculateFinalGrade(s, useMedian) < 5.0;
     });
 
-    // Pašaliname vargšiukus iš pagrindinio sąrašo
-    students.erase(it, students.end());
+    vector<Student> vargsiukai(students.begin(), it);  // "Vargsiukai" – mazesni už 5.0
+    students.erase(students.begin(), it);             // "Kietiakiai" lieka pradiniame vektoriuje
+
+    saveStudentsToFile(vargsiukai, "vargsiukai.txt");
+    saveStudentsToFile(students, "kietiakiai.txt");
 }
+
 
 
 // Funkcija, kuri issaugo studentu sarasa i faila

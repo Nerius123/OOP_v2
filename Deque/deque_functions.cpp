@@ -291,21 +291,17 @@ void generateStudentFiles() {
 }
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai) naudojant deque
-void splitStudents(deque<Student>& students, deque<Student>& vargsiukai, bool useMedian) {
-    vargsiukai.clear();
-
-    auto it = remove_if(students.begin(), students.end(), [&](const Student& s) {
-        if (calculateFinalGrade(s, useMedian) < 5.0) {
-            vargsiukai.push_back(s);
-            return true;
-        }
-        return false;
+void splitStudents(deque<Student>& students, bool useMedian) {
+    auto it = partition(students.begin(), students.end(), [useMedian](const Student& s) {
+        return calculateFinalGrade(s, useMedian) < 5.0;
     });
 
-    students.erase(it, students.end());
+    deque<Student> vargsiukai(students.begin(), it);  // "Vargsiukai"
+    deque<Student> kietiakiai(it, students.end());    // "Kietiakiai"
+
+    saveStudentsToFile(vargsiukai, "vargsiukai.txt");
+    saveStudentsToFile(kietiakiai, "kietiakiai.txt");
 }
-
-
 
 // Funkcija, kuri issaugo studentu sarasa i faila
 void saveStudentsToFile(const deque<Student>& students, const string& filename) {
