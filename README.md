@@ -6,12 +6,23 @@
 | RAM         |             16GB DDR4 </br>               |
 | DISK        |             SATA SSD </br>                |
 
-# Kompiliavimo instrukcijos
+# Projekto atsisiuntimo instrukcija
 
-- [Atsisiusti g++](https://sourceforge.net/projects/mingw-w64/)
+## 1. Reikalingų įrankių atsisiuntimas
+
+- [Atsisiusti g++ (GCC kompiliatorius)](https://sourceforge.net/projects/mingw-w64/)
 - [Atsisiusti Make](https://gnuwin32.sourceforge.net/packages/make.htm)
+
+## 2. Projekto atsisiuntimas
+
 - Kopijuoti projekto direktorija `git clone https://github.com/Nerius123/OOP.git`
-- Atsidaryti komandine eilute projekto direktorijoje ir irasyti: `make -C Vectoriai ; make -C List ; make -C Deque`
+
+## 3. Projekto kompiliavimas
+
+- Atsidaryti komandinę eilutę projekto direktorijoje ir įrašykite: `make -C Vectoriai ; make -C List ; make -C Deque`
+
+## 4. Programos paleidimas
+
 - Paleisti norima programos versija: `./Vektoriai/v0_1.exe`, `./List/list_main.exe`, `./Deque/deque_main.exe`
 
 # Programos naudojimosi instrukcijos
@@ -63,8 +74,8 @@ Optimizuota v.pradine versija.
 
 Ši versija realizuota dviem būdais:
 
-1. Naudojamas masyvas pazymiu saugojimui;
-2. Naudojamas std::vector tipo konteineris studentų ir pažymių saugojimui.
+* Naudojamas masyvas pazymiu saugojimui;
+* Naudojamas std::vector tipo konteineris studentų ir pažymių saugojimui.
 
 # v0.2 versija
 
@@ -101,7 +112,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.00416   | 0.00747   | 0.00452   |
 | 3 testas | 0.00403   | 0.00741   | 0.00430   |
 
-### Rusiavimas faile (sek.):
+### Rūšiavimas faile (sek.):
 
 |          |    Vector |      List |     Deque |
 | :------- | --------: | --------: | --------: |
@@ -109,7 +120,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.00396   | 0.00305   | 0.00487   |
 | 3 testas | 0.00393   | 0.00307   | 0.00503   |
 
-### Rusiavimas i kietiakus ir vargsiukus (sek.):
+### Rūšiavimas į kietiakus ir vargšiukus (sek.):
 
 |          |    Vector |      List |     Deque |
 | :------- | --------: | --------: | --------: |
@@ -130,7 +141,7 @@ Viso faile yra 14 namų darbų pažymių
 | Bendras programos veikimo laikas                          | 0.02585  |     0.04791  |   0.04983  |
 | Vidutinis programos veikimo laikas                        | 0.00862  |     0.01597  |   0.01661  |
 
-## 10000 Studentu analize
+## 10000 Studentų analizė
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -142,7 +153,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.03774   | 0.07212   | 0.03896   |
 | 3 testas | 0.03758   | 0.08058   | 0.03932   |
 
-### Rusiavimas faile (sek.):
+### Rūšiavimas faile (sek.):
 
 |          |    Vector |      List |     Deque |
 | :------- | --------: | --------: | --------: |
@@ -150,7 +161,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.04968   | 0.05016   |  0.06121  |
 | 3 testas | 0.05773   | 0.04820   | 0.06142   |
 
-### Rusiavimas i kietiakus ir vargsiukus (sek.):
+### Rūšiavimas į kietiakus ir vargšiukus (sek.):
 
 |          |    Vector |      List |     Deque |
 | :------- | --------: | --------: | --------: |
@@ -171,7 +182,7 @@ Viso faile yra 14 namų darbų pažymių
 | Bendras programos veikimo laikas                          | 0.29445  |     0.44738  |   0.34072  |
 | Vidutinis programos veikimo laikas                        | 0.05889  |     0.089476 |   0.068144 |
 
-## 100000 Studentu analize
+## 100000 Studentų analizė
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -183,7 +194,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.37080  | 0.71785  | 0.38979  |
 | 3 testas | 0.37194  | 0.73215  | 0.40234  |
 
-### Rusiavimas faile (sek.):
+### Rūšiavimas faile (sek.):
 
 |          |   Vector |    List |   Deque |
 | :------- | -------: | ------: | ------: |
@@ -191,7 +202,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 0.61680  | 0.76743 | 0.79736 |
 | 3 testas | 0.60944  | 0.73856 | 0.80112 |
 
-### Rusiavimas i kietiakus ir vargsiukus (sek.):
+### Rūšiavimas į kietiakus ir vargšiukus (sek.):
 
 |          |    Vector |      List |     Deque |
 | :------- | --------: | --------: | --------: |
@@ -212,7 +223,7 @@ Viso faile yra 14 namų darbų pažymių
 | Bendras programos veikimo laikas                          | 3.111330 | 5.033420 | 3.912170 |
 | Vidutinis programos veikimo laikas                        | 1.037110 | 1.677807 | 1.304057 |
 
-## 1000000 Studentu analize
+## 1000000 Studentų analizė
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -224,7 +235,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 3.76253 | 7.70632 | 3.95980 |
 | 3 testas | 3.73542 | 7.30788 | 3.98991 |
 
-### Rusiavimas faile (sek.):
+### Rūšiavimas faile (sek.):
 
 |          |  Vector |    List |   Deque |
 | :------- | ------: | ------: | ------: |
@@ -232,7 +243,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 7.98596 | 10.96013| 10.68764|
 | 3 testas | 7.98624 | 12.77413| 10.66421|
 
-### Rusiavimas i kietiakus ir vargsiukus (sek.):
+### Rūšiavimas į kietiakus ir vargšiukus (sek.):
 
 |          |   Vector |     List |    Deque |
 | :------- | -------: | -------: | -------: |
@@ -254,7 +265,7 @@ Viso faile yra 14 namų darbų pažymių
 | Vidutinis programos veikimo laikas                        | 12.31545 | 20.63554 | 15.51927 |
 
 
-## 10000000 Studentu analize
+## 10000000 Studentų analizė
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -266,7 +277,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 37.75659| 45.81523| 42.22239|
 | 3 testas | 37.91062| 46.59042| 41.65897|
 
-### Rusiavimas faile (sek.):
+### Rūšiavimas faile (sek.):
 
 |          |  Vector |    List   |   Deque  |
 | :------- | ------: | ------:   | ------:  |
@@ -274,7 +285,7 @@ Viso faile yra 14 namų darbų pažymių
 | 2 testas | 97.63307| 143.85629 | 130.30423|
 | 3 testas | 98.59099| 144.78423 | 129.46221|
 
-### Rusiavimas i kietiakus ir vargsiukus (sek.):
+### Rūšiavimas į kietiakus ir vargšiukus (sek.):
 
 |          |  Vector |    List |   Deque  |
 | :------- | ------: | ------: | ------:  |
@@ -295,11 +306,11 @@ Viso faile yra 14 namų darbų pažymių
 | Bendras programos veikimo laikas                          | 421.8721 | 653.5614  | 556.7766  |
 | Vidutinis programos veikimo laikas                        | 140.6240 | 217.8538  | 185.5922  |
 
-# Programos rusiavimo i failus greitis priklausomai nuo strategijos
+# Programos rūšiavimo į failus greitis priklausomai nuo strategijos.
 
 ## 1 strategija
 
-### 1000 Studentu analize
+### ***1000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -315,7 +326,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/1000/Screenshot%202025-03-20%20230031.png)
 
-### 10000 Studentu analize
+### ***10000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -331,7 +342,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/10000/Screenshot%202025-03-20%20230059.png)
 
-### 100000 Studentu analize
+### ***100000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -347,7 +358,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/100000/Screenshot%202025-03-20%20230141.png)
 
-### 1000000 Studentu analize
+### ***1000000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -363,7 +374,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/1000000/Screenshot%202025-03-20%20230230.png)
 
-### 10000000 Studentu analize
+### ***10000000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -381,7 +392,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ## 2 strategija
 
-### 1000 Studentu analize
+### ***1000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -397,7 +408,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/1000/Screenshot%202025-03-20%20234354.png)
 
-### 10000 Studentu analize
+### ***10000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -413,7 +424,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/10000/Screenshot%202025-03-20%20234413.png)
 
-### 100000 Studentu analize
+### ***100000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -429,7 +440,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/100000/Screenshot%202025-03-20%20234434.png)
 
-### 1000000 Studentu analize
+### ***1000000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -445,7 +456,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Deque/1000000/Screenshot%202025-03-20%20234511.png)
 
-### 10000000 Studentu analize
+### ***10000000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -463,7 +474,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ## 3 strategija
 
-### 1000 Studentu analize
+### ***1000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -479,7 +490,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/1000/Screenshot%202025-03-21%20000842.png)
 
-### 10000 Studentu analize
+### ***10000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -495,7 +506,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/10000/Screenshot%202025-03-21%20000900.png)
 
-### 100000 Studentu analize
+### ***100000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -511,7 +522,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/100000/Screenshot%202025-03-21%20000926.png)
 
-### 1000000 Studentu analize
+### ***1000000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
@@ -527,7 +538,7 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/1000000/Screenshot%202025-03-21%20000949.png)
 
-### 10000000 Studentu analize
+### ***10000000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
 
