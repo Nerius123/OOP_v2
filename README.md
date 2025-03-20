@@ -295,6 +295,302 @@ Viso faile yra 14 namų darbų pažymių
 | Bendras programos veikimo laikas                          | 421.8721 | 653.5614  | 556.7766  |
 | Vidutinis programos veikimo laikas                        | 140.6240 | 217.8538  | 185.5922  |
 
+# Programos rusiavimo i kietekus ir vargsiukus greitis priklausomai nuo strategiju rezultatai
+
+## 1 strategija
+
+### 1000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+### 10000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+### 100000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+### 1000000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+### 10000000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+## 2 strategija
+
+### 1000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+### 10000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+### 100000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+### 1000000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
+### 10000000 Studentu analize
+
+Viso faile yra 14 namų darbų pažymių
+
+|                  |    Vector |      List |     Deque |
+| :--------------- | --------: | --------: | --------: |
+| Bendras laikas   |   |   |   |
+| Vidutinis laikas |   |   |   |
+
+### Nuotraukos
+
+#### Vector
+
+![image]()
+![image]()
+![image]()
+
+#### List
+
+![image]()
+![image]()
+![image]()
+
+#### Deque
+
+![image]()
+![image]()
+![image]()
+
 
 ## 5 failų generavimo laikas
 
