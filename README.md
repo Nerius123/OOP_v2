@@ -310,6 +310,17 @@ Viso faile yra 14 namų darbų pažymių
 
 ## 1 strategija
 
+*Aprašymas:*
+Studentai skirstomi į du naujus konteinerius: „kietiakiai“ ir „vargšiukai“. Pagrindinis konteineris lieka nepakeistas.
+
+*Privalumai:*
+✔ Lengva suprasti ir įgyvendinti
+✔ Mažesnė klaidų tikimybė
+
+*Trūkumai:*
+✖ Didelis atminties naudojimas
+✖ Papildomi duomenų kopijavimai, todėl vykdymo laikas ilgesnis
+
 ### ***1000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
@@ -391,6 +402,17 @@ Viso faile yra 14 namų darbų pažymių
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/1/Deque/10000000/Screenshot%202025-03-20%20230635.png)
 
 ## 2 strategija
+
+*Aprašymas:*
+Sukuriamas tik vienas naujas konteineris „vargšiukai“, o „kietiakiai“ lieka pagrindiniame konteineryje. Studentai pašalinami iš pradinio sąrašo.
+
+*Privalumai:*
+✔ Mažesnis atminties naudojimas nei 1 strategijoje
+✔ Greitesnis skirstymas
+
+*Trūkumai:*
+✖ erase() metodas gali būti neefektyvus
+✖ list ir deque konteineriams efektyvumas priklauso nuo naudojamų metodų
 
 ### ***1000 Studentų analizė***
 
@@ -474,6 +496,17 @@ Viso faile yra 14 namų darbų pažymių
 
 ## 3 strategija
 
+*Aprašymas:*
+Naudojami efektyvūs STL algoritmai (std::partition arba std::remove_if), kurie perkelia studentus be nereikalingų duomenų kopijavimų.
+
+*Privalumai:*
+✔ Greičiausia strategija, mažiau kopijavimų
+✔ Mažiausias atminties sunaudojimas
+
+*Trūkumai:*
+✖ Reikalauja daugiau supratimo apie STL algoritmus
+✖ Sudėtingesnis įgyvendinimas
+
 ### ***1000 Studentų analizė***
 
 Viso faile yra 14 namų darbų pažymių
@@ -554,6 +587,10 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Deque/10000000/Screenshot%202025-03-21%20001334.png)
 
+*Apibendrinimas*
+* 1 strategija – lengviausia suprasti, bet lėta ir naudoja daug atminties.
+* 2 strategija – efektyvesnė už 1, bet gali būti lėta dėl erase().
+* 3 strategija – greičiausia ir optimaliausia, bet sudėtingesnė.
 
 ## 5 failų generavimo laikas
 
