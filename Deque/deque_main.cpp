@@ -133,7 +133,7 @@ int main() {
                 deque<Student> vargsiukai, kietiakiai;
                 
                 // Suskirstymas i dvi grupes
-                splitStudents(students, useMedian);
+                splitStudents3(students, useMedian);
 
                 // Rikiavimas naudojant sort
                 sort(vargsiukai.begin(), vargsiukai.end(), [useMedian](const Student& a, const Student& b) {
@@ -159,7 +159,16 @@ int main() {
                 string filename;
                 cout << "Iveskite testuojamo failo pavadinima: ";
                 cin >> filename;
-                testDataProcessing(filename);
+            
+                int strategy;
+                cout << "Pasirinkite studentu skirstymo strategija:\n";
+                cout << "1 - strategija\n";
+                cout << "2 - strategija\n";
+                cout << "3 - strategija\n";
+                cout << "Pasirinkimas: ";
+                cin >> strategy;
+            
+                testDataProcessing(filename, strategy);
             }
             
             else if (choice == '8') {

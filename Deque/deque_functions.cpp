@@ -291,7 +291,7 @@ void generateStudentFiles() {
 }
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai) naudojant deque
-void splitStudents(deque<Student>& students, bool useMedian) {
+void splitStudents3(deque<Student>& students, bool useMedian) {
     auto it = partition(students.begin(), students.end(), [useMedian](const Student& s) {
         return calculateFinalGrade(s, useMedian) < 5.0;
     });
@@ -301,6 +301,32 @@ void splitStudents(deque<Student>& students, bool useMedian) {
 
     saveStudentsToFile(vargsiukai, "vargsiukai.txt");
     saveStudentsToFile(kietiakiai, "kietiakiai.txt");
+}
+void splitStudents2(deque<Student>& students, deque<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear();
+
+    auto it = remove_if(students.begin(), students.end(), [&](const Student& s) {
+        if (calculateFinalGrade(s, useMedian) < 5.0) {
+            vargsiukai.push_back(s);
+            return true;
+        }
+        return false;
+    });
+
+    students.erase(it, students.end());
+}
+
+// Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai) naudojant deque
+void splitStudents1(const deque<Student>& students, deque<Student>& vargsiukai, deque<Student>& kietiakiai, bool useMedian) {
+    for (const auto& student : students) {
+        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
+
+        if (finalGrade >= 5.00000) {
+            kietiakiai.push_back(student);
+        } else {
+            vargsiukai.push_back(student);
+        }
+    }
 }
 
 // Funkcija, kuri issaugo studentu sarasa i faila
@@ -328,7 +354,7 @@ void saveStudentsToFile(const deque<Student>& students, const string& filename) 
     //cout << "Failas \"" << filename << "\" issaugotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
 }
 
-void testDataProcessing(const string& filename) {
+void testDataProcessing(const string& filename, int strategy) {
     auto total_start_time = high_resolution_clock::now(); // Visos operacijos pradzios laikas
 
     deque<Student> students;  // Naudojamas deque kaip konteineris
@@ -352,13 +378,22 @@ void testDataProcessing(const string& filename) {
     // 3. Studentu skirstymas i dvi grupes
     deque<Student> vargsiukai, kietiakiai;
     start_time = high_resolution_clock::now();
-    for (const auto& student : students) {
-        if (calculateFinalGrade(student, false) >= 5.0) {
-            kietiakiai.push_back(student);
-        } else {
-            vargsiukai.push_back(student);
+    switch (strategy) {
+        case 1:
+            splitStudents1(students, vargsiukai, kietiakiai, false);
+            break;
+        case 2:
+            splitStudents2(students, vargsiukai, false);
+            break;
+        case 3:
+            splitStudents3(students, false);
+            break;
+        default:
+            cout << "Neteisinga strategija. Naudojama numatytoji (3 strategija)).\n";
+            splitStudents3(students, false);
+            break;
         }
-    }
+    
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
     cout << students.size() << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
