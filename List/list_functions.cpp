@@ -408,7 +408,7 @@ void testDataProcessing(const string& filename, int strategy) {
     std::chrono::duration<double> irasymoTrukme;
     // 2. Studentu rusiavimas didejancia tvarka (sort funkcija)
     start_time = high_resolution_clock::now();
-
+    size_t originalStudentCount = students.size();
     switch (strategy) {
         case 1:
             splitStudents1(students, vargsiukai, kietiakiai, false);
@@ -430,11 +430,11 @@ void testDataProcessing(const string& filename, int strategy) {
         elapsed = end_time - start_time;
         if (strategy == 3){
             elapsed = elapsed - irasymoTrukme;
-            cout << students.size() << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+            cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
         }
     
         if (strategy == 1 || strategy == 2) {
-        cout << students.size() << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+        cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 4. Rezultatu issaugojimas i failus
     start_time = high_resolution_clock::now();
