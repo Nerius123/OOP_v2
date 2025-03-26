@@ -316,8 +316,7 @@ void splitStudents3(vector<Student>& students, bool useMedian, std::chrono::dura
     auto end2 = high_resolution_clock::now();
     duration<double> laik1 = end2 - start2;
 
-    cout << vargsiukai.size() << " \"vargsiukai\" studentu issaugojimas uztruko: "
-         << fixed << setprecision(5) << laik1.count() << " sek.\n";
+    cout << vargsiukai.size() << " \"vargsiukai\" studentu issaugojimas uztruko: " << fixed << setprecision(5) << laik1.count() << " sek.\n";
 
     irasymoTrukme = laik + laik1;
 }
