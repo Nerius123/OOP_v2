@@ -131,8 +131,8 @@ int main() {
                 list<Student> vargsiukai, kietiakiai;  // ✅ Pakeista iš vector į list
 
                 // Suskirstymas į dvi grupes
-                splitStudents3(students, useMedian);
-
+                splitStudents(students, vargsiukai, kietiakiai, false);
+                
                 // Rikiavimas pasirinkta tvarka
                 auto comparator = [useMedian, ascending](const Student& a, const Student& b) {
                     double gradeA = calculateFinalGrade(a, useMedian);
