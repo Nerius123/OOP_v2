@@ -382,7 +382,7 @@ void testDataProcessing(const string& filename, int strategy){
         break;
     default:
         cout << "Neteisinga strategija. Naudojama numatytoji (3 strategija)).\n";
-        splitStudents3(students, vargsiukai, kietiakiai, false);
+        splitStudents3(students, false);
         break;
     }
 
