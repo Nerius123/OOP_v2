@@ -22,8 +22,10 @@ void printStudents(const list<Student> &students, bool useMedian);
 void readFromFile(list<Student> &students, const string &filename);
 void saveResultsToFile(list<Student> students, const string& filename, bool showAverage, bool showMedian);
 void generateStudentFiles();
-void splitStudents(list<Student>& students, bool useMedian);
+void splitStudents3(list<Student>& students, bool useMedian);
+void splitStudents2(list<Student>& students, list<Student>& vargsiukai, bool useMedian);
+void splitStudents1(const list<Student>& students, list<Student>& vargsiukai, list<Student>& kietiakiai, bool useMedian);
 void saveStudentsToFile(const list<Student>& students, const string& filename);
-void testDataProcessing(const string& filename);
+void testDataProcessing(const string& filename, int strategy);
 
 #endif  // Baigiame header guard (apsauga nuo pakartotinio įtraukimo)

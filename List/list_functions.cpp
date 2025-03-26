@@ -291,7 +291,7 @@ void generateStudentFiles() {
 
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
-void splitStudents(list<Student>& students, bool useMedian) {
+void splitStudents3(list<Student>& students, bool useMedian) {
     auto it = partition(students.begin(), students.end(), [useMedian](const Student& s) {
         return calculateFinalGrade(s, useMedian) < 5.0;
     });
@@ -301,6 +301,30 @@ void splitStudents(list<Student>& students, bool useMedian) {
 
     saveStudentsToFile(vargsiukai, "vargsiukai.txt");
     saveStudentsToFile(students, "kietiakiai.txt");
+}
+
+void splitStudents2(list<Student>& students, list<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear();
+
+    for (auto it = students.begin(); it != students.end(); ) {
+        if (calculateFinalGrade(*it, useMedian) < 5.0) {
+            vargsiukai.splice(vargsiukai.end(), students, it++); // Perkeliam ir iskart salinam
+        } else {
+            ++it;
+        }
+    }
+}
+
+void splitStudents1(const list<Student>& students, list<Student>& vargsiukai, list<Student>& kietiakiai, bool useMedian) {
+    for (const auto& student : students) {
+        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
+
+        if (finalGrade >= 5.00000) {
+            kietiakiai.push_back(student); 
+        } else {
+            vargsiukai.push_back(student);
+        }
+    }
 }
 
 
@@ -332,10 +356,12 @@ void saveStudentsToFile(const list<Student>& students, const string& filename) {
 }
 
 
-void testDataProcessing(const string& filename) {
+void testDataProcessing(const string& filename, int strategy) {
     auto total_start_time = high_resolution_clock::now(); // Visos operacijos pradzios laikas
 
     list<Student> students;  // Naudojamas list kaip konteineris
+    list<Student> vargsiukai, kietiakiai;
+
     
     // 1. Duomenu nuskaitymas is failo
     auto start_time = high_resolution_clock::now();
@@ -346,15 +372,27 @@ void testDataProcessing(const string& filename) {
 
     // 2. Studentu rusiavimas didejancia tvarka (sort funkcija)
     start_time = high_resolution_clock::now();
-    students.sort([](const Student& a, const Student& b) {
-        return calculateFinalGrade(a, false) < calculateFinalGrade(b, false);
-    });
+
+    switch (strategy) {
+    case 1:
+        splitStudents1(students, vargsiukai, kietiakiai, false);
+        break;
+    case 2:
+        splitStudents2(students, vargsiukai, false);
+        break;
+    case 3:
+        splitStudents3(students, false);
+        break;
+    default:
+        cout << "Neteisinga strategija. Naudojama numatytoji (3 strategija)).\n";
+        splitStudents3(students, false);
+        break;
+    }
+
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << students.size() << " studentu rusiavimas didejancia tvarka konteineryje uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
-
+    cout << students.size() << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
     // 3. Studentų skirstymas i dvi grupes
-    list<Student> vargsiukai, kietiakiai;
     start_time = high_resolution_clock::now();
     for (const auto& student : students) {
         if (calculateFinalGrade(student, false) >= 5.0) {

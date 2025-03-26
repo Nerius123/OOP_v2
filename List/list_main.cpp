@@ -131,7 +131,7 @@ int main() {
                 list<Student> vargsiukai, kietiakiai;  // ✅ Pakeista iš vector į list
 
                 // Suskirstymas į dvi grupes
-                splitStudents(students, useMedian);
+                splitStudents3(students, useMedian);
 
                 // Rikiavimas pasirinkta tvarka
                 auto comparator = [useMedian, ascending](const Student& a, const Student& b) {
@@ -152,7 +152,16 @@ int main() {
                 string filename;
                 cout << "Iveskite testuojamo failo pavadinima: ";
                 cin >> filename;
-                testDataProcessing(filename);
+            
+                int strategy;
+                cout << "Pasirinkite studentu skirstymo strategija:\n";
+                cout << "1 - strategija\n";
+                cout << "2 - strategija\n";
+                cout << "3 - strategija\n";
+                cout << "Pasirinkimas: ";
+                cin >> strategy;
+            
+                testDataProcessing(filename, strategy);
             }
 
             else if (choice == '8') {
