@@ -279,7 +279,7 @@ void generateStudentFiles() {
 
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
-void splitStudents(vector<Student>& students, bool useMedian) {
+void splitStudents3(vector<Student>& students, bool useMedian) {
     auto it = partition(students.begin(), students.end(), [useMedian](const Student& s) {
         return calculateFinalGrade(s, useMedian) < 5.0;
     });
@@ -289,6 +289,33 @@ void splitStudents(vector<Student>& students, bool useMedian) {
 
     saveStudentsToFile(vargsiukai, "vargsiukai.txt");
     saveStudentsToFile(students, "kietiakiai.txt");
+}
+
+void splitStudents2 (vector<Student>& students, vector<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear(); // Išvalom prieš pildymą
+
+    // Perkeliame vargsiukus i nauja konteineri
+    auto it = remove_if(students.begin(), students.end(), [&](const Student& s) {
+        if (calculateFinalGrade(s, useMedian) < 5.0) {
+            vargsiukai.push_back(s);
+            return true;
+        }
+        return false;
+    });
+    
+    students.erase(it, students.end());
+}
+
+void splitStudents1 (const vector<Student>& students, vector<Student>& vargsiukai, vector<Student>& kietiakiai, bool useMedian) {
+    for (const auto& student : students) {
+        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
+
+        if (finalGrade >= 5.00000) {
+            kietiakiai.push_back(student);
+        } else {
+            vargsiukai.push_back(student);
+        }
+    }
 }
 
 
@@ -318,7 +345,7 @@ void saveStudentsToFile(const vector<Student>& students, const string& filename)
     //cout << "Failas \"" << filename << "\" issaugotas per: " << fixed << setprecision(5) << elapsed.count() << " s\n";
 }
 
-void testDataProcessing(const string& filename) {
+void testDataProcessing(const string& filename, int strategy){
     auto total_start_time = high_resolution_clock::now(); // Visos operacijos pradzios laikas
 
     vector<Student> students;  // Naudojamas vector kaip konteineris
@@ -342,13 +369,23 @@ void testDataProcessing(const string& filename) {
     // 3. Studentu skirstymas i dvi grupes
     vector<Student> vargsiukai, kietiakiai;
     start_time = high_resolution_clock::now();
-    for (const auto& student : students) {
-        if (calculateFinalGrade(student, false) >= 5.0) {
-            kietiakiai.push_back(student);
-        } else {
-            vargsiukai.push_back(student);
-        }
+
+    switch (strategy) {
+    case 1:
+        splitStudents1(students, vargsiukai, kietiakiai, false);
+        break;
+    case 2:
+        splitStudents2(students, vargsiukai, false);
+        break;
+    case 3:
+        splitStudents3(students, false);
+        break;
+    default:
+        cout << "Neteisinga strategija. Naudojama numatytoji (3 strategija)).\n";
+        splitStudents3(students, vargsiukai, kietiakiai, false);
+        break;
     }
+
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
     cout << students.size() << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
