@@ -139,11 +139,13 @@ int main() {
 
                 // Rikiavimas naudojant sort
                 sort(vargsiukai.begin(), vargsiukai.end(), [useMedian](const Student& a, const Student& b) {
-                    return calculateFinalGrade(a, useMedian) < calculateFinalGrade(b, useMedian);
+                    return a.calculateFinalGrade(useMedian) < b.calculateFinalGrade(useMedian);
+
                 });
 
                 sort(kietiakiai.begin(), kietiakiai.end(), [useMedian](const Student& a, const Student& b) {
-                    return calculateFinalGrade(a, useMedian) < calculateFinalGrade(b, useMedian);
+                    return a.calculateFinalGrade(useMedian) < b.calculateFinalGrade(useMedian);
+
                     });
 
                 // Jei reikia mazejancia tvarka
