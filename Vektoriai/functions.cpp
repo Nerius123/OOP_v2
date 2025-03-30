@@ -61,24 +61,6 @@ void inputStudentData(Student &s) {
 }
 
 
-// Apskaiciuojamas vidurkis 
-double Student::calculateAverage() const {
-    if (grades_.empty()) throw std::runtime_error("Negalima skaiciuoti vidurkio be pazymiu.");
-    return std::accumulate(grades_.begin(), grades_.end(), 0.0) / grades_.size();
-}
-
-double Student::calculateMedian() const {
-    if (grades_.empty()) throw std::runtime_error("Negalima skaiciuoti medianos be pazymiu.");
-    std::vector<int> sortedGrades = grades_;
-    std::sort(sortedGrades.begin(), sortedGrades.end());
-    size_t n = sortedGrades.size();
-    return (n % 2 == 0) ? (sortedGrades[n / 2 - 1] + sortedGrades[n / 2]) / 2.0 : sortedGrades[n / 2];
-}
-
-double Student::calculateFinalGrade(bool useMedian) const {
-    return 0.400 * (useMedian ? calculateMedian() : calculateAverage()) + 0.600 * examGrade_;
-}
-
 // Meniu atvaizdavimas
 void displayMenu() {
     cout << "========================" << endl;
