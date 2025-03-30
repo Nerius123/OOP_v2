@@ -4,15 +4,15 @@
 
 class Student {
 private:
-    std::string name_;
-    std::string surname_;
-    std::vector<int> grades_;
-    int examGrade_;
+    std::string name_; //rasau zodzio gale _ del to kad butu lengviau atskirti private kintamaji nuo funkcijos parametro
+    std::string surname_; // tas pats
+    std::vector<int> grades_; // tas pats
+    int examGrade_; // tas pats
 
 public:
     // Konstruktoriai
     Student();                          // Default
-    Student(std::istream& is);          // Iš stream'o
+    Student(std::istream& is);          // Is stream'o
 
     // Geteriai (skaitymui)
     inline std::string name() const { return name_; }
@@ -26,7 +26,7 @@ public:
     inline void setGrades(const std::vector<int>& grades) { grades_ = grades; }
     inline void setExam(int examGrade) { examGrade_ = examGrade; }
 
-    // Skaitymas iš srauto
+    // Skaitymas is srauto
     std::istream& read(std::istream&);
 
     // Naudojamos funkcijos
