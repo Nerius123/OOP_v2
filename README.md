@@ -618,3 +618,20 @@ Testas: Strategija 3, Konteineris – Vektorius;
 | 2.       | class     | 3.88180 s   | 8.11486  s | 0.60913 s  | 0.88522  s           | 0.61672 s             | 14.10859 s |
 | 1.       | struct    | 3.92188 s   | 8.52591  s | 0.63231 s  | 0.88594  s           | 0.66692 s             | 14.63407 s |
 | 2.       | struct    | 3.85093 s   | 8.05310  s | 0.62721 s  | 0.85285  s           | 0.60533 s             | 13.99046 s |
+
+
+## Optimizavimo flag'ų palyginimas (100000 studentų, strategija 3, vektorius)
+
+| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso |
+|---------------|-------------|------------|------------|----------------------|------------------------|------|
+| -O1           | s   | s  | s  | s            | s              | s |
+| -O2           | s   | s  | s  | s            | s              | s |
+| -O3           | s   | s  | s  | s            | s              | s |
+
+## Optimizavimo flag'ų palyginimas (1000000 studentų, strategija 3, vektorius)
+
+| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso |
+|---------------|-------------|------------|------------|----------------------|------------------------|------|
+| -O1           | s   | s  | s  | s            | s              | s |
+| -O2           | s   | s  | s  | s            | s              | s |
+| -O3           | s   | s  | s  | s            | s              | s |
