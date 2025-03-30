@@ -2,14 +2,8 @@
 #define FUNCTIONS_H // Jei nėra apibrėžtas, apibrėžia FUNCTIONS_H (kad kompiliatorius kitą kartą žinotų, jog jis jau įtrauktas)
 
 #include "../my_library.h"
+#include "Student.h"
 
-// Studentų duomenys
-struct Student {
-    string name;
-    string surname;
-    vector<int> grades;
-    int examGrade;
-};
 
 // Funkcijų prototipai
 void inputStudentData(Student &s);
