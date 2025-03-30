@@ -377,8 +377,7 @@ void testDataProcessing(const string& filename, int strategy) {
     readFromFile(students, filename);
     auto end_time = high_resolution_clock::now();
     duration<double> elapsed = end_time - start_time;
-    cout << "Failo su " << students.size() << " studentu duomenimis nuskaitymas uztruko: "
-         << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << "Failo su " << students.size() << " studentu duomenimis nuskaitymas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 2. Rūšiavimas
     start_time = high_resolution_clock::now();
@@ -387,8 +386,7 @@ void testDataProcessing(const string& filename, int strategy) {
     });
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << students.size() << " studentu rusiavimas konteineryje uztruko: "
-         << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << students.size() << " studentu rusiavimas konteineryje uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 3. Skirstymas į grupes
     start_time = high_resolution_clock::now();
@@ -414,27 +412,23 @@ void testDataProcessing(const string& filename, int strategy) {
 
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: "
-         << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 4. Išsaugojimas į failus
     start_time = high_resolution_clock::now();
     saveStudentsToFile(kietiakiai, "kietiakiai_test.txt");
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << kietiakiai.size() << " \"kietiakai\" studentu issaugojimas uztruko: "
-         << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << kietiakiai.size() << " \"kietiakai\" studentu issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     start_time = high_resolution_clock::now();
     saveStudentsToFile(vargsiukai, "vargsiukai_test.txt");
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << vargsiukai.size() << " \"vargsiukai\" studentu issaugojimas uztruko: "
-         << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << vargsiukai.size() << " \"vargsiukai\" studentu issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 5. Visas laikas
     auto total_end_time = high_resolution_clock::now();
     elapsed = total_end_time - total_start_time;
-    cout << "Visas studentu failo apdorojimas uztruko: "
-         << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << "Visas studentu failo apdorojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 }

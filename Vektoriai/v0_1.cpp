@@ -29,7 +29,6 @@ int main() {
                 if (filename.empty()) throw std::invalid_argument("Failo pavadinimas negali buti tuscias.");
                 
                 readFromFile(students, filename);
-                cout << "Nuskaityta" << endl; 
             } 
 
             else if (choice == '3') {
@@ -157,8 +156,6 @@ int main() {
                 // Issaugome i failus
                 saveStudentsToFile(vargsiukai, "vargsiukai.txt");
                 saveStudentsToFile(kietiakiai, "kietiakiai.txt");
-
-                cout << "Padaryta!" << endl; 
             }
 
             else if (choice == '7') {
