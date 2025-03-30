@@ -595,3 +595,16 @@ Viso faile yra 14 namų darbų pažymių
 ## 5 failų generavimo laikas
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v0.4/Bendras/Screenshot%202025-03-07%20000236.png)
+
+# Palyginimas: struct vs class
+
+Testas: Strategija 3, konteineris – vektorius
+
+## Failas: 100000 studentų
+
+| Bandymas | Versija | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas | Viso  |
+|----------|---------|-------------|------------|------------|----------|--------|
+| 1.       | struct  |  s      |  s     |  s     |  s   |  s |
+| 2.       | struct  |  s      |  s     |  s     |  s   |  s |
+| 1.       | class   |  s      |  s     |  s     |  s   |  s |
+| 2.       | class   |  s      |  s     |  s     |  s   |  s |
