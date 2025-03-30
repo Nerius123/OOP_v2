@@ -596,15 +596,27 @@ Viso faile yra 14 namų darbų pažymių
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v0.4/Bendras/Screenshot%202025-03-07%20000236.png)
 
-# Palyginimas: struct vs class
 
-Testas: Strategija 3, konteineris – vektorius
+# Palyginimas: STRUCT vs CLASS
+
+Testas: Strategija 3, Konteineris – Vektorius;
 
 ## Failas: 100000 studentų
 
-| Bandymas | Versija | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas | Viso  |
-|----------|---------|-------------|------------|------------|----------|--------|
+| Bandymas | Versija | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso      |
+|----------|---------|-------------|------------|------------|----------------------|-----------------------|-----------|
+| 1.       | class   | 0.39577 s   | 0.62389 s  | 0.05588 s  | 0.09184  s           | 0.06401 s             | 1.23239 s |
+| 2.       | class   | 0.38749 s   | 0.64918  s | 0.05646 s  | 0.08932  s           | 0.06371 s             | 1.24702 s |
+|----------|---------|-------------|------------|------------|----------------------|-----------------------|-----------|
 | 1.       | struct  |  s      |  s     |  s     |  s   |  s |
 | 2.       | struct  |  s      |  s     |  s     |  s   |  s |
-| 1.       | class   |  s      |  s     |  s     |  s   |  s |
-| 2.       | class   |  s      |  s     |  s     |  s   |  s |
+
+## Failas: 100000 studentų
+
+| Bandymas | Versija | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso      |
+|----------|---------|-------------|------------|------------|----------------------|-----------------------|-----------|
+| 1.       | class   | 3.85175 s   | 7.97674  s | 0.60812 s  | 0.89476  s           | 0.61835 s             | 13.95062 s|
+| 2.       | class   | 3.88180 s   | 8.11486  s | 0.60913 s  | 0.88522  s           | 0.61672 s             | 14.10859 s|
+|----------|---------|-------------|------------|------------|----------------------|-----------------------|-----------|
+| 1.       | struct  |  s      |  s     |  s     |  s   |  s |
+| 2.       | struct  |  s      |  s     |  s     |  s   |  s |
