@@ -277,22 +277,24 @@ void generateStudentFiles() {
     cout << "Vidutinis vieno failo generavimo laikas: " << fixed << setprecision(5) << averageTime << " s\n";
 }
 
+void splitStudents (const vector<Student>& students, vector<Student>& vargsiukai, vector<Student>& kietiakiai, bool useMedian) {
+    vargsiukai.clear();
+    kietiakiai.clear();
+    
+    for (const auto& student : students) {
+        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
 
-// Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
-void splitStudents3(vector<Student>& students, bool useMedian) {
-    auto it = partition(students.begin(), students.end(), [useMedian](const Student& s) {
-        return calculateFinalGrade(s, useMedian) < 5.0;
-    });
-
-    vector<Student> vargsiukai(students.begin(), it);  // "Vargsiukai" – mazesni už 5.0
-    students.erase(students.begin(), it);             // "Kietiakiai" lieka pradiniame vektoriuje
-
-    saveStudentsToFile(vargsiukai, "vargsiukai.txt");
-    saveStudentsToFile(students, "kietiakiai.txt");
+        if (finalGrade >= 5.00000) {
+            kietiakiai.push_back(student);
+        } else {
+            vargsiukai.push_back(student);
+        }
+    }
 }
 
-void splitStudents2 (vector<Student>& students, vector<Student>& vargsiukai, bool useMedian) {
-    vargsiukai.clear(); // Išvalom prieš pildymą
+// Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
+void splitStudents3 (vector<Student>& students, vector<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear(); 
 
     // Perkeliame vargsiukus i nauja konteineri
     auto it = remove_if(students.begin(), students.end(), [&](const Student& s) {
@@ -306,7 +308,23 @@ void splitStudents2 (vector<Student>& students, vector<Student>& vargsiukai, boo
     students.erase(it, students.end());
 }
 
+void splitStudents2(vector<Student>& students, vector<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear();
+
+    vector<Student> kietiakiai;
+    for (const auto& s : students) {
+        if (calculateFinalGrade(s, useMedian) < 5.0)
+            vargsiukai.push_back(s);
+        else
+            kietiakiai.push_back(s);
+    }
+    students.swap(kietiakiai);
+}
+
 void splitStudents1 (const vector<Student>& students, vector<Student>& vargsiukai, vector<Student>& kietiakiai, bool useMedian) {
+    vargsiukai.clear();
+    kietiakiai.clear();
+    
     for (const auto& student : students) {
         double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
 
@@ -349,6 +367,7 @@ void testDataProcessing(const string& filename, int strategy){
     auto total_start_time = high_resolution_clock::now(); // Visos operacijos pradzios laikas
 
     vector<Student> students;  // Naudojamas vector kaip konteineris
+    vector<Student> vargsiukai, kietiakiai;
     
     // 1. Duomenu nuskaitymas is failo
     auto start_time = high_resolution_clock::now();
@@ -367,28 +386,29 @@ void testDataProcessing(const string& filename, int strategy){
     cout << students.size() << " studentu rusiavimas konteineryje uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 3. Studentu skirstymas i dvi grupes
-    vector<Student> vargsiukai, kietiakiai;
     start_time = high_resolution_clock::now();
-
+    size_t originalStudentCount = students.size();
     switch (strategy) {
     case 1:
         splitStudents1(students, vargsiukai, kietiakiai, false);
         break;
     case 2:
         splitStudents2(students, vargsiukai, false);
+        kietiakiai = students;
         break;
     case 3:
-        splitStudents3(students, false);
+        splitStudents3(students, vargsiukai, false);
+        kietiakiai = students;
         break;
     default:
-        cout << "Neteisinga strategija. Naudojama numatytoji (3 strategija)).\n";
-        splitStudents3(students, false);
+        cout << "Neteisinga strategija. Naudojama numatytoji (1 strategija)).\n";
+        splitStudents1(students, vargsiukai, kietiakiai, false);
         break;
     }
 
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << students.size() << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 4. Rezultatu issaugojimas i failus
     start_time = high_resolution_clock::now();
@@ -402,7 +422,7 @@ void testDataProcessing(const string& filename, int strategy){
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
     cout << vargsiukai.size() << " \"vargsiukai\" studentu issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
-
+    
     // 5. Bendras testavimo laikas
     auto total_end_time = high_resolution_clock::now();
     elapsed = total_end_time - total_start_time;

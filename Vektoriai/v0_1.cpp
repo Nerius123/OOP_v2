@@ -28,6 +28,7 @@ int main() {
                 if (filename.empty()) throw std::invalid_argument("Failo pavadinimas negali buti tuscias.");
                 
                 readFromFile(students, filename);
+                cout << "Nuskaityta" << endl; 
             } 
 
             else if (choice == '3') {
@@ -133,7 +134,7 @@ int main() {
                 vector<Student> vargsiukai, kietiakiai;
                 
                 // Suskirstymas i dvi grupes
-                splitStudents3(students, useMedian);
+                splitStudents(students, vargsiukai, kietiakiai, useMedian);
 
                 // Rikiavimas naudojant sort
                 sort(vargsiukai.begin(), vargsiukai.end(), [useMedian](const Student& a, const Student& b) {
@@ -154,6 +155,7 @@ int main() {
                 saveStudentsToFile(vargsiukai, "vargsiukai.txt");
                 saveStudentsToFile(kietiakiai, "kietiakiai.txt");
 
+                cout << "Padaryta!" << endl; 
             }
 
             else if (choice == '7') {

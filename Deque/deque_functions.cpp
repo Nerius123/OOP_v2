@@ -290,19 +290,20 @@ void generateStudentFiles() {
     cout << "Vidutinis vieno failo generavimo laikas: " << fixed << setprecision(5) << averageTime << " s\n";
 }
 
-// Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai) naudojant deque
-void splitStudents3(deque<Student>& students, bool useMedian) {
-    auto it = partition(students.begin(), students.end(), [useMedian](const Student& s) {
-        return calculateFinalGrade(s, useMedian) < 5.0;
-    });
+void splitStudents(const deque<Student>& students, deque<Student>& vargsiukai, deque<Student>& kietiakiai, bool useMedian) {
+    for (const auto& student : students) {
+        double finalGrade = calculateFinalGrade(student, useMedian); // Pasirinkimas pagal nora
 
-    deque<Student> vargsiukai(students.begin(), it);  // "Vargsiukai"
-    deque<Student> kietiakiai(it, students.end());    // "Kietiakiai"
-
-    saveStudentsToFile(vargsiukai, "vargsiukai.txt");
-    saveStudentsToFile(kietiakiai, "kietiakiai.txt");
+        if (finalGrade >= 5.00000) {
+            kietiakiai.push_back(student);
+        } else {
+            vargsiukai.push_back(student);
+        }
+    }
 }
-void splitStudents2(deque<Student>& students, deque<Student>& vargsiukai, bool useMedian) {
+
+// Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai) naudojant deque
+void splitStudents3(deque<Student>& students, deque<Student>& vargsiukai, bool useMedian) {
     vargsiukai.clear();
 
     auto it = remove_if(students.begin(), students.end(), [&](const Student& s) {
@@ -315,6 +316,21 @@ void splitStudents2(deque<Student>& students, deque<Student>& vargsiukai, bool u
 
     students.erase(it, students.end());
 }
+
+
+void splitStudents2(deque<Student>& students, deque<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear();
+
+    deque<Student> kietiakiai;
+    for (const auto& s : students) {
+        if (calculateFinalGrade(s, useMedian) < 5.0)
+            vargsiukai.push_back(s);
+        else
+            kietiakiai.push_back(s);
+    }
+    students.swap(kietiakiai); // students paliekami tik kietaikai (swapas rodykles sukeicia, nekopijuoja studentu)
+}
+
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai) naudojant deque
 void splitStudents1(const deque<Student>& students, deque<Student>& vargsiukai, deque<Student>& kietiakiai, bool useMedian) {
@@ -375,28 +391,33 @@ void testDataProcessing(const string& filename, int strategy) {
     elapsed = end_time - start_time;
     cout << students.size() << " studentu rusiavimas didejancia tvarka konteineryje uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
+
     // 3. Studentu skirstymas i dvi grupes
     deque<Student> vargsiukai, kietiakiai;
+    size_t originalStudentCount = students.size();
     start_time = high_resolution_clock::now();
+
     switch (strategy) {
         case 1:
             splitStudents1(students, vargsiukai, kietiakiai, false);
             break;
         case 2:
             splitStudents2(students, vargsiukai, false);
+            kietiakiai = students;
             break;
         case 3:
-            splitStudents3(students, false);
+            splitStudents3(students, vargsiukai, false);
+            kietiakiai = students;
             break;
         default:
-            cout << "Neteisinga strategija. Naudojama numatytoji (3 strategija)).\n";
-            splitStudents3(students, false);
+            cout << "Neteisinga strategija. Naudojama numatytoji (1 strategija)).\n";
+            splitStudents1(students, vargsiukai, kietiakiai, false);
             break;
         }
     
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
-    cout << students.size() << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
+    cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
     // 4. Rezultatu issaugojimas i failus
     start_time = high_resolution_clock::now();

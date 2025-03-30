@@ -133,7 +133,7 @@ int main() {
                 deque<Student> vargsiukai, kietiakiai;
                 
                 // Suskirstymas i dvi grupes
-                splitStudents3(students, useMedian);
+                splitStudents1(students, vargsiukai, kietiakiai, false);
 
                 // Rikiavimas naudojant sort
                 sort(vargsiukai.begin(), vargsiukai.end(), [useMedian](const Student& a, const Student& b) {

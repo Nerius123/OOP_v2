@@ -420,7 +420,7 @@ Viso faile yra 14 namų darbų pažymių
 
 #### Vector
 
-![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Vektor/1000/Screenshot%202025-03-20%20232329.png)
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/2/Vektor/1000/Screenshot%202025-03-30%20123319.png)
 
 #### List
 
@@ -513,7 +513,7 @@ Viso faile yra 14 namų darbų pažymių
 
 #### Vector
 
-![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/1000/Screenshot%202025-03-20%20235330.png)
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/1000/Screenshot%202025-03-30%20123832.png)
 
 #### List
 
@@ -529,7 +529,7 @@ Viso faile yra 14 namų darbų pažymių
 
 #### Vector
 
-![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/10000/Screenshot%202025-03-20%20235354.png)
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/10000/Screenshot%202025-03-30%20123749.png)
 
 #### List
 
@@ -545,7 +545,7 @@ Viso faile yra 14 namų darbų pažymių
 
 #### Vector
 
-![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/100000/Screenshot%202025-03-20%20235419.png)
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/100000/Screenshot%202025-03-30%20123915.png)
 
 #### List
 
@@ -561,7 +561,7 @@ Viso faile yra 14 namų darbų pažymių
 
 #### Vector
 
-![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/1000000/Screenshot%202025-03-20%20235501.png)
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/1000000/Screenshot%202025-03-30%20124005.png)
 
 #### List
 
@@ -577,7 +577,7 @@ Viso faile yra 14 namų darbų pažymių
 
 #### Vector
 
-![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/10000000/Screenshot%202025-03-20%20235738.png)
+![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v1.0/Nuotraukos/3/Vektor/10000000/Screenshot%202025-03-30%20124309.png)
 
 #### List
 
