@@ -305,40 +305,7 @@ void splitStudents(const list<Student>& students, list<Student>& vargsiukai, lis
 }
 
 // Funkcija, kuri studentus padalina i dvi grupes (vargsiukai ir kietiakiai)
-void splitStudents3(std::list<Student>& students, bool useMedian, std::chrono::duration<double>& irasymoTrukme) {
-    using namespace std::chrono;
-
-    std::list<Student> vargsiukai;
-
-    // Skirstymas: iš students pašaliname vargsiukus ir perkeliame į vargsiukai
-    for (auto it = students.begin(); it != students.end(); ) {
-        if (calculateFinalGrade(*it, useMedian) < 5.0) {
-            vargsiukai.splice(vargsiukai.end(), students, it++);
-        } else {
-            ++it;
-        }
-    }
-
-    // Įrašymas
-    auto start1 = high_resolution_clock::now();
-    saveStudentsToFile(students, "kietiakiai_test.txt");  // students dabar tik kietiakiai
-    auto end1 = high_resolution_clock::now();
-    duration<double> laik = end1 - start1;
-
-    cout << students.size() << " \"kietiakai\" studentu issaugojimas uztruko: "<< fixed << setprecision(5) << laik.count() << " sek.\n";
-
-    auto start2 = high_resolution_clock::now();
-    saveStudentsToFile(vargsiukai, "vargsiukai_test.txt");
-    auto end2 = high_resolution_clock::now();
-    duration<double> laik1 = end2 - start2;
-
-    cout << vargsiukai.size() << " \"vargsiukai\" studentu issaugojimas uztruko: "<< fixed << setprecision(5) << laik1.count() << " sek.\n";
-
-    irasymoTrukme = laik + laik1;
-}
-
-
-void splitStudents2(list<Student>& students, list<Student>& vargsiukai, bool useMedian) {
+void splitStudents3(list<Student>& students, list<Student>& vargsiukai, bool useMedian) {
     vargsiukai.clear();
 
     for (auto it = students.begin(); it != students.end(); ) {
@@ -348,6 +315,20 @@ void splitStudents2(list<Student>& students, list<Student>& vargsiukai, bool use
             ++it;
         }
     }
+}
+
+
+void splitStudents2(list<Student>& students, list<Student>& vargsiukai, bool useMedian) {
+    vargsiukai.clear();
+
+    list<Student> kietiakiai;
+    for (const auto& s : students) {
+        if (calculateFinalGrade(s, useMedian) < 5.0)
+            vargsiukai.push_back(s);
+        else
+            kietiakiai.push_back(s);
+    }
+    students.swap(kietiakiai);
 }
 
 void splitStudents1(const list<Student>& students, list<Student>& vargsiukai, list<Student>& kietiakiai, bool useMedian) {
@@ -405,7 +386,6 @@ void testDataProcessing(const string& filename, int strategy) {
     duration<double> elapsed = end_time - start_time;
     cout << "Failo su " << students.size() << " studentu duomenimis nuskaitymas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 
-    std::chrono::duration<double> irasymoTrukme;
     // 2. Studentu rusiavimas didejancia tvarka (sort funkcija)
     start_time = high_resolution_clock::now();
     size_t originalStudentCount = students.size();
@@ -418,7 +398,8 @@ void testDataProcessing(const string& filename, int strategy) {
             kietiakiai = students;
             break;
         case 3:
-            splitStudents3(students, false, irasymoTrukme);
+            splitStudents3(students, vargsiukai, false);
+            kietiakiai = students;
             break;
         default:
             cout << "Neteisinga strategija. Naudojama numatytoji (1 strategija)).\n";
@@ -426,16 +407,10 @@ void testDataProcessing(const string& filename, int strategy) {
             break;
         }
     
-        end_time = high_resolution_clock::now();
-        elapsed = end_time - start_time;
-        if (strategy == 3){
-            elapsed = elapsed - irasymoTrukme;
-            cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
-        }
+    end_time = high_resolution_clock::now();
+    elapsed = end_time - start_time;
+    cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
     
-        if (strategy == 1 || strategy == 2) {
-        cout << originalStudentCount << " studentu skirstymas i dvi grupes uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
-
     // 4. Rezultatu issaugojimas i failus
     start_time = high_resolution_clock::now();
     saveStudentsToFile(kietiakiai, "kietiakiai_test.txt");
@@ -448,7 +423,7 @@ void testDataProcessing(const string& filename, int strategy) {
     end_time = high_resolution_clock::now();
     elapsed = end_time - start_time;
     cout << vargsiukai.size() << " \"vargsiukai\" studentu issaugojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
-        }
+    
     // 5. Bendras testavimo laikas
     auto total_end_time = high_resolution_clock::now();
     elapsed = total_end_time - total_start_time;
