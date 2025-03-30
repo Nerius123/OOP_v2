@@ -4,9 +4,9 @@
 
 class Student {
 private:
-    std::string name_; //rasau zodzio gale _ del to kad butu lengviau atskirti private kintamaji nuo funkcijos parametro
-    std::string surname_; // tas pats
-    std::vector<int> grades_; // tas pats
+    string name_; //rasau zodzio gale _ del to kad butu lengviau atskirti private kintamaji nuo funkcijos parametro
+    string surname_; // tas pats
+    vector<int> grades_; // tas pats
     int examGrade_; // tas pats
 
 public:
@@ -15,9 +15,9 @@ public:
     Student(std::istream& is);          // Is stream'o
 
     // Geteriai (skaitymui)
-    inline std::string name() const { return name_; }
-    inline std::string surname() const { return surname_; }
-    inline const std::vector<int>& grades() const { return grades_; }
+    inline string name() const { return name_; }
+    inline string surname() const { return surname_; }
+    inline const vector<int>& grades() const { return grades_; }
     inline int exam() const { return examGrade_; }
 
     // Seteriai (keitimui)
