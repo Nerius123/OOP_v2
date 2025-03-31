@@ -635,3 +635,9 @@ Testas: Strategija 3, Konteineris – Vektorius;
 | -O1           | 2.76894 s   | 1.24410 s  | 0.28760 s  | 0.69456 s            | 0.51214 s              | 5.50844 s |
 | -O2           | 2.75034 s   | 1.30859 s  | 0.28891 s  | 0.70972 s            | 0.48117 s              | 5.53954 s |
 | -O3           | 2.68018 s   | 1.27352 s  | 0.29801 s  | 0.70585 s            | 0.48953 s              | 5.44806 s |
+
+### Išvados analizės priklausomybės nuo kompiliatoriaus optimizavimo lygio
+
+Mažesniame faile skirtumai tarp -O1, -O2 ir -O3 buvo minimalūs.  
+Dideliame faile -O3 flag'as pasirodė greičiausias, todėl jį verta su dideliais duomenų kiekiais. (skirtumai tampa žymiai labiau pastebimi)
+Mažuose testuose skirtumai tarp flag'ų minimalūs.
