@@ -622,9 +622,9 @@ Testas: Strategija 3, Konteineris – Vektorius;
 
 ## Optimizavimo flag'ų palyginimas (100000 studentų, strategija 3, vektorius)
 
-| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso |
-|---------------|-------------|------------|------------|----------------------|------------------------|------|
-| -O1           | s   | s  | s  | s            | s              | s |
+| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
+|---------------|-------------|------------|------------|----------------------|------------------------|-----------|
+| -O1           | 0.28777 s   | 0.06557 s  | 0.01851 s  | 0.06922 s            | 0.04817 s              | 0.49013 s |
 | -O2           | s   | s  | s  | s            | s              | s |
 | -O3           | s   | s  | s  | s            | s              | s |
 

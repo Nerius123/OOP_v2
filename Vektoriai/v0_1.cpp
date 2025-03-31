@@ -12,7 +12,7 @@ int main() {
             cin >> choice;
 
             if (cin.fail()) {  // Jei ivestis sugadinta
-                throw std::runtime_error("Netinkama įvestis! Prasome ivesti skaiciu.");
+                throw std::runtime_error("Netinkama ivestis! Prasome ivesti skaiciu.");
             }
 
             if (choice == '1') {
