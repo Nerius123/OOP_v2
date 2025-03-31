@@ -625,13 +625,13 @@ Testas: Strategija 3, Konteineris – Vektorius;
 | Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
 |---------------|-------------|------------|------------|----------------------|------------------------|-----------|
 | -O1           | 0.28777 s   | 0.06557 s  | 0.01851 s  | 0.06922 s            | 0.04817 s              | 0.49013 s |
-| -O2           | s   | s  | s  | s            | s              | s |
-| -O3           | s   | s  | s  | s            | s              | s |
+| -O2           | 0.26716 s   | 0.07990 s  | 0.01946 s  | 0.07531 s            | 0.05069 s              | 0.49347 s |
+| -O3           | 0.26525 s   | 0.06607 s  | 0.02118 s  | 0.07029 s            | 0.05196 s              | 0.47580 s |
 
 ## Optimizavimo flag'ų palyginimas (1000000 studentų, strategija 3, vektorius)
 
-| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso |
-|---------------|-------------|------------|------------|----------------------|------------------------|------|
-| -O1           | s   | s  | s  | s            | s              | s |
-| -O2           | s   | s  | s  | s            | s              | s |
-| -O3           | s   | s  | s  | s            | s              | s |
+| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
+|---------------|-------------|------------|------------|----------------------|------------------------|-----------|
+| -O1           | 2.76894 s   | 1.24410 s  | 0.28760 s  | 0.69456 s            | 0.51214 s              | 5.50844 s |
+| -O2           | 2.75034 s   | 1.30859 s  | 0.28891 s  | 0.70972 s            | 0.48117 s              | 5.53954 s |
+| -O3           | 2.68018 s   | 1.27352 s  | 0.29801 s  | 0.70585 s            | 0.48953 s              | 5.44806 s |
