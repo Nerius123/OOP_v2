@@ -9,7 +9,7 @@ using std::chrono::duration_cast;
 
 void inputStudentData(Student &s) {
     try {
-        std::string v, p;
+        string v, p;
         cout << "Vardas: "; 
         cin >> v;
         s.setName(v);
@@ -25,7 +25,7 @@ void inputStudentData(Student &s) {
         // Namu darbu balu ivedimas
         cout << "Iveskite namu darbu balus (1-10). Iveskite -1, jei norite baigti.\n";
         int grade;
-        std::vector<int> nd;
+        vector<int> nd;
         while (true) {
             cin >> grade;
             if (cin.fail()) {

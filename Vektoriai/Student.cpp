@@ -49,9 +49,7 @@ double Student::calculateMedian() const {
     std::sort(sorted.begin(), sorted.end());
 
     size_t n = sorted.size();
-    return (n % 2 == 0)
-        ? (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0
-        : sorted[n / 2];
+    return (n % 2 == 0) ? (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0 : sorted[n / 2];
 }
 
 // Apskaiciuoja galutini bala
