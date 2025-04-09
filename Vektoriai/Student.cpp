@@ -3,8 +3,6 @@
 // Default konstruktorius
 Student::Student() : examGrade_(0) {}
 
-
-
 // Apskaiciuoja vidurki
 double Student::calculateAverage() const {
     if (grades_.empty()) {
