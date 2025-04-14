@@ -348,9 +348,7 @@ void saveStudentsToFile(const vector<Student>& students, const string& filename)
     }
 
     // Antraste
-    file << left << setw(15) << "Vardas"
-         << setw(15) << "Pavarde"
-         << setw(10) << "Galutinis\n";
+    file << left << setw(15) << "Vardas" << setw(15) << "Pavarde"<< setw(10) << "Galutinis\n";
     file << string(40, '-') << "\n";
 
     for (const auto& student : students) {
