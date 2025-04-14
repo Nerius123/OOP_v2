@@ -3,33 +3,8 @@
 // Default konstruktorius
 Student::Student() : examGrade_(0) {}
 
-// Konstruktorius is srauto
-Student::Student(std::istream& is) {
-    read(is);
-}
 // Destruktorius
 Student::~Student() {}
-
-// Skaitymas is srauto (naudojamas kai skaitoma is failo)
-std::istream& Student::read(std::istream& is) {
-    is >> name_ >> surname_;
-    
-    int grade;
-    grades_.clear();
-
-    while (is >> grade) {
-        grades_.push_back(grade);
-    }
-
-    if (grades_.empty()) {
-        throw std::runtime_error("Studentas " + name_ + " neturi pazymiu!");
-    }
-
-    examGrade_ = grades_.back();
-    grades_.pop_back();
-
-    return is;
-}
 
 // Apskaiciuoja vidurki
 double Student::calculateAverage() const {

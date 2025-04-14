@@ -601,7 +601,7 @@ Viso faile yra 14 namų darbų pažymių
 
 Testas: Strategija 3, Konteineris – Vektorius;
 
-## Failas: 100000 studentų
+## Failas: 100000 studentų (Failo dydis: 14.8MB)
 
 | Bandymas | Versija | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
 |----------|---------|-------------|------------|------------|----------------------|-----------------------|------------|
@@ -610,7 +610,7 @@ Testas: Strategija 3, Konteineris – Vektorius;
 | 1.       | struct  | 0.40873 s   | 0.68703  s | 0.06341  s | 0.09175  s           | 0.08283 s             | 1.33496 s  |
 | 2.       | struct  | 0.38975 s   | 0.63545  s | 0.05596  s | 0.08508  s           | 0.06022 s             | 1.22749 s  |
 
-## Failas: 100000 studentų
+## Failas: 1000000 studentų (Failo dydis: 148MB)
 
 | Bandymas | Versija   | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
 |----------|-----------|-------------|------------|------------|----------------------|-----------------------|------------|
@@ -620,7 +620,7 @@ Testas: Strategija 3, Konteineris – Vektorius;
 | 2.       | struct    | 3.85093 s   | 8.05310  s | 0.62721 s  | 0.85285  s           | 0.60533 s             | 13.99046 s |
 
 
-## Optimizavimo flag'ų palyginimas (100000 studentų, strategija 3, vektorius)
+## Optimizavimo flag'ų palyginimas (100000 studentų, strategija 3, vektorius, Failo dydis: 14.8MB)
 
 | Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
 |---------------|-------------|------------|------------|----------------------|------------------------|-----------|
@@ -628,7 +628,7 @@ Testas: Strategija 3, Konteineris – Vektorius;
 | -O2           | 0.26716 s   | 0.07990 s  | 0.01946 s  | 0.07531 s            | 0.05069 s              | 0.49347 s |
 | -O3           | 0.26525 s   | 0.06607 s  | 0.02118 s  | 0.07029 s            | 0.05196 s              | 0.47580 s |
 
-## Optimizavimo flag'ų palyginimas (1000000 studentų, strategija 3, vektorius)
+## Optimizavimo flag'ų palyginimas (1000000 studentų, strategija 3, vektorius, Failo dydis: 148MB)
 
 | Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
 |---------------|-------------|------------|------------|----------------------|------------------------|-----------|
