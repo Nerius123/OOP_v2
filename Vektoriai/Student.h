@@ -12,7 +12,6 @@ private:
 public:
     // Konstruktoriai
     Student();                          // Default
-    Student(std::istream& is);          // Is stream'o
 
     // Destruktorius
     ~Student();
@@ -28,9 +27,6 @@ public:
     inline void setSurname(const std::string& surname) { surname_ = surname; }
     inline void setGrades(const std::vector<int>& grades) { grades_ = grades; }
     inline void setExam(int examGrade) { examGrade_ = examGrade; }
-
-    // Skaitymas is srauto
-    std::istream& read(std::istream&);
 
     // Naudojamos funkcijos
     double calculateAverage() const;
