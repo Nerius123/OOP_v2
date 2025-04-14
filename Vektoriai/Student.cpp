@@ -7,6 +7,8 @@ Student::Student() : examGrade_(0) {}
 Student::Student(std::istream& is) {
     read(is);
 }
+// Destruktorius
+Student::~Student() {}
 
 // Skaitymas is srauto (naudojamas kai skaitoma is failo)
 std::istream& Student::read(std::istream& is) {
@@ -57,3 +59,4 @@ double Student::calculateFinalGrade(bool useMedian) const {
     double result = 0.4 * (useMedian ? calculateMedian() : calculateAverage()) + 0.6 * examGrade_;
     return result;
 }
+

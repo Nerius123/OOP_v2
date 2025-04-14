@@ -14,6 +14,9 @@ public:
     Student();                          // Default
     Student(std::istream& is);          // Is stream'o
 
+    // Destruktorius
+    ~Student();
+
     // Geteriai (skaitymui)
     inline string name() const { return name_; }
     inline string surname() const { return surname_; }
