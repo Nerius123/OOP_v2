@@ -11,10 +11,22 @@ private:
 
 public:
     // Konstruktoriai
-    Student();                          // Default
+    Student();
 
-    // Destruktorius
+    // Destruktorius (Viskas auto naikinama)
     ~Student();
+
+    // Kopijavimo konstruktorius
+    Student(const Student& other);
+
+    // Kopijavimo priskyrimo operatorius
+    Student& operator=(const Student& other);
+
+    // Judejimo konstruktorius (move)
+    Student(Student&& other) noexcept;
+
+    // Judejimo priskyrimo operatorius (move assignment)
+    Student& operator=(Student&& other) noexcept;
 
     // Geteriai (skaitymui)
     inline string name() const { return name_; }

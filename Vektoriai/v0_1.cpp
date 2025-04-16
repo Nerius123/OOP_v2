@@ -174,9 +174,11 @@ int main() {
                 testDataProcessing(filename, strategy);
             }
             
-            
+            else if (choice == '8')_{
+                TestRuleOfFive();
+            }
 
-            else if (choice == '8') {
+            else if (choice == '9') {
                 cout << "Programa baigta!" << endl;
                 break;
             }

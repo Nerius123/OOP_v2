@@ -6,6 +6,42 @@ Student::Student() : examGrade_(0) {}
 // Destruktorius
 Student::~Student() {}
 
+// Kopijavimo konstruktorius
+Student::Student(const Student& other)
+    : name_(other.name_),
+      surname_(other.surname_),
+      grades_(other.grades_),
+      examGrade_(other.examGrade_) {}
+
+// Kopijavimo priskyrimo operatorius
+Student& Student::operator=(const Student& other) {
+    if (this != &other) {
+        name_ = other.name_;
+        surname_ = other.surname_;
+        grades_ = other.grades_;
+        examGrade_ = other.examGrade_;
+    }
+    return *this;
+}
+
+// Judejimo konstruktorius (move)
+Student::Student(Student&& other) noexcept
+    : name_(std::move(other.name_)),
+      surname_(std::move(other.surname_)),
+      grades_(std::move(other.grades_)),
+      examGrade_(std::exchange(other.examGrade_, 0)) {}
+
+ // Judejimo priskyrimo operatorius (move assignment)
+Student& Student::operator=(Student&& other) noexcept {
+    if (this != &other) {
+        std::swap(name_, other.name_);
+        std::swap(surname_, other.surname_);
+        std::swap(grades_, other.grades_);
+        std::swap(examGrade_, other.examGrade_);
+    }
+    return *this;
+}
+
 // Apskaiciuoja vidurki
 double Student::calculateAverage() const {
     if (grades_.empty()) {
