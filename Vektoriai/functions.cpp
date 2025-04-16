@@ -437,32 +437,59 @@ void TestRuleOfFive(const Student& s) {
             cout << "Studentas neturi pazymiu! Testas nebus vykdomas.\n";
             return;
         }
+
+        cout << "\nRule of Five testas studentui:\n";
+        cout << "   Vardas: " << s.name() << "\n";
+        cout << "   Pavarde: " << s.surname() << "\n";
+        cout << "   Egzamino pazymys: " << s.exam() << "\n";
+        cout << "   Pazymiai: ";
+        for (int g : s.grades()){
+            cout << g << " ";
+        }
+        cout << endl;
     
+        cout << "Kopijavimo konstruktorius\n";
         Student copyConstructed(s);
         assert(copyConstructed.name() == s.name());
         assert(copyConstructed.surname() == s.surname());
         assert(copyConstructed.grades() == s.grades());
         assert(copyConstructed.exam() == s.exam());
+        cout << "Sukurtas copyConstructed su tokiais paciais duomenimis.\n";
     
+        cout << endl;
+
+        cout << "Kopijavimo priskyrimas\n";
         Student copyAssigned;
         copyAssigned = s;
         assert(copyAssigned.name() == s.name());
         assert(copyAssigned.surname() == s.surname());
         assert(copyAssigned.grades() == s.grades());
         assert(copyAssigned.exam() == s.exam());
-    
+        cout << "copyAssigned gavo tuos pacius duomenis kaip originalus studentas.\n";
+
+        cout << endl;
+
+        cout << "Move konstruktorius\n";
         Student moveConstructed(move(copyConstructed));
         assert(moveConstructed.name() == s.name());
         assert(moveConstructed.surname() == s.surname());
         assert(moveConstructed.grades() == s.grades());
         assert(moveConstructed.exam() == s.exam());
-    
+        cout << "moveConstructed pereme duomenis is copyConstructed (kuris dabar tuscias).\n";
+
+        cout << endl;
+
+        cout << "Move priskyrimas\n";
         Student moveAssigned;
         moveAssigned = move(copyAssigned);
         assert(moveAssigned.name() == s.name());
         assert(moveAssigned.surname() == s.surname());
         assert(moveAssigned.grades() == s.grades());
         assert(moveAssigned.exam() == s.exam());
+        cout << "moveAssigned pereme duomenis is copyAssigned (kuris dabar tuscias).\n";
 
-        cout << "Testas baigtas!\n";
+        cout << endl;
+
+        cout << "Testas atliktas studentui: " << s.name() << " " << s.surname() << "\n";
+        cout << "Testas baigtas! (Visi metodai buvo panaudoti!)\n";
     }
