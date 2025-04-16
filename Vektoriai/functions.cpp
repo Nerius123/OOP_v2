@@ -73,7 +73,8 @@ void displayMenu() {
     cout << "5. Generuoti studentu failus" << endl;
     cout << "6. Padalinti studentus i dvi kategorijas (kietiakai/vargsiukai)" << endl;
     cout << "7. Testuoti duomenu apdorojimo greiti (nuskaitymas, rusiavimas, irasymas)" << endl;
-    cout << "8. Baigti programa" << endl;
+    cout << "8. Atlikti Rule of five testa" << endl;
+    cout << "9. Baigti programa" << endl;
     cout << "Pasirinkite: ";
 }
 
@@ -431,7 +432,37 @@ void testDataProcessing(const string& filename, int strategy) {
     cout << "Visas studentu failo apdorojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 }
 
-void TestRuleOfFive(const Student& s){
+void TestRuleOfFive(const Student& s) {
+        if (s.grades().empty()) {
+            cout << "Studentas neturi pazymiu! Testas nebus vykdomas.\n";
+            return;
+        }
+    
+        Student copyConstructed(s);
+        assert(copyConstructed.name() == s.name());
+        assert(copyConstructed.surname() == s.surname());
+        assert(copyConstructed.grades() == s.grades());
+        assert(copyConstructed.exam() == s.exam());
+    
+        Student copyAssigned;
+        copyAssigned = s;
+        assert(copyAssigned.name() == s.name());
+        assert(copyAssigned.surname() == s.surname());
+        assert(copyAssigned.grades() == s.grades());
+        assert(copyAssigned.exam() == s.exam());
+    
+        Student moveConstructed(std::move(copyConstructed));
+        assert(moveConstructed.name() == s.name());
+        assert(moveConstructed.surname() == s.surname());
+        assert(moveConstructed.grades() == s.grades());
+        assert(moveConstructed.exam() == s.exam());
+    
+        Student moveAssigned;
+        moveAssigned = std::move(copyAssigned);
+        assert(moveAssigned.name() == s.name());
+        assert(moveAssigned.surname() == s.surname());
+        assert(moveAssigned.grades() == s.grades());
+        assert(moveAssigned.exam() == s.exam());
 
-
-}
+        cout << "Testas baigtas!\n";
+    }

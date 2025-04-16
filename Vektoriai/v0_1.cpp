@@ -181,7 +181,6 @@ int main() {
                     cout << "Studentu sarasas tuscias! Nera ka testuoti.\n";
                 }
             }
-            }
 
             else if (choice == '9') {
                 cout << "Programa baigta!" << endl;
