@@ -174,8 +174,13 @@ int main() {
                 testDataProcessing(filename, strategy);
             }
             
-            else if (choice == '8')_{
-                TestRuleOfFive();
+            else if (choice == '8') {
+                if (!students.empty()) {
+                    TestRuleOfFive(students[0]);
+                } else {
+                    cout << "Studentu sarasas tuscias! Nera ka testuoti.\n";
+                }
+            }
             }
 
             else if (choice == '9') {
