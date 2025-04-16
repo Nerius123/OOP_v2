@@ -4,6 +4,7 @@
 Student::Student() : examGrade_(0) {}
 
 // Destruktorius
+// Yra defaultinis, nes visi nariai (string, vector, int) ir automatiskai susitvarko savo resursus.
 Student::~Student() {}
 
 // Kopijavimo konstruktorius
