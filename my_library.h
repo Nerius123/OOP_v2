@@ -49,6 +49,9 @@ using std::remove_copy_if;
 using std::transform;
 using std::partition;
 using std::stable_partition;
+using std::move;
+using std::swap;
+using std::exchange;
 
 
 #endif  // Baigiame header guard (apsauga nuo pakartotinio įtraukimo)

@@ -26,18 +26,18 @@ Student& Student::operator=(const Student& other) {
 
 // Judejimo konstruktorius (move)
 Student::Student(Student&& other) noexcept
-    : name_(std::move(other.name_)),
-      surname_(std::move(other.surname_)),
-      grades_(std::move(other.grades_)),
-      examGrade_(std::exchange(other.examGrade_, 0)) {}
+    : name_(move(other.name_)),
+      surname_(move(other.surname_)),
+      grades_(move(other.grades_)),
+      examGrade_(exchange(other.examGrade_, 0)) {}
 
  // Judejimo priskyrimo operatorius (move assignment)
 Student& Student::operator=(Student&& other) noexcept {
     if (this != &other) {
-        std::swap(name_, other.name_);
-        std::swap(surname_, other.surname_);
-        std::swap(grades_, other.grades_);
-        std::swap(examGrade_, other.examGrade_);
+        swap(name_, other.name_);
+        swap(surname_, other.surname_);
+        swap(grades_, other.grades_);
+        swap(examGrade_, other.examGrade_);
     }
     return *this;
 }

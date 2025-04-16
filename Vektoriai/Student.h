@@ -35,9 +35,9 @@ public:
     inline int exam() const { return examGrade_; }
 
     // Seteriai (keitimui)
-    inline void setName(const std::string& name) { name_ = name; }
-    inline void setSurname(const std::string& surname) { surname_ = surname; }
-    inline void setGrades(const std::vector<int>& grades) { grades_ = grades; }
+    inline void setName(const string& name) { name_ = name; }
+    inline void setSurname(const string& surname) { surname_ = surname; }
+    inline void setGrades(const vector<int>& grades) { grades_ = grades; }
     inline void setExam(int examGrade) { examGrade_ = examGrade; }
 
     // Naudojamos funkcijos

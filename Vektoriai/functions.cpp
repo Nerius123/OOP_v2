@@ -451,14 +451,14 @@ void TestRuleOfFive(const Student& s) {
         assert(copyAssigned.grades() == s.grades());
         assert(copyAssigned.exam() == s.exam());
     
-        Student moveConstructed(std::move(copyConstructed));
+        Student moveConstructed(move(copyConstructed));
         assert(moveConstructed.name() == s.name());
         assert(moveConstructed.surname() == s.surname());
         assert(moveConstructed.grades() == s.grades());
         assert(moveConstructed.exam() == s.exam());
     
         Student moveAssigned;
-        moveAssigned = std::move(copyAssigned);
+        moveAssigned = move(copyAssigned);
         assert(moveAssigned.name() == s.name());
         assert(moveAssigned.surname() == s.surname());
         assert(moveAssigned.grades() == s.grades());
