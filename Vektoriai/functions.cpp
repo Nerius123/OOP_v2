@@ -430,3 +430,8 @@ void testDataProcessing(const string& filename, int strategy) {
     elapsed = total_end_time - total_start_time;
     cout << "Visas studentu failo apdorojimas uztruko: " << fixed << setprecision(5) << elapsed.count() << " sek.\n";
 }
+
+void TestRuleOfFive(const Student& s){
+
+
+}

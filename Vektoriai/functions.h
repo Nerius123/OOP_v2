@@ -15,7 +15,7 @@ void printStudents(const vector<Student> &students, bool useMedian);
 void readFromFile(vector<Student> &students, const string &filename);
 void saveResultsToFile(vector<Student> students, const string& filename, bool showAverage, bool showMedian);
 void generateStudentFiles();
-void TestRuleOfFive();
+void TestRuleOfFive(const Student& s);
 void splitStudents(const vector<Student>& students, vector<Student>& vargsiukai, vector<Student>& kietiakiai, bool useMedian);
 void splitStudents3(vector<Student>& students, vector<Student>& vargsiukai, bool useMedian);
 void splitStudents2(vector<Student>& students, vector<Student>& vargsiukai, bool useMedian);
