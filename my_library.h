@@ -15,6 +15,7 @@
 #include <utility>
 #include <list>
 #include <deque>
+#include <cassert>
 
 using std::cout;
 using std::endl;
