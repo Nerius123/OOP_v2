@@ -1,6 +1,6 @@
 #include "Student.h"
 
-// Default konstruktorius
+// Konstruktorius
 Student::Student() : examGrade_(0) {}
 
 // Destruktorius
