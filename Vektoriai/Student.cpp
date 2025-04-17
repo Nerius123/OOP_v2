@@ -1,11 +1,15 @@
 #include "Student.h"
 
-// Default konstruktorius
+// Konstruktorius
 Student::Student() : examGrade_(0) {}
 
 // Destruktorius
-// Yra defaultinis, nes visi nariai (string, vector, int) ir automatiskai susitvarko savo resursus.
-//Student::~Student() {}
+Student::~Student() {
+    name_ = "";
+    surname_ = "";
+    grades_.clear();
+    examGrade_ = 0;
+}
 
 // Kopijavimo konstruktorius
 Student::Student(const Student& other)

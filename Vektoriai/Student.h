@@ -13,8 +13,8 @@ public:
     // Konstruktoriai
     Student();
 
-    // Destruktorius (Viskas auto naikinama)
-    ~Student() = default;
+    // Destruktorius
+    ~Student();
 
     // Kopijavimo konstruktorius
     Student(const Student& other);

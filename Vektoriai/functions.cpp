@@ -439,57 +439,68 @@ void TestRuleOfFive(const Student& s) {
         }
 
         cout << "\nRule of Five testas studentui:\n";
-        cout << "   Vardas: " << s.name() << "\n";
-        cout << "   Pavarde: " << s.surname() << "\n";
-        cout << "   Egzamino pazymys: " << s.exam() << "\n";
-        cout << "   Pazymiai: ";
-        for (int g : s.grades()){
-            cout << g << " ";
-        }
-        cout << endl;
+        auto spausdinti = [](const Student& st) {
+            cout << "   Vardas: " << st.name() << "\n";
+            cout << "   Pavarde: " << st.surname() << "\n";
+            cout << "   Egzaminas: " << st.exam() << "\n";
+            cout << "   Pazymiai: ";
+            for (int g : st.grades()) cout << g << " ";
+            cout << "\n\n";
+        };
     
-        cout << "Kopijavimo konstruktorius\n";
-        Student copyConstructed(s);
-        assert(copyConstructed.name() == s.name());
-        assert(copyConstructed.surname() == s.surname());
-        assert(copyConstructed.grades() == s.grades());
-        assert(copyConstructed.exam() == s.exam());
-        cout << "Sukurtas copyConstructed su tokiais paciais duomenimis.\n";
+        spausdinti(s);
     
-        cout << endl;
-
-        cout << "Kopijavimo priskyrimas\n";
+        // 1. Kopijavimo konstruktorius
+        cout << "1. Kopijavimo konstruktorius:\n";
+        cout << "Pries:\n";
+        spausdinti(s);
+    
+        Student copyConstructed(s);  // Naudojamas Student::Student(const Student&) {...}
+    
+        cout << "Po:\n";
+        spausdinti(copyConstructed);
+    
+        // 2. Kopijavimo priskyrimo operatorius
+        cout << "2. Kopijavimo priskyrimo operatorius:\n";
         Student copyAssigned;
-        copyAssigned = s;
-        assert(copyAssigned.name() == s.name());
-        assert(copyAssigned.surname() == s.surname());
-        assert(copyAssigned.grades() == s.grades());
-        assert(copyAssigned.exam() == s.exam());
-        cout << "copyAssigned gavo tuos pacius duomenis kaip originalus studentas.\n";
-
-        cout << endl;
-
-        cout << "Move konstruktorius\n";
-        Student moveConstructed(move(copyConstructed));
-        assert(moveConstructed.name() == s.name());
-        assert(moveConstructed.surname() == s.surname());
-        assert(moveConstructed.grades() == s.grades());
-        assert(moveConstructed.exam() == s.exam());
-        cout << "moveConstructed pereme duomenis is copyConstructed (kuris dabar tuscias).\n";
-
-        cout << endl;
-
-        cout << "Move priskyrimas\n";
+        cout << "Pries:\n";
+        spausdinti(copyAssigned);
+    
+        copyAssigned = s;  // Naudojamas Student::operator=(const Student&) {...}
+    
+        cout << "Po:\n";
+        spausdinti(copyAssigned);
+    
+        // 3. Move konstruktorius
+        cout << "3. Move konstruktorius:\n";
+        cout << "Pries move:\n";
+        cout << "copyConstructed:\n";
+        spausdinti(copyConstructed);
+    
+        Student moveConstructed(move(copyConstructed));  // Naudojamas move konstruktorius
+    
+        cout << "Po move:\n";
+        cout << "moveConstructed (pereme duomenis):\n";
+        spausdinti(moveConstructed);
+        cout << "copyConstructed (turetu buti tuscias nes duomenys perkelti):\n";
+        spausdinti(copyConstructed);
+    
+        // 4. Move priskyrimo operatorius
+        cout << "4. Move priskyrimo operatorius:\n";
         Student moveAssigned;
-        moveAssigned = move(copyAssigned);
-        assert(moveAssigned.name() == s.name());
-        assert(moveAssigned.surname() == s.surname());
-        assert(moveAssigned.grades() == s.grades());
-        assert(moveAssigned.exam() == s.exam());
-        cout << "moveAssigned pereme duomenis is copyAssigned (kuris dabar tuscias).\n";
-
-        cout << endl;
-
-        cout << "Testas atliktas studentui: " << s.name() << " " << s.surname() << "\n";
-        cout << "Testas baigtas! (Visi metodai buvo panaudoti!)\n";
+        cout << "Pries move:\n";
+        cout << "copyAssigned (saltinis):\n";
+        spausdinti(copyAssigned);
+        cout << "moveAssigned (gavejas, kuris yra tuscias):\n";
+        spausdinti(moveAssigned);
+    
+        moveAssigned = move(copyAssigned);  // Naudojamas move assignment
+    
+        cout << "Po move:\n";
+        cout << "moveAssigned (gavo duomenis per swap):\n";
+        spausdinti(moveAssigned);
+        cout << "copyAssigned (tapo tuscias po swap):\n";
+        spausdinti(copyAssigned);
+    
+        cout << "Testas baigtas!\n";
     }
