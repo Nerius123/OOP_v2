@@ -164,7 +164,7 @@ Projekte buvo įgyvendinti visi būtini „Rule of Five“ metodai, kurie užtik
 | `Student& operator=(const Student&)` | Kopijavimo priskyrimo operatorius | Priskiria esamo objekto duomenis jau egzistuojančiam            |
 | `Student(Student&&)`                 | Perkėlimo (move) konstruktorius   | Perkelia duomenis iš laikino objekto naudojant `move`           |
 | `Student& operator=(Student&&)`      | Perkėlimo priskyrimo operatorius  | Naudoja `swap`, kad perduotų duomenis ir paliktų šaltinį tuščią |
-| `~Student()`                         | Destruktorius                     | Sunaikina objektą, išvalo jo laukus, iškviečiamas automatiškai  |
+| `~Student()`                         | Destruktorius                     | Sunaikina objektą, išvalo ji, iškviečiamas automatiškai         |
 
 ---
 
@@ -176,7 +176,7 @@ Funkcija `TestRuleOfFive(...)` automatiškai:
 - Perkelia duomenis tarp objektų naudojant `move`
 - Naudoja `swap(...)` duomenų mainams
 - Kiekvieno žingsnio metu pateikia objekto būseną „prieš“ ir „po“
-- Testo pabaigoje automatiškai iškviečiami destruktoriai
+- Testo pabaigoje automatiškai iškviečiami destruktorius
 
 Šitaip testuojami visi 5 metodai, užtikrinant, kad jie **tikrai veikia adekvačiai**.
 
@@ -204,7 +204,7 @@ Funkcija `TestRuleOfFive(...)` automatiškai:
 ## Apibendrinimas
 
 - **Rule of Five metodai** užtikrina saugų atminties ir objektų valdymą
-- Visi metodai buvo **testuoti** ir jų veikimas **vizualiai pademonstruotas**
+- Visi metodai buvo **testuoti** ir jų veikimas **pademonstruotas**
 - Įgyvendinti keli duomenų įvedimo ir išvedimo būdai, todėl programa pritaikyta tiek testavimui, tiek naudojimui
 
 ---
