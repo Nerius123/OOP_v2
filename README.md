@@ -61,7 +61,14 @@
    - Studentai skirstomi į dvi grupes
    - Rezultatai išsaugomi į atskirus failus
 
-8. Baigti programą
+8. Testuoti Rule of Five
+
+   - Sukuriama objekto kopija (kopijavimo konstruktorius)
+   - Objektui priskiriami kito duomenys (kopijavimo priskyrimas)
+   - Duomenys perkeliami į naują objektą (move konstruktorius)
+   - Objektas gauna duomenis iš laikinojo (move priskyrimas)
+
+9. Baigti programą
    Programa baigia darbą.
 
 # Pradinė versija
@@ -97,6 +104,110 @@ Pridėta galimybė generuoti failus, iš kurių vėliau bus nuskaitoma informaci
 # v1.0 pradinė versija
 
 Sukurtos trys programos versijos, naudojančios skirtingus konteinerius: std::vector, std::list ir std::deque.
+
+# v1.1 Palyginimas: STRUCT vs CLASS
+
+Testas: Strategija 3, Konteineris – Vektorius;
+
+## Failas: 100000 studentų (Failo dydis: 14.8MB)
+
+| Bandymas | Versija | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
+|----------|---------|-------------|------------|------------|----------------------|-----------------------|------------|
+| 1.       | class   | 0.39577 s   | 0.62389  s | 0.05588 s  | 0.09184  s           | 0.06401 s             | 1.23239 s  |
+| 2.       | class   | 0.38749 s   | 0.64918  s | 0.05646 s  | 0.08932  s           | 0.06371 s             | 1.24702 s  |
+| 1.       | struct  | 0.40873 s   | 0.68703  s | 0.06341  s | 0.09175  s           | 0.08283 s             | 1.33496 s  |
+| 2.       | struct  | 0.38975 s   | 0.63545  s | 0.05596  s | 0.08508  s           | 0.06022 s             | 1.22749 s  |
+
+## Failas: 1000000 studentų (Failo dydis: 148MB)
+
+| Bandymas | Versija   | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
+|----------|-----------|-------------|------------|------------|----------------------|-----------------------|------------|
+| 1.       | class     | 3.85175 s   | 7.97674  s | 0.60812 s  | 0.89476  s           | 0.61835 s             | 13.95062 s |
+| 2.       | class     | 3.88180 s   | 8.11486  s | 0.60913 s  | 0.88522  s           | 0.61672 s             | 14.10859 s |
+| 1.       | struct    | 3.92188 s   | 8.52591  s | 0.63231 s  | 0.88594  s           | 0.66692 s             | 14.63407 s |
+| 2.       | struct    | 3.85093 s   | 8.05310  s | 0.62721 s  | 0.85285  s           | 0.60533 s             | 13.99046 s |
+
+
+## Optimizavimo flag'ų palyginimas (100000 studentų, strategija 3, vektorius, Failo dydis: 14.8MB)
+
+| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
+|---------------|-------------|------------|------------|----------------------|------------------------|-----------|
+| -O1           | 0.28777 s   | 0.06557 s  | 0.01851 s  | 0.06922 s            | 0.04817 s              | 0.49013 s |
+| -O2           | 0.26716 s   | 0.07990 s  | 0.01946 s  | 0.07531 s            | 0.05069 s              | 0.49347 s |
+| -O3           | 0.26525 s   | 0.06607 s  | 0.02118 s  | 0.07029 s            | 0.05196 s              | 0.47580 s |
+
+## Optimizavimo flag'ų palyginimas (1000000 studentų, strategija 3, vektorius, Failo dydis: 148MB)
+
+| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
+|---------------|-------------|------------|------------|----------------------|------------------------|-----------|
+| -O1           | 2.76894 s   | 1.24410 s  | 0.28760 s  | 0.69456 s            | 0.51214 s              | 5.50844 s |
+| -O2           | 2.75034 s   | 1.30859 s  | 0.28891 s  | 0.70972 s            | 0.48117 s              | 5.53954 s |
+| -O3           | 2.68018 s   | 1.27352 s  | 0.29801 s  | 0.70585 s            | 0.48953 s              | 5.44806 s |
+
+### Išvados analizės priklausomybės nuo kompiliatoriaus optimizavimo lygio
+
+Mažesniame faile skirtumai tarp -O1, -O2 ir -O3 buvo minimalūs.  
+Dideliame faile -O3 flag'as pasirodė greičiausias, todėl jį verta su dideliais duomenų kiekiais. (skirtumai tampa žymiai labiau pastebimi)
+Mažuose testuose skirtumai tarp flag'ų minimalūs.
+
+# v1.2 versija
+
+## Rule of Five metodų taikymas
+
+Projekte buvo įgyvendinti visi būtini „Rule of Five“ metodai, kurie užtikrina saugų objektų kopijavimą, perkėlimą ir atminties atlaisvinimą. Kiekvienas metodas buvo aiškiai realizuotas `Student` klasėje ir testuotas funkcijoje `TestRuleOfFive(...)`.
+
+### Metodai
+
+| Metodas                              | Tipas                             | Aprašymas                                                       |
+|--------------------------------------|-----------------------------------|-----------------------------------------------------------------|
+| `Student(const Student&)`            | Kopijavimo konstruktorius         | Sukuria naują objektą perkopijuodamas esamo duomenis            |
+| `Student& operator=(const Student&)` | Kopijavimo priskyrimo operatorius | Priskiria esamo objekto duomenis jau egzistuojančiam            |
+| `Student(Student&&)`                 | Perkėlimo (move) konstruktorius   | Perkelia duomenis iš laikino objekto naudojant `move`           |
+| `Student& operator=(Student&&)`      | Perkėlimo priskyrimo operatorius  | Naudoja `swap`, kad perduotų duomenis ir paliktų šaltinį tuščią |
+| `~Student()`                         | Destruktorius                     | Sunaikina objektą, išvalo jo laukus, iškviečiamas automatiškai  |
+
+---
+
+### Rule of Five testavimas
+
+Funkcija `TestRuleOfFive(...)` automatiškai:
+
+- Sukuria objektų kopijas (naudojami kopijavimo metodai)
+- Perkelia duomenis tarp objektų naudojant `move`
+- Naudoja `swap(...)` duomenų mainams
+- Kiekvieno žingsnio metu pateikia objekto būseną „prieš“ ir „po“
+- Testo pabaigoje automatiškai iškviečiami destruktoriai
+
+Šitaip testuojami visi 5 metodai, užtikrinant, kad jie **tikrai veikia adekvačiai**.
+
+---
+
+## Duomenų įvedimo būdai
+
+| Įvedimo būdas | Aprašymas                                                                 |
+|---------------|---------------------------------------------------------------------------|
+| Rankinis      | Vartotojas per meniu įveda vardą, pavardę, pažymius ir egzamino rezultatą |
+| Automatinis   | Atsitiktinai generuojami studentų duomenys testavimui                     |
+| Iš failo      | Duomenys nuskaitomi iš `.txt` failo                                       |
+
+---
+
+## Duomenų išvedimo būdai
+
+| Išvedimo būdas | Aprašymas |
+|----------------|------------------------------------------------------------------------------------------------------------|
+| Į ekraną       | Studentų galutiniai pažymiai, vardai ir pavardės atvaizduojami konsolėje                                   |
+| Į failą        | Rezultatai įrašomi į atskirus `.txt` failus  (pvz., „vargsiukai.txt“, „kietiakai.txt“)                     |
+
+---
+
+## Apibendrinimas
+
+- **Rule of Five metodai** užtikrina saugų atminties ir objektų valdymą
+- Visi metodai buvo **testuoti** ir jų veikimas **vizualiai pademonstruotas**
+- Įgyvendinti keli duomenų įvedimo ir išvedimo būdai, todėl programa pritaikyta tiek testavimui, tiek naudojimui
+
+---
 
 # Programos testavimo rezultatai pradiniam v1.0 release
 
@@ -595,49 +706,3 @@ Viso faile yra 14 namų darbų pažymių
 ## 5 failų generavimo laikas
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP/refs/heads/v0.4/Bendras/Screenshot%202025-03-07%20000236.png)
-
-
-# Palyginimas: STRUCT vs CLASS
-
-Testas: Strategija 3, Konteineris – Vektorius;
-
-## Failas: 100000 studentų (Failo dydis: 14.8MB)
-
-| Bandymas | Versija | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
-|----------|---------|-------------|------------|------------|----------------------|-----------------------|------------|
-| 1.       | class   | 0.39577 s   | 0.62389  s | 0.05588 s  | 0.09184  s           | 0.06401 s             | 1.23239 s  |
-| 2.       | class   | 0.38749 s   | 0.64918  s | 0.05646 s  | 0.08932  s           | 0.06371 s             | 1.24702 s  |
-| 1.       | struct  | 0.40873 s   | 0.68703  s | 0.06341  s | 0.09175  s           | 0.08283 s             | 1.33496 s  |
-| 2.       | struct  | 0.38975 s   | 0.63545  s | 0.05596  s | 0.08508  s           | 0.06022 s             | 1.22749 s  |
-
-## Failas: 1000000 studentų (Failo dydis: 148MB)
-
-| Bandymas | Versija   | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
-|----------|-----------|-------------|------------|------------|----------------------|-----------------------|------------|
-| 1.       | class     | 3.85175 s   | 7.97674  s | 0.60812 s  | 0.89476  s           | 0.61835 s             | 13.95062 s |
-| 2.       | class     | 3.88180 s   | 8.11486  s | 0.60913 s  | 0.88522  s           | 0.61672 s             | 14.10859 s |
-| 1.       | struct    | 3.92188 s   | 8.52591  s | 0.63231 s  | 0.88594  s           | 0.66692 s             | 14.63407 s |
-| 2.       | struct    | 3.85093 s   | 8.05310  s | 0.62721 s  | 0.85285  s           | 0.60533 s             | 13.99046 s |
-
-
-## Optimizavimo flag'ų palyginimas (100000 studentų, strategija 3, vektorius, Failo dydis: 14.8MB)
-
-| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
-|---------------|-------------|------------|------------|----------------------|------------------------|-----------|
-| -O1           | 0.28777 s   | 0.06557 s  | 0.01851 s  | 0.06922 s            | 0.04817 s              | 0.49013 s |
-| -O2           | 0.26716 s   | 0.07990 s  | 0.01946 s  | 0.07531 s            | 0.05069 s              | 0.49347 s |
-| -O3           | 0.26525 s   | 0.06607 s  | 0.02118 s  | 0.07029 s            | 0.05196 s              | 0.47580 s |
-
-## Optimizavimo flag'ų palyginimas (1000000 studentų, strategija 3, vektorius, Failo dydis: 148MB)
-
-| Optimizavimas | Nuskaitymas | Rūšiavimas | Skirstymas | Įrašymas (kietiakai) | Įrašymas (vargšiukai) | Viso       |
-|---------------|-------------|------------|------------|----------------------|------------------------|-----------|
-| -O1           | 2.76894 s   | 1.24410 s  | 0.28760 s  | 0.69456 s            | 0.51214 s              | 5.50844 s |
-| -O2           | 2.75034 s   | 1.30859 s  | 0.28891 s  | 0.70972 s            | 0.48117 s              | 5.53954 s |
-| -O3           | 2.68018 s   | 1.27352 s  | 0.29801 s  | 0.70585 s            | 0.48953 s              | 5.44806 s |
-
-### Išvados analizės priklausomybės nuo kompiliatoriaus optimizavimo lygio
-
-Mažesniame faile skirtumai tarp -O1, -O2 ir -O3 buvo minimalūs.  
-Dideliame faile -O3 flag'as pasirodė greičiausias, todėl jį verta su dideliais duomenų kiekiais. (skirtumai tampa žymiai labiau pastebimi)
-Mažuose testuose skirtumai tarp flag'ų minimalūs.
