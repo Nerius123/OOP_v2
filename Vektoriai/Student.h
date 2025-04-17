@@ -11,7 +11,7 @@ private:
 
 public:
     // Konstruktoriai
-    Student();                          // Default
+    Student();
 
     // Destruktorius
     ~Student();

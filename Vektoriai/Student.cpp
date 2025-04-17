@@ -4,7 +4,13 @@
 Student::Student() : examGrade_(0) {}
 
 // Destruktorius
-Student::~Student() {}
+Student::~Student() {
+    //cout << "Iskviestas destruktorius studentui:" << name_ << " " << surname_ << endl; // Jei reikia pavaizduoti, kad veikia destruktorius
+    name_ = "";
+    surname_ = "";
+    grades_.clear();
+    examGrade_ = 0;
+}
 
 // Apskaiciuoja vidurki
 double Student::calculateAverage() const {
