@@ -74,7 +74,7 @@
    - Eilutė palikta komentare, nes tokio tipo objektų kurti negalima (tai sukelia kompiliavimo klaidą).
 
 10. Baigti programą
-   Programa baigia darbą.
+   - Programa baigia darbą.
 
 # Pradinė versija
 
@@ -239,7 +239,7 @@ Vietoje vienos `Student` klasės sukurtos dvi atskiros klasės –> bendra `Zmog
 
 ![image](https://raw.githubusercontent.com/Nerius123/OOP_v2/refs/heads/v1.5/Nuotraukos/Bendras/Screenshot%202025-04-24%20140622.png)
 
-Yra matoma aiški klaida: `cannot declare variable 'z' to be of abstract type 'Zmogus'`, nes `Zmogus` turi gryną virtualią funkciją `printInfo()`. O tai įrodo, kad klasė yra **abstrakti**.
+Yra matoma aiški klaida: `cannot declare variable 'z' to be of abstract type 'Zmogus'`, nes `Zmogus` turi virtualią funkciją `printInfo()`. O tai įrodo, kad klasė yra **abstrakti**.
 
 ---
 
