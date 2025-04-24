@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../my_library.h"
+#include "zmogus.h"
 
 class Student : public Zmogus {
     private:
@@ -27,12 +28,12 @@ public:
     Student& operator=(Student&& other) noexcept;
 
     // Geteriai (skaitymui)
-    const std::vector<int>& grades() const;
-    int exam() const;
+    inline const std::vector<int>& grades() const { return grades_; }
+    inline int exam() const { return examGrade_; }
 
     // Seteriai (keitimui)
-    void setGrades(const std::vector<int>& grades);
-    void setExam(int examGrade);
+    inline void setGrades(const std::vector<int>& grades) { grades_ = grades; }
+    inline void setExam(int examGrade) { examGrade_ = examGrade; }
 
     // Naudojamos funkcijos
     double calculateAverage() const;
