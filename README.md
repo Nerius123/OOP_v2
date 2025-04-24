@@ -68,7 +68,12 @@
    - Duomenys perkeliami į naują objektą (move konstruktorius)
    - Objektas gauna duomenis iš laikinojo (move priskyrimas)
 
-9. Baigti programą
+9. Testuoti ar galima sukurti `Zmogus` objekta
+   
+   - Bandoma sukurti Zmogus objektą. 
+   - Eilutė palikta komentare, nes tokio tipo objektų kurti negalima (tai sukelia kompiliavimo klaidą).
+
+10. Baigti programą
    Programa baigia darbą.
 
 # Pradinė versija
@@ -206,6 +211,43 @@ Funkcija `TestRuleOfFive(...)` automatiškai:
 - **Rule of Five metodai** užtikrina saugų atminties ir objektų valdymą
 - Visi metodai buvo **testuoti** ir jų veikimas **pademonstruotas**
 - Įgyvendinti keli duomenų įvedimo ir išvedimo būdai, todėl programa pritaikyta tiek testavimui, tiek naudojimui
+
+---
+
+# v1.5 versija
+
+## Dvi atskiros klasės
+
+Vietoje vienos `Student` klasės sukurtos dvi atskiros klasės –> bendra `Zmogus` ir paveldėta `Student`.
+
+---
+
+## Atlikti reikalavimai
+| Komponentas       | Kas padaryta                                                                                                                   |
+|-------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `Zmogus` klasė    | Sukurta klasė, kuri aprašo bendrus žmogaus duomenis (vardas, pavardė). Ji yra abstrakti – jos objektų sukurti negalima.        |
+| `Student` klasė   | Paveldi iš `Zmogus` klasės, turi papildomus duomenis (pažymiai, egzaminas).                                                    |
+| Testavimo funkcija| `TestRuleOfFive()` patikrina, ar visi metodai veikia tinkamai, įskaitant paveldėtą informaciją.                                |
+| Demonstracija     | `main()` meniu pridėtas punktas, kuris rodo, kad `Zmogus` objektas negali būti sukurtas (kompiliavimo klaida).                 |
+
+---
+
+### Klaidos demonstracija
+
+Žemiau parodyta, kas nutinka, jeigu yra bandoma sukurti `Zmogus` klasės objektą:
+
+
+![image](https://raw.githubusercontent.com/Nerius123/OOP_v2/refs/heads/v1.5/Nuotraukos/Bendras/Screenshot%202025-04-24%20140622.png)
+
+Yra matoma aiški klaida: `cannot declare variable 'z' to be of abstract type 'Zmogus'`, nes `Zmogus` turi gryną virtualią funkciją `printInfo()`. O tai įrodo, kad klasė yra **abstrakti**.
+
+---
+
+## Apibendrinimas
+
+- Sukurtos dvi klasės: abstrakti **Zmogus** ir paveldėta **Student**
+- Įgyvendintas paveldėjimas bei **Rule of Five** metodai
+- Parodyta, kad **Zmogus** objektų sukurti negalima (klaidos demonstracija)
 
 ---
 
