@@ -4,7 +4,7 @@
 
 int main() {
     vector<Student> students;
-    char choice;
+    int choice;
 
     while (true) {
         try {
@@ -15,13 +15,13 @@ int main() {
                 throw std::runtime_error("Netinkama ivestis! Prasome ivesti skaiciu.");
             }
 
-            if (choice == '1') {
+            if (choice == 1) {
                 Student s;
                 inputStudentData(s);
                 students.push_back(s);
             } 
 
-            else if (choice == '2') {
+            else if (choice == 2) {
                 string filename;
                 cout << "Iveskite failo pavadinima: ";
                 cin >> filename;
@@ -31,7 +31,7 @@ int main() {
                 readFromFile(students, filename);
             } 
 
-            else if (choice == '3') {
+            else if (choice == 3) {
                 char method;
                 while (true) {
                     cout << "Pasirinkite metoda skaiciavimui (v - vidurkis, m - mediana): ";
@@ -52,7 +52,7 @@ int main() {
                 printStudents(students, method == 'm' || method == 'M');
             }
 
-            else if (choice == '4') {
+            else if (choice == 4) {
                 if (students.empty()) {
                     cout << "Nera ivestu studentu, failas nebus issaugotas." << endl;
                     continue;
@@ -90,12 +90,12 @@ int main() {
                 saveResultsToFile(students, filename, showAverage, showMedian);
             }
 
-            else if (choice == '5') {
+            else if (choice == 5) {
                 
                 generateStudentFiles();
             }
 
-            else if (choice == '6') { 
+            else if (choice == 6) { 
                 if (students.empty()) {
                     cout << "Nera studentu sarase, nera ka skirstyti!" << endl;
                     continue;
@@ -158,7 +158,7 @@ int main() {
                 saveStudentsToFile(kietiakiai, "kietiakiai.txt");
             }
 
-            else if (choice == '7') {
+            else if (choice == 7) {
                 string filename;
                 cout << "Iveskite testuojamo failo pavadinima: ";
                 cin >> filename;
@@ -174,7 +174,7 @@ int main() {
                 testDataProcessing(filename, strategy);
             }
             
-            else if (choice == '8') {
+            else if (choice == 8) {
                 if (!students.empty()) {
                     TestRuleOfFive(students[0]);
                 } else {
@@ -182,7 +182,14 @@ int main() {
                 }
             }
 
-            else if (choice == '9') {
+            else if (choice == 9) {
+                cout << "Bandoma sukurti Zmogus objekta (turi neveikti):\n"; // C++ neleidzia sukompiliuoti
+                cout << "Noredami irodyti, kad negalima kurti Zmogus objekto, atkomentuojama si eilute:\n";
+                cout << "Zmogus z(string(\"Vardenis\"), string(\"Pavardenis\"));\n";
+                // Zmogus z(string("Vardenis"), string("Pavardenis"));
+            }
+
+            else if (choice == 10) {
                 cout << "Programa baigta!" << endl;
                 break;
             }

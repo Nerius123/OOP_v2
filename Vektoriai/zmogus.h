@@ -25,7 +25,7 @@ public:
     // Move priskyrimo operatorius
     Zmogus& operator=(Zmogus&& other) noexcept; 
 
-    // Abstrakti funkcija (padaro klasę abstrakčia)
+    // Abstrakti funkcija (padaro klasę abstrakcia)
     virtual void printInfo() const = 0;
 
     // Geteriai

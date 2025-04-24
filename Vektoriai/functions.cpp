@@ -74,7 +74,8 @@ void displayMenu() {
     cout << "6. Padalinti studentus i dvi kategorijas (kietiakai/vargsiukai)" << endl;
     cout << "7. Testuoti duomenu apdorojimo greiti (nuskaitymas, rusiavimas, irasymas)" << endl;
     cout << "8. Atlikti Rule of five testa" << endl;
-    cout << "9. Baigti programa" << endl;
+    cout << "9. Testuoti ar galima sukurti Zmogus objekta" << endl;
+    cout << "10. Baigti programa" << endl;
     cout << "Pasirinkite: ";
 }
 
