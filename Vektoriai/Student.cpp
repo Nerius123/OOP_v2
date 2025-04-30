@@ -40,4 +40,3 @@ double Student::calculateFinalGrade(bool useMedian) const {
     double result = 0.4 * (useMedian ? calculateMedian() : calculateAverage()) + 0.6 * examGrade_;
     return result;
 }
-
