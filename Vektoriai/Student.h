@@ -42,6 +42,10 @@ public:
 
     // Įgyvendinta abstrakti funkcija
     void printInfo() const override;
+
+    friend std::istream& operator>>(std::istream& is, Student& s);
+    friend std::ostream& operator<<(std::ostream& os, const Student& s);
+
 };
 
 // Lyginimo operatoriai (naudinga rikiavimui)
