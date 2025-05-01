@@ -44,6 +44,10 @@ public:
     double calculateAverage() const;
     double calculateMedian() const;
     double calculateFinalGrade(bool useMedian) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Student& s);
+    friend std::istream& operator>>(std::istream& is, Student& s);
+
 };
 
 // Lyginimo operatoriai (naudinga rikiavimui)

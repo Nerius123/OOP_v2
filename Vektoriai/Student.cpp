@@ -77,3 +77,31 @@ double Student::calculateFinalGrade(bool useMedian) const {
     return result;
 }
 
+std::ostream& operator<<(std::ostream& os, const Student& s) {
+    os << s.name_ << " " << s.surname_ << " ";
+    for (int grade : s.grades_) {
+        os << grade << " ";
+    }
+    os << s.examGrade_;
+    return os;
+}
+
+std::istream& operator>>(std::istream& is, Student& s) {
+    s.grades_.clear();
+    is >> s.name_ >> s.surname_;
+
+    int value;
+    while (is >> value) {
+        s.grades_.push_back(value);
+    }
+
+    if (!s.grades_.empty()) {
+        s.examGrade_ = s.grades_.back();
+        s.grades_.pop_back(); // paskutinis skaicius (egzas)
+    } else {
+        s.examGrade_ = 0;
+    }
+
+    is.clear(); // isvaloma srauto busena jei while baigesi del EOF ar ne skaiciaus
+    return is;
+}

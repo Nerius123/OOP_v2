@@ -52,6 +52,7 @@ using std::stable_partition;
 using std::move;
 using std::swap;
 using std::exchange;
+using std::stringstream;
 
 
 #endif  // Baigiame header guard (apsauga nuo pakartotinio įtraukimo)
