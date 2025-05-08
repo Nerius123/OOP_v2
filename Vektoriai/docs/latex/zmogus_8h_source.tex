@@ -1,0 +1,45 @@
+\doxysection{zmogus.\+h}
+\hypertarget{zmogus_8h_source}{}\label{zmogus_8h_source}\mbox{\hyperlink{zmogus_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}../my\_library.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_zmogus}{Zmogus}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_zmogus_aae7c11c63baaa5eb44fb60225e70eb61}{name\_}};}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_zmogus_a0407095c36640e5448ca4afbef29485d}{surname\_}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Konstruktorius}}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{class_zmogus_aa7a8ba4d3c4778f9b35d59eef3e72574}{Zmogus}}();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Virtualus\ destruktorius}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_zmogus_a111f690f499186555a4f318cb1868f32}{\string~Zmogus}}();\ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Kopijavimo\ konstruktorius}}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_zmogus_aa7a8ba4d3c4778f9b35d59eef3e72574}{Zmogus}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_zmogus}{Zmogus}}\&\ other);\ \ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ Kopijavimo\ priskyrimo\ operatorius}}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_zmogus}{Zmogus}}\&\ \mbox{\hyperlink{class_zmogus_a8bc6d11547d75c71a38567f750f02612}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_zmogus}{Zmogus}}\&\ other);\ \ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ Move\ konstruktorius}}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_zmogus_aa7a8ba4d3c4778f9b35d59eef3e72574}{Zmogus}}(\mbox{\hyperlink{class_zmogus}{Zmogus}}\&\&\ other)\ \textcolor{keyword}{noexcept};\ }
+\DoxyCodeLine{00049\ \ \ \ \ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Move\ priskyrimo\ operatorius}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_zmogus}{Zmogus}}\&\ \mbox{\hyperlink{class_zmogus_a8bc6d11547d75c71a38567f750f02612}{operator=}}(\mbox{\hyperlink{class_zmogus}{Zmogus}}\&\&\ other)\ \textcolor{keyword}{noexcept};\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ Abstrakti\ funkcija\ (padaro\ klasę\ abstrakcia)}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_zmogus_a9b368ebb8e59bd80d93cb772799cdfea}{printInfo}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ Geteriai}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_zmogus_ad798fdc51f9d4da4ee94cd5f0d9db9da}{name}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zmogus_aae7c11c63baaa5eb44fb60225e70eb61}{name\_}};\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_zmogus_adf7a552468c68374f92b361041863839}{surname}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_zmogus_a0407095c36640e5448ca4afbef29485d}{surname\_}};\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ Seteriai}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_zmogus_a8684372167daf169e21e0b5eb26d80d5}{setName}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{class_zmogus_ad798fdc51f9d4da4ee94cd5f0d9db9da}{name}})\ \{\ \mbox{\hyperlink{class_zmogus_aae7c11c63baaa5eb44fb60225e70eb61}{name\_}}\ =\ \mbox{\hyperlink{class_zmogus_ad798fdc51f9d4da4ee94cd5f0d9db9da}{name}};\ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_zmogus_a292eebde5e777eb0c1d5f0a199d83004}{setSurname}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{class_zmogus_adf7a552468c68374f92b361041863839}{surname}})\ \{\ \mbox{\hyperlink{class_zmogus_a0407095c36640e5448ca4afbef29485d}{surname\_}}\ =\ \mbox{\hyperlink{class_zmogus_adf7a552468c68374f92b361041863839}{surname}};\ \}}
+\DoxyCodeLine{00087\ \};}
+
+\end{DoxyCode}

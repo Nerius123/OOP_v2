@@ -1,0 +1,32 @@
+\doxysection{functions.\+h}
+\hypertarget{functions_8h_source}{}\label{functions_8h_source}\mbox{\hyperlink{functions_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ FUNCTIONS\_H\ }\textcolor{comment}{//\ Patikrina,\ ar\ FUNCTIONS\_H\ dar\ nėra\ apibrėžtas\ (kad\ failas\ nebūtų\ įtrauktas\ kelis\ kartus)}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ FUNCTIONS\_H\ }\textcolor{comment}{//\ Jei\ nėra\ apibrėžtas,\ apibrėžia\ FUNCTIONS\_H\ (kad\ kompiliatorius\ kitą\ kartą\ žinotų,\ jog\ jis\ jau\ įtrauktas)}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}../my\_library.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_student_8h}{Student.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Funkcijų\ prototipai}}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_ac9f5f335165013620601456f83bbd6a9}{inputStudentData}}(\mbox{\hyperlink{class_student}{Student}}\ \&s);}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{functions_8h_af912676bdbbbec9a874e0196f5c2070e}{calculateAverage}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\ \&s);}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{functions_8h_a76bd324833f698a03e4771a2154c5361}{calculateMedian}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\ \&s);}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{functions_8h_a76f7843c1578f2de6749badacce9644d}{calculateFinalGrade}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\ \&s,\ \textcolor{keywordtype}{bool}\ useMedian);}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a59c2926dd9b0968badf463aaf4f91422}{displayMenu}}();}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a4aaf8dc118f411b19df5d4b951abe6df}{printStudents}}(\textcolor{keyword}{const}\ vector<Student>\ \&students,\ \textcolor{keywordtype}{bool}\ useMedian);}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a10a19513c52a623999219c9436cff736}{readFromFile}}(vector<Student>\ \&students,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ \&filename);}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_acdf654c0e51c1018d4e20fd293bf23ab}{saveResultsToFile}}(vector<Student>\ students,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ filename,\ \textcolor{keywordtype}{bool}\ showAverage,\ \textcolor{keywordtype}{bool}\ showMedian);}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_afd36fa3e20871cda093506cd868c36c8}{generateStudentFiles}}();}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_abdfbfb4270ddcc48ba3a0a1cf8187cd4}{TestRuleOfFive}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_student}{Student}}\&\ s);}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_ab5186f9678d536f0a6180d35da73b23a}{splitStudents}}(\textcolor{keyword}{const}\ vector<Student>\&\ students,\ vector<Student>\&\ vargsiukai,\ vector<Student>\&\ kietiakiai,\ \textcolor{keywordtype}{bool}\ useMedian);}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a71cbebef1090b956bc360d4d684a4f7c}{splitStudents3}}(vector<Student>\&\ students,\ vector<Student>\&\ vargsiukai,\ \textcolor{keywordtype}{bool}\ useMedian);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_ad6515da42b411406e9027e262fa76c36}{splitStudents2}}(vector<Student>\&\ students,\ vector<Student>\&\ vargsiukai,\ \textcolor{keywordtype}{bool}\ useMedian);}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a0d59713a1762846b31ec96826a2dac05}{splitStudents1}}(\textcolor{keyword}{const}\ vector<Student>\&\ students,\ vector<Student>\&\ vargsiukai,\ vector<Student>\&\ kietiakiai,\ \textcolor{keywordtype}{bool}\ useMedian);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_af00c6f3b0fd77cc71021b0a17198ba09}{saveStudentsToFile}}(\textcolor{keyword}{const}\ vector<Student>\&\ students,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ filename);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{functions_8h_a9552bf3629a0a34f8faaf652fa466d92}{testDataProcessing}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ filename,\ \textcolor{keywordtype}{int}\ strategy);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ Baigiame\ header\ guard\ (apsauga\ nuo\ pakartotinio\ įtraukimo)}}
+
+\end{DoxyCode}
