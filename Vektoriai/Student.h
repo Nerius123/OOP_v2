@@ -1,3 +1,25 @@
+/**
+ * @mainpage Studentų valdymo sistema
+ * 
+ * Ši C++ programa leidžia:
+ * 
+ * 1. Pridėti naują studentą per vartotojo įvestį.
+ * 2. Nuskaityti studentų duomenis iš failo.
+ * 3. Spausdinti studentų sąrašą, pasirinkus galutinio balo skaičiavimo metodą (vidurkis arba mediana).
+ * 4. Išsaugoti studentų rezultatus į failą.
+ * 5. Generuoti didelius studentų duomenų failus (iki 10 milijonų įrašų).
+ * 6. Padalinti studentus į dvi kategorijas: „kietiakai“ ir „vargšiukai“ pagal jų rezultatus.
+ * 7. Testuoti didelių duomenų apdorojimo greitį (nuskaitymas, rūšiavimas, išsaugojimas).
+ * 8. Patikrinti Rule of Five principo įgyvendinimą klasėje Student.
+ * 9. Patikrinti, ar galima sukurti abstraktų objektą Zmogus.
+ * 10. Baigti programos vykdymą.
+ * 
+ * Dokumentacija sukurta naudojant Doxygen.
+ * 
+ * @author
+ * Nerijus Ponomariovas
+ */
+
 #pragma once
 
 #include "../my_library.h"
