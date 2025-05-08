@@ -35,17 +35,31 @@
 ## 3. Projekto kompiliavimas
 
 - Atsidaryti komandinę eilutę projekto direktorijoje ir įrašykite: `make -C Vectoriai ; make -C List ; make -C Deque`
-- Atsidaryti Command Prompt, nueiti į katalogą kuriame yra projektas ir įrašyti: `g++ v0_1.cpp Student.cpp Zmogus.cpp functions.cpp -o programa && programa`
+- Atsidaryti Command Prompt, nueiti į katalogą kuriame yra projektas ir įrašyti: `g++ v0_1.cpp Student.cpp Zmogus.cpp functions.cpp -o programa`
 
 ## 4. Programos paleidimas
 
 - Paleisti norima programos versija: `./Vektoriai/v0_1.exe`, `./List/list_main.exe`, `./Deque/deque_main.exe`
+- Paleisti norima programos versija per Command Prompt: `programa`
 
-# Programos naudojimosi instrukcijos
+# Apie programą
 
-Ši programa skirta studentų duomenų valdymui ir analizei, programoje galima įvesti, nuskaityti, rūšiuoti, generuoti ir analizuoti studentų informaciją. Meniu pateikiami šie pasirinkimai:
+**Ši programa skirta studentų duomenų valdymui.** Joje galima:
 
-### Meniu pasirinkimai:
+- Įvesti studentų duomenis rankiniu būdu
+- Nuskaityti studentus iš įvairaus dydžio failų
+- Skaičiuoti galutinius pažymius (naudojant **vidurkį** arba **medianą**)
+- Rūšiuoti studentus pagal pažangumą ar pavardes
+- Skirstyti juos į dvi kategorijas: **kietiakus** ir **vargšiukus**
+- Testuoti programos veikimo greitį su skirtingais STL konteineriais: `std::vector`, `std::list`, `std::deque`
+- Automatiškai generuoti testinius studentų failus (nuo **1 000** iki **10 000 000** įrašų)
+- Tikrinti `Rule of Five` metodų veikimą
+- Atlikti vienetinius (unit) testus naudojant **Catch2** framework'ą
+- Pamatyti demonstraciją, kad abstrakti `Zmogus` klasė negali būti instancijuota
+
+---
+
+## Meniu pasirinkimai:
 
 1. Pridėti naują studentą
    Leidžia vartotojui rankiniu būdu įvesti studento vardą, pavardę, namų darbų pažymius ir egzamino rezultatą.
