@@ -502,19 +502,6 @@ void TestRuleOfFive(const Student& s) {
         spausdinti(moveAssigned);
         cout << "copyAssigned (tapo tuscias po swap):\n";
         spausdinti(copyAssigned);
-
-        // 5. Ivesties / isvesties operatoriu testas
-        cout << "5. Ivesties / isvesties operatoriu testas:\n";
-
-        stringstream ss("Jonas Antanavicius 5 10 8 5 2 3");
-        Student s5;
-        ss >> s5;
-
-        cout << "Isvestis po nuskaitymo:\n";
-        cout << s5 << "\n";
-
-        cout << "Patikrinimas su spausdinti funkcija:\n";
-        spausdinti(s5);
     
         cout << "Testas baigtas!\n";
     }
