@@ -8,7 +8,6 @@
 
 # Versijos
 
-## 📌 Greita navigacija tarp versijų
 
 - [v0.1 versija](#v01-versija)
 - [v0.2 versija](#v02-versija)
