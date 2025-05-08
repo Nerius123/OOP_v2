@@ -6,6 +6,20 @@
 | RAM         |             16GB DDR4 </br>               |
 | DISK        |             SATA SSD </br>                |
 
+# Versijos
+
+- [Pradinė versija](# Pradinė versija)
+- [v0.1 versija](# v0.1 versija)
+- [v0.2 versija](# v0.2 versija)
+- [v0.3 versija](# v0.3 versija)
+- [v0.4 versija](# v0.4 versija)
+- [v1.0 versija](# v1.0 pradinė versija)
+- [v1.0 pradine release versija](# Programos testavimo rezultatai pradiniam v1.0 release)
+- [v1.1 versija](# v1.1 Palyginimas: STRUCT vs CLASS)
+- [v1.2 versija](# v1.2 versija)
+- [v1.5 versija](# v1.5 versija)
+- [v2.0 versija](# v2.0 versija)\
+
 # Projekto atsisiuntimo instrukcija
 
 ## 1. Reikalingų įrankių atsisiuntimas
@@ -20,7 +34,7 @@
 ## 3. Projekto kompiliavimas
 
 - Atsidaryti komandinę eilutę projekto direktorijoje ir įrašykite: `make -C Vectoriai ; make -C List ; make -C Deque`
-- Atsidaryti Command Prompt, nueiti į katalogą kuriame yra projektas ir įrašyti: `g++ v0_1.cpp functions.cpp Student.cpp zmogus.cpp -o programa`
+- Atsidaryti Command Prompt, nueiti į katalogą kuriame yra projektas ir įrašyti: `g++ v0_1.cpp Student.cpp Zmogus.cpp functions.cpp -o programa && programa`
 
 ## 4. Programos paleidimas
 
@@ -251,6 +265,54 @@ Yra matoma aiški klaida: `cannot declare variable 'z' to be of abstract type 'Z
 - Parodyta, kad **Zmogus** objektų sukurti negalima (klaidos demonstracija)
 
 ---
+
+# v2.0 versija
+
+## Atlikta
+
+| Komponentas        | Aprašymas                                                                                                                      |
+|--------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `Zmogus` klasė     | Abstrakti klasė su vardu, pavarde. Objekto sukurti negalima.                                                                   |
+| `Student` klasė    | Paveldi iš `Zmogus`. Turi papildomus laukus (pažymiai, egzaminas), metodus skaičiavimui.                                       |
+| Rule of Five       | Realizuoti: kopijavimo konstruktorius, kopijavimo priskyrimas, move konstruktorius, move priskyrimas, destruktorius.           |
+| Dokumentacija      | Sugeneruota su Doxygen: HTML (`docs/html/index.html`), TeX, PDF (`docs/latex/refman.pdf`).                                     |
+| Unit testai        | Catch2 pagrindu. Testuoja Rule of Five metodus. Visi testai praėjo sėkmingai.                                                  |
+| Demonstracija      | `v0_1.cpp` meniu galima pamatyti, kad `Zmogus` objektas negali būti sukurtas.                                                  |
+| Testų automatizavimas | Pridėtas atskiras `tests.cpp` su `catch.hpp`, leidžiantis savarankiškai paleisti testus.                                    |
+| Testavimo rezultatai | Testavimo metu buvo gauti rezultatai: `All tests passed (16 assertions in 4 test cases)`.                                    |
+| Doxygen PDF generavimas | TeX šaltiniai sukompiliuoti į PDF naudojant Overleaf platformą. Įkelta į `docs/refman.pdf`.                               |
+
+---
+
+## Dokumentacija
+
+- **HTML**: `docs/html/index.html`
+- **PDF (per Overleaf)**: `docs/latex.pdf`
+- **TeX šaltiniai**: `docs/latex/`
+- Sugeneruota naudojant Doxygen su `@mainpage` komentarais ir klasės aprašymais
+
+---
+
+## Unit testai
+
+Naudojamas: **Catch2**  
+Testai parašyti faile `tests.cpp`, naudojamas `catch.hpp`.
+
+### Paleidimas:
+
+```bash
+g++ tests.cpp Student.cpp Zmogus.cpp -o testai && testai
+
+Testavimo metu turėtų būti gaunamas rezultatas: `All tests passed (16 assertions in 4 test cases)`. 
+
+### Testuojami metodai:
+
+- Kopijavimo konstruktorius
+- Kopijavimo priskyrimo operatorius
+- Move konstruktorius
+- Move priskyrimo operatorius
+- Destruktorius
+
 
 # Programos testavimo rezultatai pradiniam v1.0 release
 
