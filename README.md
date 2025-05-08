@@ -8,17 +8,19 @@
 
 # Versijos
 
-- [Pradinė versija](# Pradinė versija)
-- [v0.1 versija](# v0.1 versija)
-- [v0.2 versija](# v0.2 versija)
-- [v0.3 versija](# v0.3 versija)
-- [v0.4 versija](# v0.4 versija)
-- [v1.0 versija](# v1.0 pradinė versija)
-- [v1.0 pradine release versija](# Programos testavimo rezultatai pradiniam v1.0 release)
-- [v1.1 versija](# v1.1 Palyginimas: STRUCT vs CLASS)
-- [v1.2 versija](# v1.2 versija)
-- [v1.5 versija](# v1.5 versija)
-- [v2.0 versija](# v2.0 versija)\
+## 📌 Greita navigacija tarp versijų
+
+- [Pradine versija](#pradine-versija)
+- [v0.1 versija](#v01-versija)
+- [v0.2 versija](#v02-versija)
+- [v0.3 versija](#v03-versija)
+- [v0.4 versija](#v04-versija)
+- [v1.0 versija](#v10-pradine-versija)
+- [v1.1 versija](#v11-palyginimas-struct-vs-class)
+- [v1.2 versija](#v12-versija)
+- [v1.5 versija](#v15-versija)
+- [v2.0 versija](#v20-versija)
+
 
 # Projekto atsisiuntimo instrukcija
 
@@ -280,7 +282,7 @@ Yra matoma aiški klaida: `cannot declare variable 'z' to be of abstract type 'Z
 | Demonstracija      | `v0_1.cpp` meniu galima pamatyti, kad `Zmogus` objektas negali būti sukurtas.                                                  |
 | Testų automatizavimas | Pridėtas atskiras `tests.cpp` su `catch.hpp`, leidžiantis savarankiškai paleisti testus.                                    |
 | Testavimo rezultatai | Testavimo metu buvo gauti rezultatai: `All tests passed (16 assertions in 4 test cases)`.                                    |
-| Doxygen PDF generavimas | TeX šaltiniai sukompiliuoti į PDF naudojant Overleaf platformą. Įkelta į `docs/refman.pdf`.                               |
+| Doxygen PDF generavimas | TeX šaltiniai sukompiliuoti į PDF naudojant Overleaf platformą. Įkelta į `docs/latex.pdf`.                                |
 
 ---
 
@@ -298,12 +300,13 @@ Yra matoma aiški klaida: `cannot declare variable 'z' to be of abstract type 'Z
 Naudojamas: **Catch2**  
 Testai parašyti faile `tests.cpp`, naudojamas `catch.hpp`.
 
-### Paleidimas:
+## Paleidimas
 
 ```bash
 g++ tests.cpp Student.cpp Zmogus.cpp -o testai && testai
 
 Testavimo metu turėtų būti gaunamas rezultatas: `All tests passed (16 assertions in 4 test cases)`. 
+```
 
 ### Testuojami metodai:
 
