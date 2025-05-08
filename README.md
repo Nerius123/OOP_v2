@@ -20,6 +20,7 @@
 ## 3. Projekto kompiliavimas
 
 - Atsidaryti komandinę eilutę projekto direktorijoje ir įrašykite: `make -C Vectoriai ; make -C List ; make -C Deque`
+- Atsidaryti Command Prompt, nueiti į katalogą kuriame yra projektas ir įrašyti: `g++ v0_1.cpp functions.cpp Student.cpp zmogus.cpp -o programa`
 
 ## 4. Programos paleidimas
 
