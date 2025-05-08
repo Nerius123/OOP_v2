@@ -10,7 +10,6 @@
 
 ## 📌 Greita navigacija tarp versijų
 
-- [Pradine versija](#pradine-versija)
 - [v0.1 versija](#v01-versija)
 - [v0.2 versija](#v02-versija)
 - [v0.3 versija](#v03-versija)
@@ -307,6 +306,7 @@ g++ tests.cpp Student.cpp Zmogus.cpp -o testai && testai
 
 Testavimo metu turėtų būti gaunamas rezultatas: `All tests passed (16 assertions in 4 test cases)`. 
 ```
+---
 
 ### Testuojami metodai:
 
