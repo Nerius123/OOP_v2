@@ -54,7 +54,7 @@
 - Automatiškai generuoti testinius studentų failus (nuo **1 000** iki **10 000 000** įrašų)
 - Tikrinti `Rule of Five` metodų veikimą
 - Atlikti vienetinius (unit) testus naudojant **Catch2** framework'ą
-- Pamatyti demonstraciją, kad abstrakti `Zmogus` klasė negali būti instancijuota
+- Pamatyti demonstraciją, kad abstrakti `Zmogus` klasė negali būti sukurta
 
 ---
 
@@ -96,6 +96,7 @@
    - Objektui priskiriami kito duomenys (kopijavimo priskyrimas)
    - Duomenys perkeliami į naują objektą (move konstruktorius)
    - Objektas gauna duomenis iš laikinojo (move priskyrimas)
+   - Nuskaitomi ir išvedami duomenys naudojant įvesties/išvesties operatorius (`>>`, `<<`)
 
 9. Testuoti ar galima sukurti `Zmogus` objekta
    
