@@ -65,3 +65,10 @@ TEST_CASE("Move priskyrimo operatorius") {
     REQUIRE(s2.exam() == 7);
     REQUIRE(s2.grades().size() == 2);
 }
+TEST_CASE("Studentas su netinkamais duomenimis") {
+    Student s;
+    s.setName("Testas");
+    s.setSurname("Testavimas");
+    s.setGrades({11, 12});
+    s.setExam(15);
+}
